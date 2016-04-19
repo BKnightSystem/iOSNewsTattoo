@@ -18,6 +18,8 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
     @IBOutlet weak var btnCall:UIButton!
     @IBOutlet weak var lbMagazine:UILabel!
     
+    var reachability: Reachability?
+    
     var indexEstudio = 0
     var indexPortada = 0
     
@@ -27,11 +29,25 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         self.createNavigationBar()
         self.configuration()
         
-        self.wsGetPortadas()
-        
-        //self.initCarousel()
+        self.connectionInternet()
     }
 
+    func connectionInternet(){
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        do{
+            try reachability?.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,9 +77,31 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         carouselMonthMagazine.type = .CoverFlow
     }
     
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable() {
+            if reachability.isReachableViaWiFi() {
+                //                print("Reachable via WiFi")
+                self.wsGetPortadas()
+            } else {
+                //                print("Reachable via Cellular")
+                self.wsGetPortadas()
+            }
+        } else {
+            dispatch_async(dispatch_get_main_queue()) {
+                Utilidades.alertSinConexion()
+            }
+        }
+    }
+    
     //MARK: WS
     func wsGetPortadas(){
-        SwiftSpinner.show("Obteniendo revistas")
+        dispatch_async(dispatch_get_main_queue()) {
+            SwiftSpinner.show("Obteniendo revistas")
+        }
+        
         let parameters:[String:Int] = ["idEstudio":indexEstudio + 1]
         
         WebService.portadaMagazineById(parameters, callback:{(isOK) -> Void in

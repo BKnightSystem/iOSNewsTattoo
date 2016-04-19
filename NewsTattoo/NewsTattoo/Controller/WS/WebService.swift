@@ -19,19 +19,26 @@ class WebService {
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
         if data!.length > 0 && error == nil {
+            
+            arrayEstudiosTattoo.removeAll()
                 
             let json = JSON(data: data!)
             print("JSON \(json)")
             let estudio = json["Estudios"].array
             for est in estudio! {
                 let datosEstudio = Estudios()
+                datosEstudio.idEstudio = est["idEstudio"].stringValue
                 datosEstudio.nombreEstudio = est["nombre"].stringValue
                 datosEstudio.direccion = est["direccion"].stringValue
                 datosEstudio.telefono = est["telefono"].stringValue
                 datosEstudio.imgLogo = est["logo"].stringValue
                 datosEstudio.latitud = est["latitud"].doubleValue
                 datosEstudio.longitud = est["longitud"].doubleValue
-                    
+                
+                if datosEstudio.imgLogo != "" {
+                    datosEstudio.logo = Utilidades.base64ToImage(datosEstudio.imgLogo)
+                }
+                
                 arrayEstudiosTattoo.append(datosEstudio)
             }
             
@@ -99,7 +106,7 @@ class WebService {
         arrayPortadasTattoo.removeAll()
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-            if data!.length > 0 && error == nil {
+            if (data!.length > 0 && data != nil)  && error == nil {
                 
                 let json = JSON(data: data!)
                 print("JSON \(json)")

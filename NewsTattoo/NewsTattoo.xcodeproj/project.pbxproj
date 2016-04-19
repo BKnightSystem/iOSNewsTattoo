@@ -50,6 +50,8 @@
 		57ED96481CAF450B00CF7ACE /* DancingScript-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED96471CAF450B00CF7ACE /* DancingScript-Regular.otf */; };
 		57ED964A1CAF471C00CF7ACE /* Capture_it.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED96491CAF471C00CF7ACE /* Capture_it.ttf */; };
 		57ED964C1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED964B1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf */; };
+		674BE3CF1CC67CDF00EA4EFF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BE3CE1CC67CDF00EA4EFF /* ImageManager.swift */; };
+		674BE3D21CC6870200EA4EFF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BE3D11CC6870200EA4EFF /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		57ED96471CAF450B00CF7ACE /* DancingScript-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DancingScript-Regular.otf"; path = "Fonts/DancingScript-Regular.otf"; sourceTree = "<group>"; };
 		57ED96491CAF471C00CF7ACE /* Capture_it.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Capture_it.ttf; path = Fonts/Capture_it.ttf; sourceTree = "<group>"; };
 		57ED964B1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Caviar_Dreams_Bold.ttf; path = Fonts/Caviar_Dreams_Bold.ttf; sourceTree = "<group>"; };
+		674BE3CE1CC67CDF00EA4EFF /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageManager.swift; path = Controller/managerImage/ImageManager.swift; sourceTree = "<group>"; };
+		674BE3D11CC6870200EA4EFF /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Controller/Reachability/Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,8 @@
 				1D5185771CAE42EF0071B651 /* SwiftyJSON */,
 				1D5185751CAE42CA0071B651 /* TattooConstants.swift */,
 				1D5185711CAE428C0071B651 /* WS */,
+				674BE3D01CC67CEB00EA4EFF /* ManagerImage */,
+				674BE3D11CC6870200EA4EFF /* Reachability.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -325,6 +331,14 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		674BE3D01CC67CEB00EA4EFF /* ManagerImage */ = {
+			isa = PBXGroup;
+			children = (
+				674BE3CE1CC67CDF00EA4EFF /* ImageManager.swift */,
+			);
+			name = ManagerImage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,11 +367,10 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = DAMSIBit;
+				ORGANIZATIONNAME = BKSystem;
 				TargetAttributes = {
 					1D5185501CAE37D80071B651 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = H5QPR4XXFV;
 					};
 				};
 			};
@@ -417,6 +430,7 @@
 				1D51858C1CAE59620071B651 /* MapaViewController.swift in Sources */,
 				1DFBC2291CC2B3100071D5CD /* CDGaleria.swift in Sources */,
 				57ED96341CAEE66E00CF7ACE /* PageDesign.swift in Sources */,
+				674BE3D21CC6870200EA4EFF /* Reachability.swift in Sources */,
 				57ED96391CAEFD3500CF7ACE /* PageDesign2.swift in Sources */,
 				1DFBC2231CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld in Sources */,
 				1D51857E1CAE43500071B651 /* Estudios.swift in Sources */,
@@ -433,6 +447,7 @@
 				1D5185921CAE59FC0071B651 /* ArtWork.swift in Sources */,
 				1D5185841CAE46400071B651 /* Extensions.swift in Sources */,
 				1D5185931CAE59FC0071B651 /* VCMapView.swift in Sources */,
+				674BE3CF1CC67CDF00EA4EFF /* ImageManager.swift in Sources */,
 				57ED96361CAEF01600CF7ACE /* Magazine.swift in Sources */,
 				1D5185971CAE5E300071B651 /* iCarousel.m in Sources */,
 				1D5185871CAE4C1F0071B651 /* ListMagazinesViewController.swift in Sources */,
@@ -551,7 +566,7 @@
 				INFOPLIST_FILE = NewsTattoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.planetmedia.NewsTattoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BKSystem.NewsTattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 			};
@@ -565,7 +580,7 @@
 				INFOPLIST_FILE = NewsTattoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.planetmedia.NewsTattoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BKSystem.NewsTattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 			};

@@ -15,6 +15,8 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     @IBOutlet weak var viewTop:UIView!
     @IBOutlet weak var viewDown:UIView!
     
+    var reachability: Reachability?
+    
     var indexEstudio = 0
     var idMagazine = 0
     
@@ -25,10 +27,25 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         self.configuration()
         self.initCarousel()
         
-        SwiftSpinner.show("Descargando información")
-        self.wsGetPages()
+        self.connectionInternet()
     }
 
+    func connectionInternet() {
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        do{
+            try reachability?.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -43,10 +60,29 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         carouselPages.type = .Linear
     }
     
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable() {
+            if reachability.isReachableViaWiFi() {
+                //                print("Reachable via WiFi")
+                self.wsGetPages()
+            } else {
+                //                print("Reachable via Cellular")
+                self.wsGetPages()
+            }
+        } else {
+            dispatch_async(dispatch_get_main_queue()) {
+                Utilidades.alertSinConexion()
+            }
+        }
+    }
+    
     func createPagesMagazine(){
         arrayPagesMagazine.removeAll()
         if arrayDetailPages.count > 0 {
-            for var i = 0 ; i < arrayDetailPages.count ; i++ {
+            for i in 0  ..< arrayDetailPages.count  {
                 let pageView  = PageDesign()
                 let pageView2 = PageDesign2()
                 let pageView3 = PageDesign3()
@@ -74,6 +110,10 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     //MARK: WS
     func wsGetPages(){
+        dispatch_async(dispatch_get_main_queue()) {
+            SwiftSpinner.show("Obteniendo información")
+        }
+        
         let parameters:[String:Int] = ["idEstudio":indexEstudio + 1, "idMagazine":idMagazine]
         
         WebService.galeriaEstudiosById(parameters, callback:{(isOK) -> Void in
@@ -134,7 +174,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         //Icono Izquierdo
         let button = UIButton(type: UIButtonType.Custom) as UIButton
         button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
-        button.addTarget(self, action:"back", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action:#selector(PageMagazineViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
         button.frame=CGRectMake(0, 0, 40, 40)
         let barButton = UIBarButtonItem(customView: button)
         //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
@@ -143,7 +183,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         //Icono Derecho
         let buttonDer = UIButton(type: UIButtonType.Custom) as UIButton
         buttonDer.setImage(IMAGE_ICON_FAVORITO, forState: UIControlState.Normal)
-        buttonDer.addTarget(self, action:"addFavorite", forControlEvents: UIControlEvents.TouchUpInside)
+        buttonDer.addTarget(self, action:#selector(PageMagazineViewController.addFavorite), forControlEvents: UIControlEvents.TouchUpInside)
         buttonDer.frame=CGRectMake(0, 0, 40, 40)
         let barButtonDer = UIBarButtonItem(customView: buttonDer)
         //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")

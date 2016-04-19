@@ -6,6 +6,8 @@
 //  Copyright © 2016 TecnoSoft. All rights reserved.
 //
 
+import UIKit
+
 class Estudios {
     var idEstudio : String = "";
     var nombreEstudio : String = "";
@@ -14,4 +16,5 @@ class Estudios {
     var telefono : String = "";
     var direccion : String = "";
     var imgLogo: String = ""
+    var logo:UIImage = UIImage()
 }

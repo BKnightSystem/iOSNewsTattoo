@@ -24,4 +24,21 @@ class Utilidades {
             UIApplication.sharedApplication().openURL(url)
         }
     }
+    
+    class func getDocumentsDirectory() -> NSString {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+    //MARK: Alert
+    class func alertSinConexion() {
+        let alert = SCLAlertView()
+        alert.showCloseButton = false
+        alert.addButton("Aceptar", action: {
+            
+        })
+        
+        alert.showInfo("Sin Conexión", subTitle: "No cuenta con conexión a Internet", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+    }
 }

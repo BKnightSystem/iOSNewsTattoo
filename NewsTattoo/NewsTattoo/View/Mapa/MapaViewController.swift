@@ -14,6 +14,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapa:MKMapView!
     var locationManager: CLLocationManager!
     var indexEstudio:Int! = 0
+    
+    var reachability: Reachability?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,24 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         self.mapa.removeAnnotations(self.mapa.annotations)
         mapa.delegate = self
         
-        self.showSucLocation()
+        self.connectionInternet()
+//        self.showSucLocation()
+    }
+    
+    func connectionInternet() {
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        do{
+            try reachability?.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +52,24 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable() {
+            if reachability.isReachableViaWiFi() {
+                //                print("Reachable via WiFi")
+                self.showSucLocation()
+            } else {
+                //                print("Reachable via Cellular")
+                self.showSucLocation()
+            }
+        } else {
+            dispatch_async(dispatch_get_main_queue()) {
+                Utilidades.alertSinConexion()
+            }
+        }
+    }
 
     func zoomToRegion() {
         let latitud = arrayEstudiosTattoo[indexEstudio].latitud
@@ -159,7 +196,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         //Icono Izquierdo
         let button = UIButton(type: UIButtonType.Custom) as UIButton
         button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
-        button.addTarget(self, action:"back", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action:#selector(MapaViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
         button.frame=CGRectMake(0, 0, 40, 40)
         let barButton = UIBarButtonItem(customView: button)
         //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")

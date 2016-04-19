@@ -54,7 +54,7 @@ class CDEstudios {
         estudio.setValue(dataEstudio.direccion, forKey: "direccion")
         estudio.setValue(dataEstudio.latitud, forKey: "latitud")
         estudio.setValue(dataEstudio.longitud, forKey: "longitud")
-        estudio.setValue(dataEstudio.imgLogo, forKey: "logo")
+        //estudio.setValue(dataEstudio.imgLogo, forKey: "logo")
         
         //4
         do {
@@ -88,7 +88,7 @@ class CDEstudios {
         estudio.setValue(newValues.direccion, forKey: "direccion")
         estudio.setValue(newValues.latitud, forKey: "latitud")
         estudio.setValue(newValues.longitud, forKey: "longitud")
-        estudio.setValue(newValues.imgLogo, forKey: "logo")
+        //estudio.setValue(newValues.imgLogo, forKey: "logo")
         
         //4
         do {

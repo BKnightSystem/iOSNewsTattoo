@@ -17,6 +17,8 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var lbTop:UILabel!
     @IBOutlet weak var lbDown:UILabel!
     
+    var reachability: Reachability?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,17 +27,55 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tbMagazines.delegate = self
         self.tbMagazines.dataSource = self
         
-        self.wsGetStudios()
+        self.connectionInternet()
     }
-
+    
+    func connectionInternet(){
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        do{
+            try reachability?.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable() {
+            if reachability.isReachableViaWiFi() {
+//                print("Reachable via WiFi")
+                self.wsGetStudios()
+            } else {
+//                print("Reachable via Cellular")
+                self.wsGetStudios()
+            }
+        } else {
+            dispatch_async(dispatch_get_main_queue()) {
+                Utilidades.alertSinConexion()
+            }
+        }
+    }
+    
     //MARK: WS
     func wsGetStudios(){
-        SwiftSpinner.show("Obteniendo Estudios de tatuajes")
+        dispatch_async(dispatch_get_main_queue()) {
+            SwiftSpinner.show("Obteniendo Estudios de tatuajes")
+        }
+        
         let parameters:[String:AnyObject] = ["":""]
         WebService.estudios(parameters, callback:{(isOK) -> Void in
             if isOK {
@@ -55,8 +95,11 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Save data in coreData
     func saveEstudios(){
-        for var i=0; i < arrayEstudiosTattoo.count ; i++ {
+        for i in 0 ..< arrayEstudiosTattoo.count  {
             if CDEstudios.saveStudio(dataEstudio: arrayEstudiosTattoo[i]) {
+                let image:UIImage = arrayEstudiosTattoo[i].logo
+                let nameImage = arrayEstudiosTattoo[i].idEstudio
+                ImageManager.saveImage(image, name: nameImage)
                 print("Se GUARDO EL ESTUDIO \(arrayEstudiosTattoo[i].nombreEstudio)")
             }else {
                 print("ERROR AL GUARDAR DATO")
@@ -87,7 +130,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.lbNameMagazine.text = arrayEstudiosTattoo[indexPath.row].nombreEstudio
         //cell.lbTelefono.text = arrayEstudiosTattoo[indexPath.row].telefono
         if arrayEstudiosTattoo[indexPath.row].imgLogo != "" {
-            cell.imgMagazine.image = Utilidades.base64ToImage(arrayEstudiosTattoo[indexPath.row].imgLogo)
+            cell.imgMagazine.image = arrayEstudiosTattoo[indexPath.row].logo//Utilidades.base64ToImage(arrayEstudiosTattoo[indexPath.row].imgLogo)
         }
         
         return cell
