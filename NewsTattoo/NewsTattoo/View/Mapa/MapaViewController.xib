@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapaViewController" customModule="NewsTattoo" customModuleProvider="target">
+            <connections>
+                <outlet property="mapa" destination="lwI-h4-QlG" id="Rw0-Dm-rcs"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lwI-h4-QlG">
+                    <rect key="frame" x="8" y="8" width="584" height="584"/>
+                </mapView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="lwI-h4-QlG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="Nvj-bo-rUJ"/>
+                <constraint firstAttribute="trailing" secondItem="lwI-h4-QlG" secondAttribute="trailing" constant="8" id="XRZ-42-aGd"/>
+                <constraint firstItem="lwI-h4-QlG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="rlh-vw-42Z"/>
+                <constraint firstAttribute="bottom" secondItem="lwI-h4-QlG" secondAttribute="bottom" constant="8" id="uqN-7m-I5R"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

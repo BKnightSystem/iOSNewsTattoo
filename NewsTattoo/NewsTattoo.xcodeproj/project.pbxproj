@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D40D0761CB2041B00F86583 /* MagazinePortada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D40D0751CB2041B00F86583 /* MagazinePortada.swift */; };
+		1D5185551CAE37D90071B651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185541CAE37D90071B651 /* AppDelegate.swift */; };
+		1D5185571CAE37D90071B651 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185561CAE37D90071B651 /* ViewController.swift */; };
+		1D51855A1CAE37D90071B651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D5185581CAE37D90071B651 /* Main.storyboard */; };
+		1D51855C1CAE37D90071B651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D51855B1CAE37D90071B651 /* Assets.xcassets */; };
+		1D51855F1CAE37D90071B651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D51855D1CAE37D90071B651 /* LaunchScreen.storyboard */; };
+		1D5185681CAE391E0071B651 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185661CAE391E0071B651 /* LibraryViewController.swift */; };
+		1D5185691CAE391E0071B651 /* LibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5185671CAE391E0071B651 /* LibraryViewController.xib */; };
+		1D51856E1CAE3F1E0071B651 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D51856C1CAE3F1E0071B651 /* BookTableViewCell.swift */; };
+		1D51856F1CAE3F1E0071B651 /* BookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D51856D1CAE3F1E0071B651 /* BookTableViewCell.xib */; };
+		1D5185731CAE428C0071B651 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185721CAE428C0071B651 /* WebService.swift */; };
+		1D5185761CAE42CA0071B651 /* TattooConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185751CAE42CA0071B651 /* TattooConstants.swift */; };
+		1D5185791CAE42EF0071B651 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185781CAE42EF0071B651 /* SwiftyJSON.swift */; };
+		1D51857C1CAE430F0071B651 /* Utilidades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D51857B1CAE430F0071B651 /* Utilidades.swift */; };
+		1D51857E1CAE43500071B651 /* Estudios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D51857D1CAE43500071B651 /* Estudios.swift */; };
+		1D5185821CAE44130071B651 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185811CAE44130071B651 /* SwiftSpinner.swift */; };
+		1D5185841CAE46400071B651 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185831CAE46400071B651 /* Extensions.swift */; };
+		1D5185871CAE4C1F0071B651 /* ListMagazinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185851CAE4C1F0071B651 /* ListMagazinesViewController.swift */; };
+		1D5185881CAE4C1F0071B651 /* ListMagazinesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5185861CAE4C1F0071B651 /* ListMagazinesViewController.xib */; };
+		1D51858C1CAE59620071B651 /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D51858A1CAE59620071B651 /* MapaViewController.swift */; };
+		1D51858D1CAE59620071B651 /* MapaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D51858B1CAE59620071B651 /* MapaViewController.xib */; };
+		1D5185921CAE59FC0071B651 /* ArtWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185901CAE59FC0071B651 /* ArtWork.swift */; };
+		1D5185931CAE59FC0071B651 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185911CAE59FC0071B651 /* VCMapView.swift */; };
+		1D5185971CAE5E300071B651 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185961CAE5E300071B651 /* iCarousel.m */; };
+		1DFBC21D1CC2A3380071D5CD /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC21C1CC2A3380071D5CD /* SCLAlertView.swift */; };
+		1DFBC2231CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC2211CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld */; };
+		1DFBC2251CC2B2E60071D5CD /* CDEstudios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC2241CC2B2E60071D5CD /* CDEstudios.swift */; };
+		1DFBC2271CC2B2FC0071D5CD /* CDMagazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC2261CC2B2FC0071D5CD /* CDMagazine.swift */; };
+		1DFBC2291CC2B3100071D5CD /* CDGaleria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC2281CC2B3100071D5CD /* CDGaleria.swift */; };
+		57ED96301CAEE1AF00CF7ACE /* PageMagazineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED962E1CAEE1AF00CF7ACE /* PageMagazineViewController.swift */; };
+		57ED96311CAEE1AF00CF7ACE /* PageMagazineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57ED962F1CAEE1AF00CF7ACE /* PageMagazineViewController.xib */; };
+		57ED96341CAEE66E00CF7ACE /* PageDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED96331CAEE66E00CF7ACE /* PageDesign.swift */; };
+		57ED96361CAEF01600CF7ACE /* Magazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED96351CAEF01600CF7ACE /* Magazine.swift */; };
+		57ED96391CAEFD3500CF7ACE /* PageDesign2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED96381CAEFD3500CF7ACE /* PageDesign2.swift */; };
+		57ED963B1CAEFF5F00CF7ACE /* PageDesign3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED963A1CAEFF5F00CF7ACE /* PageDesign3.swift */; };
+		57ED96401CAF3FB300CF7ACE /* cac_champagne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED963C1CAF3FB300CF7ACE /* cac_champagne.ttf */; };
+		57ED96411CAF3FB300CF7ACE /* Plain_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED963D1CAF3FB300CF7ACE /* Plain_Black.ttf */; };
+		57ED96421CAF3FB300CF7ACE /* rothenbg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED963E1CAF3FB300CF7ACE /* rothenbg.ttf */; };
+		57ED96431CAF3FB300CF7ACE /* Windsong.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED963F1CAF3FB300CF7ACE /* Windsong.ttf */; };
+		57ED96461CAF43EA00CF7ACE /* Sofia-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED96451CAF43EA00CF7ACE /* Sofia-Regular.otf */; };
+		57ED96481CAF450B00CF7ACE /* DancingScript-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED96471CAF450B00CF7ACE /* DancingScript-Regular.otf */; };
+		57ED964A1CAF471C00CF7ACE /* Capture_it.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED96491CAF471C00CF7ACE /* Capture_it.ttf */; };
+		57ED964C1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED964B1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D40D0751CB2041B00F86583 /* MagazinePortada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagazinePortada.swift; path = Model/MagazinePortada.swift; sourceTree = "<group>"; };
+		1D5185511CAE37D90071B651 /* NewsTattoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsTattoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D5185541CAE37D90071B651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1D5185561CAE37D90071B651 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1D5185591CAE37D90071B651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1D51855B1CAE37D90071B651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1D51855E1CAE37D90071B651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1D5185601CAE37D90071B651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D5185661CAE391E0071B651 /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = View/Library/LibraryViewController.swift; sourceTree = "<group>"; };
+		1D5185671CAE391E0071B651 /* LibraryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LibraryViewController.xib; path = View/Library/LibraryViewController.xib; sourceTree = "<group>"; };
+		1D51856C1CAE3F1E0071B651 /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookTableViewCell.swift; path = View/Library/Cell/BookTableViewCell.swift; sourceTree = "<group>"; };
+		1D51856D1CAE3F1E0071B651 /* BookTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookTableViewCell.xib; path = View/Library/Cell/BookTableViewCell.xib; sourceTree = "<group>"; };
+		1D5185721CAE428C0071B651 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		1D5185751CAE42CA0071B651 /* TattooConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TattooConstants.swift; path = Controller/TattooConstants.swift; sourceTree = "<group>"; };
+		1D5185781CAE42EF0071B651 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		1D51857B1CAE430F0071B651 /* Utilidades.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilidades.swift; sourceTree = "<group>"; };
+		1D51857D1CAE43500071B651 /* Estudios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Estudios.swift; path = Model/Estudios.swift; sourceTree = "<group>"; };
+		1D5185811CAE44130071B651 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		1D5185831CAE46400071B651 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Controller/Extensions.swift; sourceTree = "<group>"; };
+		1D5185851CAE4C1F0071B651 /* ListMagazinesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListMagazinesViewController.swift; path = View/ListMagazines/ListMagazinesViewController.swift; sourceTree = "<group>"; };
+		1D5185861CAE4C1F0071B651 /* ListMagazinesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListMagazinesViewController.xib; path = View/ListMagazines/ListMagazinesViewController.xib; sourceTree = "<group>"; };
+		1D51858A1CAE59620071B651 /* MapaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapaViewController.swift; path = View/Mapa/MapaViewController.swift; sourceTree = "<group>"; };
+		1D51858B1CAE59620071B651 /* MapaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapaViewController.xib; path = View/Mapa/MapaViewController.xib; sourceTree = "<group>"; };
+		1D5185901CAE59FC0071B651 /* ArtWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtWork.swift; sourceTree = "<group>"; };
+		1D5185911CAE59FC0071B651 /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
+		1D5185951CAE5E300071B651 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		1D5185961CAE5E300071B651 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		1D5185981CAE5E8E0071B651 /* NewsTattoo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NewsTattoo-Bridging-Header.h"; sourceTree = "<group>"; };
+		1DFBC21C1CC2A3380071D5CD /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
+		1DFBC2221CC2A7990071D5CD /* NewsTattooDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsTattooDB.xcdatamodel; sourceTree = "<group>"; };
+		1DFBC2241CC2B2E60071D5CD /* CDEstudios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDEstudios.swift; path = Model/CDEstudios.swift; sourceTree = "<group>"; };
+		1DFBC2261CC2B2FC0071D5CD /* CDMagazine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDMagazine.swift; path = Model/CDMagazine.swift; sourceTree = "<group>"; };
+		1DFBC2281CC2B3100071D5CD /* CDGaleria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDGaleria.swift; path = Model/CDGaleria.swift; sourceTree = "<group>"; };
+		57ED962E1CAEE1AF00CF7ACE /* PageMagazineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageMagazineViewController.swift; path = View/PageMagazine/PageMagazineViewController.swift; sourceTree = "<group>"; };
+		57ED962F1CAEE1AF00CF7ACE /* PageMagazineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PageMagazineViewController.xib; path = View/PageMagazine/PageMagazineViewController.xib; sourceTree = "<group>"; };
+		57ED96331CAEE66E00CF7ACE /* PageDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageDesign.swift; path = View/PageMagazine/PageDesign.swift; sourceTree = "<group>"; };
+		57ED96351CAEF01600CF7ACE /* Magazine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Magazine.swift; path = Model/Magazine.swift; sourceTree = "<group>"; };
+		57ED96381CAEFD3500CF7ACE /* PageDesign2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageDesign2.swift; path = View/PageMagazine/PageDesign2.swift; sourceTree = "<group>"; };
+		57ED963A1CAEFF5F00CF7ACE /* PageDesign3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageDesign3.swift; path = View/PageMagazine/PageDesign3.swift; sourceTree = "<group>"; };
+		57ED963C1CAF3FB300CF7ACE /* cac_champagne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cac_champagne.ttf; path = Fonts/cac_champagne.ttf; sourceTree = "<group>"; };
+		57ED963D1CAF3FB300CF7ACE /* Plain_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Plain_Black.ttf; path = Fonts/Plain_Black.ttf; sourceTree = "<group>"; };
+		57ED963E1CAF3FB300CF7ACE /* rothenbg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = rothenbg.ttf; path = Fonts/rothenbg.ttf; sourceTree = "<group>"; };
+		57ED963F1CAF3FB300CF7ACE /* Windsong.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Windsong.ttf; path = Fonts/Windsong.ttf; sourceTree = "<group>"; };
+		57ED96451CAF43EA00CF7ACE /* Sofia-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sofia-Regular.otf"; path = "Fonts/Sofia-Regular.otf"; sourceTree = "<group>"; };
+		57ED96471CAF450B00CF7ACE /* DancingScript-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DancingScript-Regular.otf"; path = "Fonts/DancingScript-Regular.otf"; sourceTree = "<group>"; };
+		57ED96491CAF471C00CF7ACE /* Capture_it.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Capture_it.ttf; path = Fonts/Capture_it.ttf; sourceTree = "<group>"; };
+		57ED964B1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Caviar_Dreams_Bold.ttf; path = Fonts/Caviar_Dreams_Bold.ttf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D51854E1CAE37D80071B651 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D5185481CAE37D80071B651 = {
+			isa = PBXGroup;
+			children = (
+				1D5185981CAE5E8E0071B651 /* NewsTattoo-Bridging-Header.h */,
+				1D5185531CAE37D90071B651 /* NewsTattoo */,
+				1D5185521CAE37D90071B651 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1D5185521CAE37D90071B651 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D5185511CAE37D90071B651 /* NewsTattoo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D5185531CAE37D90071B651 /* NewsTattoo */ = {
+			isa = PBXGroup;
+			children = (
+				57ED96441CAF3FB900CF7ACE /* Fonts */,
+				1D51857F1CAE43550071B651 /* Model */,
+				1D5185741CAE42910071B651 /* Controller */,
+				1D5185541CAE37D90071B651 /* AppDelegate.swift */,
+				1D5185561CAE37D90071B651 /* ViewController.swift */,
+				1D5185581CAE37D90071B651 /* Main.storyboard */,
+				1D51855B1CAE37D90071B651 /* Assets.xcassets */,
+				1D51855D1CAE37D90071B651 /* LaunchScreen.storyboard */,
+				1D5185601CAE37D90071B651 /* Info.plist */,
+				1D51856A1CAE39240071B651 /* View */,
+			);
+			path = NewsTattoo;
+			sourceTree = "<group>";
+		};
+		1D51856A1CAE39240071B651 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D51856B1CAE392E0071B651 /* Library */,
+				1D5185891CAE4C240071B651 /* ListMagazines */,
+				1D51858E1CAE59660071B651 /* Mapa */,
+				57ED96321CAEE1B700CF7ACE /* PageMagazine */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1D51856B1CAE392E0071B651 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				1D5185661CAE391E0071B651 /* LibraryViewController.swift */,
+				1D5185671CAE391E0071B651 /* LibraryViewController.xib */,
+				1D5185701CAE3F210071B651 /* Cell */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		1D5185701CAE3F210071B651 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1D51856C1CAE3F1E0071B651 /* BookTableViewCell.swift */,
+				1D51856D1CAE3F1E0071B651 /* BookTableViewCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		1D5185711CAE428C0071B651 /* WS */ = {
+			isa = PBXGroup;
+			children = (
+				1D5185721CAE428C0071B651 /* WebService.swift */,
+			);
+			name = WS;
+			path = Controller/WS;
+			sourceTree = "<group>";
+		};
+		1D5185741CAE42910071B651 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBC21B1CC2A3380071D5CD /* SCLAlertView */,
+				1D5185941CAE5E300071B651 /* iCarousel */,
+				1D51858F1CAE59FC0071B651 /* AnnotationMap */,
+				1D5185831CAE46400071B651 /* Extensions.swift */,
+				1D5185801CAE44130071B651 /* SwiftSpinner */,
+				1D51857A1CAE430F0071B651 /* Utilidades */,
+				1D5185771CAE42EF0071B651 /* SwiftyJSON */,
+				1D5185751CAE42CA0071B651 /* TattooConstants.swift */,
+				1D5185711CAE428C0071B651 /* WS */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		1D5185771CAE42EF0071B651 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				1D5185781CAE42EF0071B651 /* SwiftyJSON.swift */,
+			);
+			name = SwiftyJSON;
+			path = Controller/SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		1D51857A1CAE430F0071B651 /* Utilidades */ = {
+			isa = PBXGroup;
+			children = (
+				1D51857B1CAE430F0071B651 /* Utilidades.swift */,
+			);
+			name = Utilidades;
+			path = Controller/Utilidades;
+			sourceTree = "<group>";
+		};
+		1D51857F1CAE43550071B651 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1D51857D1CAE43500071B651 /* Estudios.swift */,
+				57ED96351CAEF01600CF7ACE /* Magazine.swift */,
+				1D40D0751CB2041B00F86583 /* MagazinePortada.swift */,
+				1DFBC2211CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld */,
+				1DFBC2241CC2B2E60071D5CD /* CDEstudios.swift */,
+				1DFBC2261CC2B2FC0071D5CD /* CDMagazine.swift */,
+				1DFBC2281CC2B3100071D5CD /* CDGaleria.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1D5185801CAE44130071B651 /* SwiftSpinner */ = {
+			isa = PBXGroup;
+			children = (
+				1D5185811CAE44130071B651 /* SwiftSpinner.swift */,
+			);
+			name = SwiftSpinner;
+			path = Controller/SwiftSpinner;
+			sourceTree = "<group>";
+		};
+		1D5185891CAE4C240071B651 /* ListMagazines */ = {
+			isa = PBXGroup;
+			children = (
+				1D5185851CAE4C1F0071B651 /* ListMagazinesViewController.swift */,
+				1D5185861CAE4C1F0071B651 /* ListMagazinesViewController.xib */,
+			);
+			name = ListMagazines;
+			sourceTree = "<group>";
+		};
+		1D51858E1CAE59660071B651 /* Mapa */ = {
+			isa = PBXGroup;
+			children = (
+				1D51858A1CAE59620071B651 /* MapaViewController.swift */,
+				1D51858B1CAE59620071B651 /* MapaViewController.xib */,
+			);
+			name = Mapa;
+			sourceTree = "<group>";
+		};
+		1D51858F1CAE59FC0071B651 /* AnnotationMap */ = {
+			isa = PBXGroup;
+			children = (
+				1D5185901CAE59FC0071B651 /* ArtWork.swift */,
+				1D5185911CAE59FC0071B651 /* VCMapView.swift */,
+			);
+			name = AnnotationMap;
+			path = Controller/AnnotationMap;
+			sourceTree = "<group>";
+		};
+		1D5185941CAE5E300071B651 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				1D5185951CAE5E300071B651 /* iCarousel.h */,
+				1D5185961CAE5E300071B651 /* iCarousel.m */,
+			);
+			name = iCarousel;
+			path = Controller/iCarousel;
+			sourceTree = "<group>";
+		};
+		1DFBC21B1CC2A3380071D5CD /* SCLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBC21C1CC2A3380071D5CD /* SCLAlertView.swift */,
+			);
+			name = SCLAlertView;
+			path = Controller/SCLAlertView;
+			sourceTree = "<group>";
+		};
+		57ED96321CAEE1B700CF7ACE /* PageMagazine */ = {
+			isa = PBXGroup;
+			children = (
+				57ED962E1CAEE1AF00CF7ACE /* PageMagazineViewController.swift */,
+				57ED962F1CAEE1AF00CF7ACE /* PageMagazineViewController.xib */,
+				57ED96371CAEFD0900CF7ACE /* PageDesign */,
+			);
+			name = PageMagazine;
+			sourceTree = "<group>";
+		};
+		57ED96371CAEFD0900CF7ACE /* PageDesign */ = {
+			isa = PBXGroup;
+			children = (
+				57ED96331CAEE66E00CF7ACE /* PageDesign.swift */,
+				57ED96381CAEFD3500CF7ACE /* PageDesign2.swift */,
+				57ED963A1CAEFF5F00CF7ACE /* PageDesign3.swift */,
+			);
+			name = PageDesign;
+			sourceTree = "<group>";
+		};
+		57ED96441CAF3FB900CF7ACE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				57ED964B1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf */,
+				57ED96491CAF471C00CF7ACE /* Capture_it.ttf */,
+				57ED96471CAF450B00CF7ACE /* DancingScript-Regular.otf */,
+				57ED96451CAF43EA00CF7ACE /* Sofia-Regular.otf */,
+				57ED963C1CAF3FB300CF7ACE /* cac_champagne.ttf */,
+				57ED963D1CAF3FB300CF7ACE /* Plain_Black.ttf */,
+				57ED963E1CAF3FB300CF7ACE /* rothenbg.ttf */,
+				57ED963F1CAF3FB300CF7ACE /* Windsong.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D5185501CAE37D80071B651 /* NewsTattoo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D5185631CAE37D90071B651 /* Build configuration list for PBXNativeTarget "NewsTattoo" */;
+			buildPhases = (
+				1D51854D1CAE37D80071B651 /* Sources */,
+				1D51854E1CAE37D80071B651 /* Frameworks */,
+				1D51854F1CAE37D80071B651 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NewsTattoo;
+			productName = NewsTattoo;
+			productReference = 1D5185511CAE37D90071B651 /* NewsTattoo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D5185491CAE37D80071B651 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = DAMSIBit;
+				TargetAttributes = {
+					1D5185501CAE37D80071B651 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = H5QPR4XXFV;
+					};
+				};
+			};
+			buildConfigurationList = 1D51854C1CAE37D80071B651 /* Build configuration list for PBXProject "NewsTattoo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1D5185481CAE37D80071B651;
+			productRefGroup = 1D5185521CAE37D90071B651 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D5185501CAE37D80071B651 /* NewsTattoo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D51854F1CAE37D80071B651 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57ED96401CAF3FB300CF7ACE /* cac_champagne.ttf in Resources */,
+				57ED96411CAF3FB300CF7ACE /* Plain_Black.ttf in Resources */,
+				1D51858D1CAE59620071B651 /* MapaViewController.xib in Resources */,
+				57ED964C1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf in Resources */,
+				1D51855F1CAE37D90071B651 /* LaunchScreen.storyboard in Resources */,
+				57ED96461CAF43EA00CF7ACE /* Sofia-Regular.otf in Resources */,
+				1D51855C1CAE37D90071B651 /* Assets.xcassets in Resources */,
+				57ED96481CAF450B00CF7ACE /* DancingScript-Regular.otf in Resources */,
+				57ED96431CAF3FB300CF7ACE /* Windsong.ttf in Resources */,
+				1D5185691CAE391E0071B651 /* LibraryViewController.xib in Resources */,
+				1D51855A1CAE37D90071B651 /* Main.storyboard in Resources */,
+				1D5185881CAE4C1F0071B651 /* ListMagazinesViewController.xib in Resources */,
+				57ED96421CAF3FB300CF7ACE /* rothenbg.ttf in Resources */,
+				1D51856F1CAE3F1E0071B651 /* BookTableViewCell.xib in Resources */,
+				57ED96311CAEE1AF00CF7ACE /* PageMagazineViewController.xib in Resources */,
+				57ED964A1CAF471C00CF7ACE /* Capture_it.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D51854D1CAE37D80071B651 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D5185761CAE42CA0071B651 /* TattooConstants.swift in Sources */,
+				1D51856E1CAE3F1E0071B651 /* BookTableViewCell.swift in Sources */,
+				57ED963B1CAEFF5F00CF7ACE /* PageDesign3.swift in Sources */,
+				57ED96301CAEE1AF00CF7ACE /* PageMagazineViewController.swift in Sources */,
+				1D51858C1CAE59620071B651 /* MapaViewController.swift in Sources */,
+				1DFBC2291CC2B3100071D5CD /* CDGaleria.swift in Sources */,
+				57ED96341CAEE66E00CF7ACE /* PageDesign.swift in Sources */,
+				57ED96391CAEFD3500CF7ACE /* PageDesign2.swift in Sources */,
+				1DFBC2231CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld in Sources */,
+				1D51857E1CAE43500071B651 /* Estudios.swift in Sources */,
+				1D5185571CAE37D90071B651 /* ViewController.swift in Sources */,
+				1D51857C1CAE430F0071B651 /* Utilidades.swift in Sources */,
+				1D5185821CAE44130071B651 /* SwiftSpinner.swift in Sources */,
+				1D5185681CAE391E0071B651 /* LibraryViewController.swift in Sources */,
+				1DFBC2251CC2B2E60071D5CD /* CDEstudios.swift in Sources */,
+				1DFBC2271CC2B2FC0071D5CD /* CDMagazine.swift in Sources */,
+				1D5185731CAE428C0071B651 /* WebService.swift in Sources */,
+				1DFBC21D1CC2A3380071D5CD /* SCLAlertView.swift in Sources */,
+				1D40D0761CB2041B00F86583 /* MagazinePortada.swift in Sources */,
+				1D5185791CAE42EF0071B651 /* SwiftyJSON.swift in Sources */,
+				1D5185921CAE59FC0071B651 /* ArtWork.swift in Sources */,
+				1D5185841CAE46400071B651 /* Extensions.swift in Sources */,
+				1D5185931CAE59FC0071B651 /* VCMapView.swift in Sources */,
+				57ED96361CAEF01600CF7ACE /* Magazine.swift in Sources */,
+				1D5185971CAE5E300071B651 /* iCarousel.m in Sources */,
+				1D5185871CAE4C1F0071B651 /* ListMagazinesViewController.swift in Sources */,
+				1D5185551CAE37D90071B651 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1D5185581CAE37D90071B651 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D5185591CAE37D90071B651 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1D51855D1CAE37D90071B651 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D51855E1CAE37D90071B651 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D5185611CAE37D90071B651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1D5185621CAE37D90071B651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1D5185641CAE37D90071B651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = NewsTattoo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.planetmedia.NewsTattoo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		1D5185651CAE37D90071B651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = NewsTattoo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.planetmedia.NewsTattoo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D51854C1CAE37D80071B651 /* Build configuration list for PBXProject "NewsTattoo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D5185611CAE37D90071B651 /* Debug */,
+				1D5185621CAE37D90071B651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D5185631CAE37D90071B651 /* Build configuration list for PBXNativeTarget "NewsTattoo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D5185641CAE37D90071B651 /* Debug */,
+				1D5185651CAE37D90071B651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1DFBC2211CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1DFBC2221CC2A7990071D5CD /* NewsTattooDB.xcdatamodel */,
+			);
+			currentVersion = 1DFBC2221CC2A7990071D5CD /* NewsTattooDB.xcdatamodel */;
+			name = NewsTattooDB.xcdatamodeld;
+			path = Model/NewsTattooDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1D5185491CAE37D80071B651 /* Project object */;
+}

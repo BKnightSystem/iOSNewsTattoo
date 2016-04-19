@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
+    <entity name="Estudios" syncable="YES">
+        <attribute name="direccion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idEstudio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitud" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="longitud" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telefono" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Galeria" syncable="YES">
+        <attribute name="idEstudio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idMagazine" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagen" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="tatuador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="texto" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Magazine" syncable="YES">
+        <attribute name="anio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idEstudio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idMagazine" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="portada" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Estudios" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Galeria" positionX="-54" positionY="45" width="128" height="120"/>
+        <element name="Magazine" positionX="-36" positionY="54" width="128" height="135"/>
+    </elements>
+</model>
