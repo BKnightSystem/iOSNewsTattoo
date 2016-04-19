@@ -104,7 +104,7 @@ class CDEstudios {
         return estudioSave
     }
     
-    class func deleteContact(index:Int) -> Bool{
+    class func deleteEstudio(index:Int) -> Bool{
         var deleteContact = false
         // 1
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -126,5 +126,27 @@ class CDEstudios {
         
         return deleteContact
         
+    }
+    
+    class func deleteAllEstudios() {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        //let coord = appDel.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: "Estudios")
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let incidents = try context.executeFetchRequest(fetchRequest)
+            
+            if incidents.count > 0 {
+                
+                for result: AnyObject in incidents{
+                    context.deleteObject(result as! NSManagedObject)
+                    print("NSManagedObject has been Deleted")
+                }
+                try context.save()
+            }
+        } catch {}
     }
 }

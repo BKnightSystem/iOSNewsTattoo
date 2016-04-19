@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LibraryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -16,6 +17,8 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var viewLineDown:UIView!
     @IBOutlet weak var lbTop:UILabel!
     @IBOutlet weak var lbDown:UILabel!
+    @IBOutlet weak var btnShareFB:FBSDKShareButton!
+    
     
     var reachability: Reachability?
     
@@ -28,6 +31,10 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tbMagazines.dataSource = self
         
         self.connectionInternet()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.btnShareFBConfig()
     }
     
     func connectionInternet(){
@@ -59,15 +66,34 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
             if reachability.isReachableViaWiFi() {
 //                print("Reachable via WiFi")
                 self.wsGetStudios()
+                
             } else {
 //                print("Reachable via Cellular")
                 self.wsGetStudios()
+                
             }
         } else {
             dispatch_async(dispatch_get_main_queue()) {
                 Utilidades.alertSinConexion()
+                self.getEstudiosCD()
             }
         }
+    }
+    
+    //MARK: Facebook Share
+    
+    func btnShareFBConfig() {
+        btnShareFB.setTitle("", forState: .Normal)
+        btnShareFB.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_APP)
+//        btnShareFB.setBackgroundImage(IMAGE_ICON_FB, forState: .Normal)
+        
+        let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
+        content.contentURL = NSURL(string: "https://www.facebook.com/profile.php?id=100011727544659")
+        content.contentTitle = "News Tattoo"
+        content.contentDescription = "Revista para los amantes del tatuaje"
+        content.imageURL = NSURL(string: "<INSERT STRING HERE>")
+        
+        btnShareFB.shareContent = content
     }
     
     //MARK: WS
@@ -80,6 +106,8 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         WebService.estudios(parameters, callback:{(isOK) -> Void in
             if isOK {
                 dispatch_async(dispatch_get_main_queue(), {
+                    //Delete All Estudio
+                    CDEstudios.deleteAllEstudios()
                     //Guardar todos los estudios en la base de datos
                     self.saveEstudios()
                     self.tbMagazines.reloadData()
@@ -105,6 +133,17 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                 print("ERROR AL GUARDAR DATO")
             }
             
+        }
+    }
+    
+    func getEstudiosCD() {
+        CDEstudios.fetchRequest()
+        print("CUANTOS ENCONTRO \(estudios.count)")
+    }
+    
+    func deleteEstudios(){
+        for i in 0  ..< estudios.count  {
+            CDEstudios.deleteEstudio(i)
         }
     }
 
@@ -151,6 +190,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.lbTop.font = FONT_TEXT_3
         self.lbDown.font = FONT_TEXT_3
     }
+    
     /*
     // MARK: - Navigation
 

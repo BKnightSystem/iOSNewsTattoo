@@ -219,7 +219,7 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         //Icono Izquierdo
         let button = UIButton(type: UIButtonType.Custom) as UIButton
         button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
-        button.addTarget(self, action:"back", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action:#selector(ListMagazinesViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
         button.frame=CGRectMake(0, 0, 40, 40)
         let barButton = UIBarButtonItem(customView: button)
         //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")

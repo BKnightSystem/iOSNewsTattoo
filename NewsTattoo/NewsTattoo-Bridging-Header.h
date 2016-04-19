@@ -10,5 +10,6 @@
 #define NewsTattoo_Bridging_Header_h
 
 #import "iCarousel.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 #endif /* NewsTattoo_Bridging_Header_h */

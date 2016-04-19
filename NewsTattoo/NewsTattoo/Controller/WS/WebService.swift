@@ -18,7 +18,7 @@ class WebService {
         let session = NSURLSession.sharedSession()
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-        if data!.length > 0 && error == nil {
+        if (data!.length > 0 && data != nil) && error == nil {
             
             arrayEstudiosTattoo.removeAll()
                 
