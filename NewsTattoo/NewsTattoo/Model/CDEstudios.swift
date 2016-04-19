@@ -36,7 +36,7 @@ class CDEstudios {
         return fetch
     }
     
-    class func saveContact(dataEstudio dataEstudio:Estudios) -> Bool{
+    class func saveStudio(dataEstudio dataEstudio:Estudios) -> Bool{
         var estudiotSave = false
         //1
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

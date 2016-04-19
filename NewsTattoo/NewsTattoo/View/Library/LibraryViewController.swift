@@ -40,6 +40,8 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         WebService.estudios(parameters, callback:{(isOK) -> Void in
             if isOK {
                 dispatch_async(dispatch_get_main_queue(), {
+                    //Guardar todos los estudios en la base de datos
+                    self.saveEstudios()
                     self.tbMagazines.reloadData()
                 })
                 
@@ -49,6 +51,18 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                 SwiftSpinner.hide()
             }
         })
+    }
+    
+    //MARK: Save data in coreData
+    func saveEstudios(){
+        for var i=0; i < arrayEstudiosTattoo.count ; i++ {
+            if CDEstudios.saveStudio(dataEstudio: arrayEstudiosTattoo[i]) {
+                print("Se GUARDO EL ESTUDIO \(arrayEstudiosTattoo[i].nombreEstudio)")
+            }else {
+                print("ERROR AL GUARDAR DATO")
+            }
+            
+        }
     }
 
     //MARK: TableView

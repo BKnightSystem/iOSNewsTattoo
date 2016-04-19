@@ -157,7 +157,17 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     func addFavorite() {
         print("Agregar como favoritos")
         let alert = SCLAlertView()
-        alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la siguiente revista", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showCloseButton = false
+        alert.addButton("Aceptar", action: {
+            self.saveInformationEstudio()
+        })
+        
+        alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la siguiente revista", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
+    //MARK: Save information for Estudio
+    func saveInformationEstudio(){
+        print("Hola mundo")
     }
 
 }
