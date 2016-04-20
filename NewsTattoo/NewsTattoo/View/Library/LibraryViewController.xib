@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LibraryViewController" customModule="NewsTattoo" customModuleProvider="target">
             <connections>
+                <outlet property="btnFavorito" destination="2zY-lL-BVM" id="xid-2T-79B"/>
                 <outlet property="btnShareFB" destination="saa-Og-U2P" id="qUY-WN-thE"/>
                 <outlet property="imgHeader" destination="66P-Cg-1ad" id="bTA-lV-bbP"/>
                 <outlet property="lbDown" destination="Vu5-wW-D4u" id="cfp-ec-4GN"/>
@@ -79,6 +80,9 @@
                                     <constraint firstAttribute="width" constant="50" id="kKL-8I-NsP"/>
                                 </constraints>
                                 <state key="normal" image="circulo"/>
+                                <connections>
+                                    <action selector="btnFavorito:" destination="-1" eventType="touchUpInside" id="M2f-7d-x8V"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

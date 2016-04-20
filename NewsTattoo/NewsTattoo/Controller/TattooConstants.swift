@@ -54,10 +54,12 @@ var arrayPagesMagazine: [UIView] = []
 var arrayEstudiosTattoo = [Estudios]()
 var arrayPortadasTattoo = [MagazinePortada]()
 
+var arrayFavoritos = [MagazinePortada]()
+
 //Array of Estudios CD
 var estudios = [NSManagedObject]()
 var magazineCD = [NSManagedObject]()
-var galeria = [NSManagedObject]()
+var galeriaCD = [NSManagedObject]()
 
 //MARK- FONT
 let FONT_TEXT_1 = UIFont(name: "Windsong", size: 30)

@@ -10,8 +10,8 @@
     </entity>
     <entity name="Galeria" syncable="YES">
         <attribute name="idEstudio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idImagen" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idMagazine" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imagen" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="tatuador" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="texto" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -21,11 +21,10 @@
         <attribute name="idMagazine" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="portada" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <elements>
         <element name="Estudios" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Galeria" positionX="-54" positionY="45" width="128" height="120"/>
-        <element name="Magazine" positionX="-36" positionY="54" width="128" height="135"/>
+        <element name="Magazine" positionX="-36" positionY="54" width="128" height="120"/>
     </elements>
 </model>

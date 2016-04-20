@@ -36,36 +36,63 @@ class CDMagazine {
         return fetch
     }
     
-    class func saveContact(magazine magazine:MagazinePortada) -> Bool{
-        var contactSave = false
+    class func existePortada(magazine magazine:MagazinePortada) -> Bool {
+        var isFavorite = false
+        //1
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName: "Magazine")
+        let idEst = magazine.idEstudio
+        let idMag = magazine.idMagazine
+        fetchRequest.predicate = NSPredicate(format: "idEstudio == %@ AND idMagazine == %@", idEst, idMag)
+        do {
+            let existPortada = try managedContext.executeFetchRequest(fetchRequest)
+            if existPortada.count > 0 {
+                isFavorite = true
+            }else {
+                isFavorite = false
+            }
+            
+        }catch {
+            isFavorite = false
+        }
+        
+        return isFavorite
+    }
+    
+    class func saveMagazinePortada(magazine magazine:MagazinePortada) -> Bool{
+        var portadaSave = false
         //1
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         //2
-        let entity =  NSEntityDescription.entityForName("Contacto", inManagedObjectContext:managedContext)
+        let entity =  NSEntityDescription.entityForName("Magazine", inManagedObjectContext:managedContext)
         
-        let   contact = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let   magazinePor = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //3
-        contact.setValue(magazine.nombre, forKey: "nombre")
-        contact.setValue(magazine.idEstudio, forKey: "apellidos")
-        contact.setValue(magazine.idMagazine, forKey: "telefono")
-        contact.setValue(magazine.mes, forKey: "direccion")
-        contact.setValue(magazine.anio, forKey: "foto")
+        magazinePor.setValue(magazine.nombre, forKey: "nombre")
+        magazinePor.setValue(magazine.idEstudio, forKey: "idEstudio")
+        magazinePor.setValue(magazine.idMagazine, forKey: "idMagazine")
+        magazinePor.setValue(magazine.mes, forKey: "mes")
+        magazinePor.setValue(magazine.anio, forKey: "anio")
         
         //4
         do {
             try managedContext.save()
             //5
-            contactSave = true
-            magazineCD.append(contact)
+            portadaSave = true
+            magazineCD.append(magazinePor)
         } catch let error as NSError  {
-            contactSave = false
+            portadaSave = false
             print("Could not save \(error), \(error.userInfo)")
         }
         
-        return contactSave
+        return portadaSave
     }
     
     class func updateContact(magazine magazine:NSManagedObject, newValues:MagazinePortada) -> Bool{
@@ -100,7 +127,7 @@ class CDMagazine {
         return contactSave
     }
     
-    class func deleteContact(index:Int) -> Bool{
+    class func deleteMagazinePortada(index:Int) -> Bool{
         var deleteContact = false
         // 1
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

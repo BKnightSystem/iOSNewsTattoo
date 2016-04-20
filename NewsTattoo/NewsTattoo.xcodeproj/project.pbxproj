@@ -54,6 +54,10 @@
 		674BE3D21CC6870200EA4EFF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BE3D11CC6870200EA4EFF /* Reachability.swift */; };
 		674BE3E41CC6B16100EA4EFF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674BE3E21CC6B16100EA4EFF /* FBSDKCoreKit.framework */; };
 		674BE3E51CC6B16100EA4EFF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674BE3E31CC6B16100EA4EFF /* FBSDKShareKit.framework */; };
+		674BE3EE1CC7D87A00EA4EFF /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BE3EC1CC7D87A00EA4EFF /* FavoritosViewController.swift */; };
+		674BE3EF1CC7D87A00EA4EFF /* FavoritosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 674BE3ED1CC7D87A00EA4EFF /* FavoritosViewController.xib */; };
+		674BE3F21CC7E73000EA4EFF /* FavoritoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BE3F01CC7E73000EA4EFF /* FavoritoTableViewCell.swift */; };
+		674BE3F31CC7E73000EA4EFF /* FavoritoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 674BE3F11CC7E73000EA4EFF /* FavoritoTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +112,10 @@
 		674BE3D11CC6870200EA4EFF /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Controller/Reachability/Reachability.swift; sourceTree = "<group>"; };
 		674BE3E21CC6B16100EA4EFF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		674BE3E31CC6B16100EA4EFF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		674BE3EC1CC7D87A00EA4EFF /* FavoritosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritosViewController.swift; path = View/Favoritos/FavoritosViewController.swift; sourceTree = "<group>"; };
+		674BE3ED1CC7D87A00EA4EFF /* FavoritosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritosViewController.xib; path = View/Favoritos/FavoritosViewController.xib; sourceTree = "<group>"; };
+		674BE3F01CC7E73000EA4EFF /* FavoritoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritoTableViewCell.swift; path = View/Favoritos/Cell/FavoritoTableViewCell.swift; sourceTree = "<group>"; };
+		674BE3F11CC7E73000EA4EFF /* FavoritoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritoTableViewCell.xib; path = View/Favoritos/Cell/FavoritoTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +173,7 @@
 				1D5185891CAE4C240071B651 /* ListMagazines */,
 				1D51858E1CAE59660071B651 /* Mapa */,
 				57ED96321CAEE1B700CF7ACE /* PageMagazine */,
+				674BE3EB1CC7D83B00EA4EFF /* Favoritos */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -355,6 +364,25 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		674BE3EB1CC7D83B00EA4EFF /* Favoritos */ = {
+			isa = PBXGroup;
+			children = (
+				674BE3EC1CC7D87A00EA4EFF /* FavoritosViewController.swift */,
+				674BE3ED1CC7D87A00EA4EFF /* FavoritosViewController.xib */,
+				674BE3F41CC7E73800EA4EFF /* Cell */,
+			);
+			name = Favoritos;
+			sourceTree = "<group>";
+		};
+		674BE3F41CC7E73800EA4EFF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				674BE3F01CC7E73000EA4EFF /* FavoritoTableViewCell.swift */,
+				674BE3F11CC7E73000EA4EFF /* FavoritoTableViewCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -415,6 +443,7 @@
 			files = (
 				57ED96401CAF3FB300CF7ACE /* cac_champagne.ttf in Resources */,
 				57ED96411CAF3FB300CF7ACE /* Plain_Black.ttf in Resources */,
+				674BE3EF1CC7D87A00EA4EFF /* FavoritosViewController.xib in Resources */,
 				1D51858D1CAE59620071B651 /* MapaViewController.xib in Resources */,
 				57ED964C1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf in Resources */,
 				1D51855F1CAE37D90071B651 /* LaunchScreen.storyboard in Resources */,
@@ -423,6 +452,7 @@
 				57ED96481CAF450B00CF7ACE /* DancingScript-Regular.otf in Resources */,
 				57ED96431CAF3FB300CF7ACE /* Windsong.ttf in Resources */,
 				1D5185691CAE391E0071B651 /* LibraryViewController.xib in Resources */,
+				674BE3F31CC7E73000EA4EFF /* FavoritoTableViewCell.xib in Resources */,
 				1D51855A1CAE37D90071B651 /* Main.storyboard in Resources */,
 				1D5185881CAE4C1F0071B651 /* ListMagazinesViewController.xib in Resources */,
 				57ED96421CAF3FB300CF7ACE /* rothenbg.ttf in Resources */,
@@ -446,6 +476,7 @@
 				1D51858C1CAE59620071B651 /* MapaViewController.swift in Sources */,
 				1DFBC2291CC2B3100071D5CD /* CDGaleria.swift in Sources */,
 				57ED96341CAEE66E00CF7ACE /* PageDesign.swift in Sources */,
+				674BE3F21CC7E73000EA4EFF /* FavoritoTableViewCell.swift in Sources */,
 				674BE3D21CC6870200EA4EFF /* Reachability.swift in Sources */,
 				57ED96391CAEFD3500CF7ACE /* PageDesign2.swift in Sources */,
 				1DFBC2231CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld in Sources */,
@@ -453,6 +484,7 @@
 				1D5185571CAE37D90071B651 /* ViewController.swift in Sources */,
 				1D51857C1CAE430F0071B651 /* Utilidades.swift in Sources */,
 				1D5185821CAE44130071B651 /* SwiftSpinner.swift in Sources */,
+				674BE3EE1CC7D87A00EA4EFF /* FavoritosViewController.swift in Sources */,
 				1D5185681CAE391E0071B651 /* LibraryViewController.swift in Sources */,
 				1DFBC2251CC2B2E60071D5CD /* CDEstudios.swift in Sources */,
 				1DFBC2271CC2B2FC0071D5CD /* CDMagazine.swift in Sources */,

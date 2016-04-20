@@ -17,8 +17,11 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     var reachability: Reachability?
     
+    var isFavorito = false
+    
     var indexEstudio = 0
     var idMagazine = 0
+    var indexPortada = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,19 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         self.configuration()
         self.initCarousel()
         
-        self.connectionInternet()
+        if isFavorito {
+            let idEstudio = arrayFavoritos[indexEstudio].idEstudio
+            CDGaleria.initPageMagazine(idEstudio, idMagazine: idMagazine)
+            self.initPageFavourite()
+            
+        }else {
+            self.connectionInternet()
+        }
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
     }
 
     func connectionInternet() {
@@ -54,6 +69,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     func initCarousel(){
         carouselPages.tag = 1
         carouselPages.bounces = false
+        carouselPages.clipsToBounds = true
         carouselPages.pagingEnabled = true
         carouselPages.delegate = self
         carouselPages.dataSource = self
@@ -79,8 +95,42 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         }
     }
     
+    func initPageFavourite() {
+        //Load information
+        arrayDetailPages.removeAll()
+        for i in 0 ..< galeriaCD.count {
+            let dataPage = galeriaCD[i]
+            let detailPage = Magazine()
+            
+            detailPage.idEstudio = dataPage.valueForKey("idEstudio") as! String
+            detailPage.idMagazine = dataPage.valueForKey("idMagazine") as! String
+            detailPage.nombreTatuador = dataPage.valueForKey("tatuador") as! String
+            detailPage.descripcion = dataPage.valueForKey("texto") as! String
+            
+            let nameDirectory = "\(detailPage.idEstudio)\(detailPage.idMagazine)"
+            
+            let imgLogo = ImageManager.getPageByID("\(i)", nameDirectory: nameDirectory)
+            if  imgLogo != nil {
+                print("SI EXISTE LA IMAGEN")
+                detailPage.image = imgLogo!
+            }
+            
+            arrayDetailPages.append(detailPage)
+        }
+        
+        SwiftSpinner.show("Cargando páginas")
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(PageMagazineViewController.hola), userInfo: nil, repeats: false)
+        
+    }
+    
+    func hola(){
+        self.createPagesMagazine()
+        self.carouselPages.reloadData()
+        SwiftSpinner.hide()
+    }
     func createPagesMagazine(){
         arrayPagesMagazine.removeAll()
+        
         if arrayDetailPages.count > 0 {
             for i in 0  ..< arrayDetailPages.count  {
                 let pageView  = PageDesign()
@@ -166,10 +216,13 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
 
     //MARK: NavigationBar
     func createNavigationBar(){
-        self.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
+        print("INDEX \(indexEstudio) MAGAZINE \(idMagazine)")
+        if isFavorito {
+            self.title = arrayFavoritos[indexEstudio].nombre
+        }else {
+            self.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
+        }
         
-        //self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        //self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         //Icono Izquierdo
         let button = UIButton(type: UIButtonType.Custom) as UIButton
@@ -180,34 +233,95 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
         self.navigationItem.leftBarButtonItem = barButton
         
-        //Icono Derecho
-        let buttonDer = UIButton(type: UIButtonType.Custom) as UIButton
-        buttonDer.setImage(IMAGE_ICON_FAVORITO, forState: UIControlState.Normal)
-        buttonDer.addTarget(self, action:#selector(PageMagazineViewController.addFavorite), forControlEvents: UIControlEvents.TouchUpInside)
-        buttonDer.frame=CGRectMake(0, 0, 40, 40)
-        let barButtonDer = UIBarButtonItem(customView: buttonDer)
-        //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
-        self.navigationItem.rightBarButtonItem = barButtonDer
+        //Icono Derecho only if doesnt favorito
+        if !isFavorito {
+            let buttonDer = UIButton(type: UIButtonType.Custom) as UIButton
+            buttonDer.setImage(IMAGE_ICON_FAVORITO, forState: UIControlState.Normal)
+            buttonDer.addTarget(self, action:#selector(PageMagazineViewController.addFavorite), forControlEvents: UIControlEvents.TouchUpInside)
+            buttonDer.frame=CGRectMake(0, 0, 40, 40)
+            let barButtonDer = UIBarButtonItem(customView: buttonDer)
+            //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
+            self.navigationItem.rightBarButtonItem = barButtonDer
+        }
+        
     }
     
     func back(){
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    //MARK: Save information for Estudio
     func addFavorite() {
-        print("Agregar como favoritos")
-        let alert = SCLAlertView()
-        alert.showCloseButton = false
-        alert.addButton("Aceptar", action: {
-            self.saveInformationEstudio()
-        })
-        
-        alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la siguiente revista", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+        CDMagazine.fetchRequest()
+        print("TOTAL DE PORTADAS \(magazineCD.count)")
+        if magazineCD.count > 5 {
+            
+            let alert = SCLAlertView()
+            alert.showCloseButton = false
+            alert.addButton("Aceptar", action: {
+                //self.saveInformationEstudio()
+            })
+            
+            alert.showInfo("No se puede agregar a favoritos", subTitle: "Solo se permite un máximo de 5 revistas", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+        }else {
+            let nameRevista = arrayPortadasTattoo[indexPortada].nombre
+            
+            let alert = SCLAlertView()
+            alert.showCloseButton = false
+            alert.addButton("Aceptar", action: {
+                self.saveInformationEstudio()
+            })
+            alert.addButton("Cancelar", action: {
+                
+            })
+            
+            alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la revista: \(nameRevista)", closeButtonTitle: "", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+        }
     }
     
-    //MARK: Save information for Estudio
-    func saveInformationEstudio(){
-        print("Hola mundo")
+    func alertExitoSavePortada(){
+        let alert = SCLAlertView()
+        alert.showSuccess("Se agrego a favoritos", subTitle: "Para ver la revista dirijase a favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
+    func saveInformationEstudio() {
+        //Validate if magazine is or not favourite
+        if !(CDMagazine.existePortada(magazine: arrayPortadasTattoo[indexPortada])) {
+            //Crear los directorios para guardar las imagenes
+            ImageManager.createDirectoryImagePortada()
+            
+            let portada = arrayPortadasTattoo[indexPortada]
+            
+            if CDMagazine.saveMagazinePortada(magazine: portada) {
+                let namePortada = "\(portada.idEstudio)\(portada.idMagazine)"
+                
+                ImageManager.createDirectoryImagePage(namePortada)
+                
+                ImageManager.saveImagePortada(portada.imgPortada, name: namePortada)
+                //Save Pages magazine
+                for i in 0 ..< arrayDetailPages.count {
+                    let pages = arrayDetailPages[i]
+                    
+                    if CDGaleria.saveMagazinePage(pageMagazine: pages) {
+                        let namePage = "\(i)"
+                        ImageManager.saveImagePage(pages.image, nameImage:namePage, nameDirectory: "\(namePortada)")
+                    }
+                }
+                
+                self.alertExitoSavePortada()
+            }else {
+                print("NO SE GUARDO LA PORTADA")
+            }
+        }else {
+            let alert = SCLAlertView()
+            alert.showSuccess("", subTitle: "La revista ya esta en la sección de favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+        }
+        
+        print("Agregar como idEstudio \(arrayPortadasTattoo[indexPortada].idEstudio)")
+        print("Agregar como magazine \(arrayPortadasTattoo[indexPortada].idMagazine)")
+        print("Agregar como nombre \(arrayPortadasTattoo[indexPortada].nombre)")
+        print("Agregar como mes \(arrayPortadasTattoo[indexPortada].mes)")
+        print("Agregar como anio \(arrayPortadasTattoo[indexPortada].anio)")
     }
 
 }

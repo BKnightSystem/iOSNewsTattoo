@@ -190,7 +190,9 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
     func carousel(carousel: iCarousel!, didSelectItemAtIndex index: Int) {
         let pages = PageMagazineViewController(nibName:"PageMagazineViewController", bundle: nil)
         pages.indexEstudio = indexEstudio//index + 1
+        pages.indexPortada = index
         pages.idMagazine = Int(arrayPortadasTattoo[index].idMagazine)!
+        pages.isFavorito = false
         self.navigationController?.pushViewController(pages, animated: true)
     }
     

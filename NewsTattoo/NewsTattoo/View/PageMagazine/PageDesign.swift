@@ -32,6 +32,8 @@ class PageDesign: UIView {
     func createPage(width:CGFloat, height:CGFloat, index: Int) -> UIView {
         let view = UIView(frame: CGRectMake(0, 0, width, height))
         
+        print("Width \(width) HEIGHT \(height)")
+        
         //Dimensions of elements
         let widthImg:CGFloat = (view.bounds.size.width / 6) * 3
         let heightImg:CGFloat = (view.bounds.size.height / 2)

@@ -18,7 +18,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var lbTop:UILabel!
     @IBOutlet weak var lbDown:UILabel!
     @IBOutlet weak var btnShareFB:FBSDKShareButton!
-    
+    @IBOutlet weak var btnFavorito:UIButton!
     
     var reachability: Reachability?
     
@@ -31,12 +31,20 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tbMagazines.dataSource = self
         
         self.connectionInternet()
+        
+        ImageManager.createDirectoryImage()
     }
     
     override func viewWillAppear(animated: Bool) {
         self.btnShareFBConfig()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: Connection Internet
     func connectionInternet(){
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
@@ -51,11 +59,6 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         }catch{
             print("could not start reachability notifier")
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func reachabilityChanged(note: NSNotification) {
@@ -78,6 +81,12 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.getEstudiosCD()
             }
         }
+    }
+    
+    //MARK: Action Button
+    @IBAction func btnFavorito(sender:UIButton) {
+        let favoritos = FavoritosViewController(nibName: "FavoritosViewController", bundle: nil)
+        self.navigationController?.pushViewController(favoritos, animated: true)
     }
     
     //MARK: Facebook Share
@@ -121,6 +130,33 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         })
     }
     
+    //MARK: Without Internet
+    func showEstudiosWithoutInternet() {
+        arrayEstudiosTattoo.removeAll()
+        for i in 0 ..< estudios.count {
+            let estudio = estudios[i]
+            let dataEstudio = Estudios()
+            
+            dataEstudio.idEstudio = estudio.valueForKey("idEstudio") as! String
+            dataEstudio.nombreEstudio = estudio.valueForKey("nombre") as! String
+            dataEstudio.latitud = estudio.valueForKey("latitud") as! Double
+            dataEstudio.longitud = estudio.valueForKey("longitud") as! Double
+            dataEstudio.telefono = estudio.valueForKey("telefono") as! String
+            dataEstudio.direccion = estudio.valueForKey("direccion") as! String
+            
+            let imageName = "\(i + 1)"
+            let imgLogo = ImageManager.getLogoByID(imageName)
+            if  imgLogo != nil {
+                print("SI EXISTE LA IMAGEN")
+                dataEstudio.logo = imgLogo!
+            }
+            
+            arrayEstudiosTattoo.append(dataEstudio)
+        }
+        
+        self.tbMagazines.reloadData()
+    }
+    
     //MARK: Save data in coreData
     func saveEstudios(){
         for i in 0 ..< arrayEstudiosTattoo.count  {
@@ -139,6 +175,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     func getEstudiosCD() {
         CDEstudios.fetchRequest()
         print("CUANTOS ENCONTRO \(estudios.count)")
+        self.showEstudiosWithoutInternet()
     }
     
     func deleteEstudios(){
@@ -167,10 +204,9 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         cell = tableView.dequeueReusableCellWithIdentifier("bookCell") as! BookTableViewCell
         cell.selectionStyle = .None
         cell.lbNameMagazine.text = arrayEstudiosTattoo[indexPath.row].nombreEstudio
-        //cell.lbTelefono.text = arrayEstudiosTattoo[indexPath.row].telefono
-        if arrayEstudiosTattoo[indexPath.row].imgLogo != "" {
-            cell.imgMagazine.image = arrayEstudiosTattoo[indexPath.row].logo//Utilidades.base64ToImage(arrayEstudiosTattoo[indexPath.row].imgLogo)
-        }
+        //if arrayEstudiosTattoo[indexPath.row].imgLogo != "" {
+            cell.imgMagazine.image = arrayEstudiosTattoo[indexPath.row].logo
+        //}
         
         return cell
     }

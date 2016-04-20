@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 class Magazine {
+    var idEstudio:String = ""
+    var idMagazine:String = ""
+    var idImagen:String = ""
     var imageB64:String = ""
     var image:UIImage = UIImage()
     var descripcion:String = ""

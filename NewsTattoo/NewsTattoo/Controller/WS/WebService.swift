@@ -75,6 +75,9 @@ class WebService {
                     let imagen = json["imagenes"].array
                     for est in imagen! {
                         let page = Magazine()
+                        page.idEstudio = est["idEstudio"].stringValue
+                        page.idMagazine = est["idMagazine"].stringValue
+                        page.idImagen = est["idImagen"].stringValue
                         page.imageB64 = est["imagen"].stringValue
                         page.image = Utilidades.base64ToImage(page.imageB64)
                         page.nombreTatuador = est["nombre"].stringValue
