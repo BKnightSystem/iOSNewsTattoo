@@ -11,14 +11,14 @@ import UIKit
 class FavoritosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tbFavoritos:UITableView!
+    var arrayNamesEstudio = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.createNavigationBar()
         
-        CDMagazine.fetchRequest()
-        self.initData()
+        self.loadInformation()
         
         tbFavoritos.delegate = self
         tbFavoritos.dataSource = self
@@ -29,8 +29,15 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    func loadInformation(){
+//        CDEstudios.fetchRequest()
+        CDMagazine.fetchRequest()
+        self.initData()
+    }
+    
     func initData() {
         arrayFavoritos.removeAll()
+        arrayNamesEstudio.removeAll()
         
         for i in 0 ..< magazineCD.count {
             let dataPortada = magazineCD[i]
@@ -48,6 +55,9 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("SI EXISTE LA IMAGEN")
                 portada.imgPortada = imgLogo!
             }
+            
+            let nameEstudio = CDEstudios.getNamesEstudio(portada.idEstudio)
+            arrayNamesEstudio.append(nameEstudio)
             
             arrayFavoritos.append(portada)
         }
@@ -76,11 +86,13 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         let fecha = "\(arrayFavoritos[indexPath.row].mes) - \(arrayFavoritos[indexPath.row].anio)"
         cell.lbFechaRevista.text = fecha
         cell.imgPortada.image = arrayFavoritos[indexPath.row].imgPortada
+        cell.lbNombreEstudio.text = arrayNamesEstudio[indexPath.row]
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         let nameDirectory = "\(arrayFavoritos[indexPath.row].idEstudio)\(arrayFavoritos[indexPath.row].idMagazine)"
         let numPages = ImageManager.listPagesMagazine(nameDirectory)
         print("NUM PAGES \(numPages)")
@@ -89,6 +101,51 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         pages.idMagazine = Int(arrayFavoritos[indexPath.row].idMagazine)!
         pages.isFavorito = true
         self.navigationController?.pushViewController(pages, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .Normal, title: "Eliminar", handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            self.deleteDataInformation(indexPath.row)
+        })
+        
+        deleteAction.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_VIEW)
+        
+        return [deleteAction]
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+    }
+    
+    //MARK: Delete records
+    func deleteDataInformation(index:Int){
+        // Delete information about this studio by index Core Data
+        CDMagazine.deleteMagazinePortada(index)
+        let idEst = arrayFavoritos[index].idEstudio as String
+        let idMag = arrayFavoritos[index].idMagazine as String
+        CDGaleria.initPageMagazine(idEst, idMagazine: Int(idMag)!)
+        
+        for i in 0 ..< galeriaCD.count {
+            print("Borrando elemento num \(i)")
+            CDGaleria.deleteMagazinePages()
+        }
+        
+        let identify = "\(idEst)\(idMag)"
+        let nameDirectory = "/PagesMagazine\(identify)"
+        let namePortada = "PortadaMagazine/\(identify).png"
+        //Delete image pages
+        ImageManager.deleteDirectory(nameDirectory)
+        ImageManager.deletePortada(namePortada)
+        
+        let tmpCount = galeriaCD.count
+        print("CUANTOS ELEMENTOS QUEDARON \(tmpCount)")
+        
+        self.loadInformation()
+        self.tbFavoritos.reloadData()
     }
     
     //MARK: NavigationBar

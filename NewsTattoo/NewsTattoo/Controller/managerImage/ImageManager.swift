@@ -9,6 +9,30 @@
 import Foundation
 
 class ImageManager {
+    
+    class func deleteDirectory(nameDirectory:String){
+        let path = Utilidades.getDocumentsDirectory().stringByAppendingPathComponent(nameDirectory)
+        let filemgr = NSFileManager.defaultManager()
+        
+        do {
+            try filemgr.removeItemAtPath(path)
+        }catch {
+            print("Failed to delete directory:\(path)")
+        }
+        
+    }
+    
+    class func deletePortada(namePortada:String){
+        let path = Utilidades.getDocumentsDirectory().stringByAppendingPathComponent(namePortada)
+        let filemgr = NSFileManager.defaultManager()
+        
+        do {
+            try filemgr.removeItemAtPath(path)
+        }catch {
+            print("Failed to delete directory:\(path)")
+        }
+    }
+    
     //MARK: Image Logo Estudio
     class func createDirectoryImage() {
         let nameDirectory = "/LogosEstudio"

@@ -37,6 +37,7 @@ let COLOR_BACKGROUND_APP  = 0xE6EAE9
 let COLOR_LINE_VIEW = 0xBDBCBC
 let COLOR_NEGRO = 0x000000
 let COLOR_BLANCO = 0xFFFFFF
+let COLOR_ICONOS = 0xDE5240
 
 //Array Images
 var imagesForSection0: [UIImage] = []

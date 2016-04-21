@@ -39,6 +39,6 @@ class Utilidades {
             
         })
         
-        alert.showInfo("Sin Conexión", subTitle: "No cuenta con conexión a Internet", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showInfo("Sin Conexión", subTitle: "No cuenta con conexión a Internet", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
     }
 }

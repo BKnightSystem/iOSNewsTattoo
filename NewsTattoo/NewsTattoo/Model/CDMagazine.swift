@@ -14,6 +14,7 @@ class CDMagazine {
     class func fetchRequest() -> Bool{
         var fetch = false
         //1
+        magazineCD.removeAll()
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext

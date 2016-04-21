@@ -70,6 +70,33 @@ class CDEstudios {
         return estudiotSave
     }
     
+    class func getNamesEstudio(idEstudio:String) -> String {
+        var isFavorite: String = ""
+        //1
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName: "Estudios")
+//        let idEst = magazine.idEstudio
+//        let idMag = magazine.idMagazine
+        fetchRequest.predicate = NSPredicate(format: "idEstudio == %@", idEstudio)
+        do {
+            let existPortada = try managedContext.executeFetchRequest(fetchRequest)
+            if existPortada.count > 0 {
+                isFavorite =  existPortada[0].valueForKey("nombre") as! String
+            }else {
+                isFavorite = ""
+            }
+            
+        }catch {
+            isFavorite = ""
+        }
+        
+        return isFavorite
+    }
+    
     class func updateContact(estudio estudio:NSManagedObject, newValues:Estudios) -> Bool{
         var estudioSave = false
         //1

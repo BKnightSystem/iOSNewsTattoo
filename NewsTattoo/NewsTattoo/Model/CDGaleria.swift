@@ -36,7 +36,7 @@ class CDGaleria {
         return fetch
     }
     
-    class func existeGaleria(magazine magazine:MagazinePortada) -> Bool {
+    class func existeGaleria(magazine magazine:Magazine) -> Bool {
         var isFavorite = false
         //1
         let appDelegate =
@@ -95,7 +95,7 @@ class CDGaleria {
         return portadaSave
     }
     
-    class func updateContact(magazine magazine:NSManagedObject, newValues:MagazinePortada) -> Bool{
+    class func updateContact(magazine magazine:NSManagedObject, newValues:Magazine) -> Bool{
         var contactSave = false
         //1
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -107,11 +107,11 @@ class CDGaleria {
         //let   contact = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //3
-        magazine.setValue(newValues.nombre, forKey: "nombre")
-        magazine.setValue(newValues.idMagazine, forKey: "apellidos")
-        magazine.setValue(newValues.idEstudio, forKey: "telefono")
-        magazine.setValue(newValues.mes, forKey: "direccion")
-        magazine.setValue(newValues.anio, forKey: "foto")
+        magazine.setValue(newValues.idImagen, forKey: "idImagen")
+        magazine.setValue(newValues.idMagazine, forKey: "idMagazine")
+        magazine.setValue(newValues.idEstudio, forKey: "idEstudio")
+        magazine.setValue(newValues.nombreTatuador, forKey: "tatuador")
+        magazine.setValue(newValues.descripcion, forKey: "texto")
         
         //4
         do {
@@ -127,20 +127,20 @@ class CDGaleria {
         return contactSave
     }
     
-    class func deleteMagazinePortada(index:Int) -> Bool{
+    class func deleteMagazinePages() -> Bool{
         var deleteContact = false
         // 1
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
-        //2
-        managedContext.deleteObject(magazineCD[index])
+        managedContext.deleteObject(galeriaCD[0])
+//        managedContext.executeFetchRequest(fetchRequest)
         
         // 3
         do {
             try managedContext.save()
             // 4
-            magazineCD.removeAtIndex(index)
+            galeriaCD.removeAtIndex(0)
             deleteContact = true
         } catch let error as NSError  {
             deleteContact = false
@@ -154,6 +154,8 @@ class CDGaleria {
     class func initPageMagazine(idEstudio:String, idMagazine:Int){
         
         //1
+        galeriaCD.removeAll()
+        
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
