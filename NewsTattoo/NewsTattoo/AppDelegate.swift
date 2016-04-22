@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().clipsToBounds = true
         //self.navigationController?.navigationBar.clipsToBounds = true
-        //UINavigationBar.appearance().barTintColor = UIColor(netHex: NAVIGATION_BAR_TINT_COLOR)
+        //UINavigationBar.appearance().barTintColor = UIColor(netHex: COLOR_BACKGROUND_PAGE)
         //UINavigationBar.appearance().tintColor = UIColor(netHex: NAVIGATION_BAR_TINT_COLOR)
         //var attributes = [String : AnyObject]()
         //attributes[NSForegroundColorAttributeName] = UIColor(netHex: NAVIGATION_BAR_TINT_COLOR)

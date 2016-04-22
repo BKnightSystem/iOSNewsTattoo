@@ -14,10 +14,12 @@ class FavoritoTableViewCell: UITableViewCell {
     @IBOutlet weak var lbNombreRevista:UILabel!
     @IBOutlet weak var lbNombreEstudio:UILabel!
     @IBOutlet weak var lbFechaRevista:UILabel!
+    @IBOutlet weak var lineDown:UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        lineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

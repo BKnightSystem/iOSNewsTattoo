@@ -63,7 +63,7 @@ class WebService {
         arrayDetailPages.removeAll()
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-            if data!.length > 0 && error == nil {
+            if (data!.length > 0 && data != nil) && error == nil {
                 
                 let json = JSON(data: data!)
                 print("JSON \(json)")

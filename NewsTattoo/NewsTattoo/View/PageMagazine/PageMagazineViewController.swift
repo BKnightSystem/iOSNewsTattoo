@@ -135,8 +135,8 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         if arrayDetailPages.count > 0 {
             for i in 0  ..< arrayDetailPages.count  {
                 let pageView  = PageDesign()
-                let pageView2 = PageDesign2()
-                let pageView3 = PageDesign3()
+//                let pageView2 = PageDesign2()
+//                let pageView3 = PageDesign3()
                 
                 //Dinamic page
                 let stylepage = i % 3
@@ -147,10 +147,10 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
                     viewMa = pageView.createPage(self.carouselPages.bounds.size.width, height: self.carouselPages.bounds.size.height, index: i)
                     break
                 case 1://Page 2
-                    viewMa = pageView2.createPage(self.carouselPages.bounds.size.width, height: self.carouselPages.bounds.size.height, index: i)
+                    viewMa = pageView.createPage(self.carouselPages.bounds.size.width, height: self.carouselPages.bounds.size.height, index: i)
                     break
                 default://Page3
-                    viewMa = pageView3.createPage(self.carouselPages.bounds.size.width, height: self.carouselPages.bounds.size.height, index: i)
+                    viewMa = pageView.createPage(self.carouselPages.bounds.size.width, height: self.carouselPages.bounds.size.height, index: i)
                     break
                 }
                 
@@ -211,6 +211,8 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     //MARK: Configuration
     func configuration(){
+        //self.view.backgroundColor = UIColor(netHex:COLOR_BACKGROUND_PAGE)
+        carouselPages.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_PAGE)
         viewTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
         viewDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
     }
