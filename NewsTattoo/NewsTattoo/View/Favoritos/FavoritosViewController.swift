@@ -12,6 +12,7 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet weak var tbFavoritos:UITableView!
     var arrayNamesEstudio = [String]()
+    var arrayTelephoneStudio = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,30 +40,47 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         arrayFavoritos.removeAll()
         arrayNamesEstudio.removeAll()
         
-        for i in 0 ..< magazineCD.count {
-            let dataPortada = magazineCD[i]
-            let portada = MagazinePortada()
-            
-            portada.idEstudio = dataPortada.valueForKey("idEstudio") as! String
-            portada.idMagazine = dataPortada.valueForKey("idMagazine") as! String
-            portada.nombre = dataPortada.valueForKey("nombre") as! String
-            portada.mes = dataPortada.valueForKey("mes") as! String
-            portada.anio = dataPortada.valueForKey("anio") as! String
-            
-            let imageName = "\(portada.idEstudio)\(portada.idMagazine)"
-            let imgLogo = ImageManager.getPortadaByID(imageName)
-            if  imgLogo != nil {
-                print("SI EXISTE LA IMAGEN")
-                portada.imgPortada = imgLogo!
+        if magazineCD.count > 0 {
+            for i in 0 ..< magazineCD.count {
+                let dataPortada = magazineCD[i]
+                let portada = MagazinePortada()
+                
+                portada.idEstudio = dataPortada.valueForKey("idEstudio") as! String
+                portada.idMagazine = dataPortada.valueForKey("idMagazine") as! String
+                portada.nombre = dataPortada.valueForKey("nombre") as! String
+                portada.mes = dataPortada.valueForKey("mes") as! String
+                portada.anio = dataPortada.valueForKey("anio") as! String
+                
+                let imageName = "\(portada.idEstudio)\(portada.idMagazine)"
+                let imgLogo = ImageManager.getPortadaByID(imageName)
+                if  imgLogo != nil {
+                    //print("SI EXISTE LA IMAGEN")
+                    portada.imgPortada = imgLogo!
+                }
+                
+                let nameEstudio = CDEstudios.getNamesEstudio(portada.idEstudio)
+                let telephone = CDEstudios.getTelephoneEstudio(portada.idEstudio)
+                arrayNamesEstudio.append(nameEstudio)
+                
+                arrayFavoritos.append(portada)
+                arrayTelephoneStudio.append(telephone)
             }
-            
-            let nameEstudio = CDEstudios.getNamesEstudio(portada.idEstudio)
-            arrayNamesEstudio.append(nameEstudio)
-            
-            arrayFavoritos.append(portada)
+        }else {
+            self.alertSinFavoritos()
         }
     }
 
+    //MARK: Alert
+    func alertSinFavoritos() {
+        let alert = SCLAlertView()
+        alert.showCloseButton = false
+        alert.addButton("Aceptar", action: {
+            self.navigationController?.popViewControllerAnimated(true)
+        })
+        
+        alert.showInfo("No hay revistas", subTitle: "No hay revistas marcadas como favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
     //MARK: Table Delegate and Datasource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayFavoritos.count
@@ -83,7 +101,8 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         cell = tableView.dequeueReusableCellWithIdentifier("favoritoCell") as! FavoritoTableViewCell
         cell.selectionStyle = .None
         cell.lbNombreRevista.text = arrayFavoritos[indexPath.row].nombre
-        let fecha = "\(arrayFavoritos[indexPath.row].mes) - \(arrayFavoritos[indexPath.row].anio)"
+        let mes = ARRAY_MONTHS[Int(arrayFavoritos[indexPath.row].mes)! - 1]
+        let fecha = "\(mes) - \(arrayFavoritos[indexPath.row].anio)"
         cell.lbFechaRevista.text = fecha
         cell.imgPortada.image = arrayFavoritos[indexPath.row].imgPortada
         cell.lbNombreEstudio.text = arrayNamesEstudio[indexPath.row]
@@ -108,10 +127,14 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         let deleteAction = UITableViewRowAction(style: .Normal, title: "Eliminar", handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             self.deleteDataInformation(indexPath.row)
         })
-        
         deleteAction.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_VIEW)
         
-        return [deleteAction]
+        let callAction = UITableViewRowAction(style: .Normal, title: "Llamar", handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            self.callStudio(self.arrayTelephoneStudio[indexPath.row])
+        })
+        callAction.backgroundColor = UIColor(netHex: COLOR_ICONOS)
+        
+        return [deleteAction, callAction]
         
     }
     
@@ -121,7 +144,7 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    //MARK: Delete records
+    //MARK: UITableViewRowAction
     func deleteDataInformation(index:Int){
         // Delete information about this studio by index Core Data
         CDMagazine.deleteMagazinePortada(index)
@@ -141,11 +164,17 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         ImageManager.deleteDirectory(nameDirectory)
         ImageManager.deletePortada(namePortada)
         
-        let tmpCount = galeriaCD.count
-        print("CUANTOS ELEMENTOS QUEDARON \(tmpCount)")
+        //let tmpCount = galeriaCD.count
+        //print("CUANTOS ELEMENTOS QUEDARON \(tmpCount)")
         
         self.loadInformation()
         self.tbFavoritos.reloadData()
+    }
+    
+    func callStudio(telephone:String){
+        if telephone != "" {
+            Utilidades.callPhone(telephone)
+        }
     }
     
     //MARK: NavigationBar

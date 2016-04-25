@@ -97,7 +97,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     func initPageFavourite() {
         //Load information
-        print("CUANTOS ELEMENTOS ESTAN EN LA BASE \(galeriaCD.count)")
+        //print("CUANTOS ELEMENTOS ESTAN EN LA BASE \(galeriaCD.count)")
         arrayDetailPages.removeAll()
         for i in 0 ..< galeriaCD.count {
             let dataPage = galeriaCD[i]
@@ -112,7 +112,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             
             let imgLogo = ImageManager.getPageByID("\(i)", nameDirectory: nameDirectory)
             if  imgLogo != nil {
-                print("SI EXISTE LA IMAGEN")
+                //print("SI EXISTE LA IMAGEN")
                 detailPage.image = imgLogo!
             }
             
@@ -219,7 +219,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
 
     //MARK: NavigationBar
     func createNavigationBar(){
-        print("INDEX \(indexEstudio) MAGAZINE \(idMagazine)")
+        //print("INDEX \(indexEstudio) MAGAZINE \(idMagazine)")
         if isFavorito {
             self.title = arrayFavoritos[indexEstudio].nombre
         }else {
@@ -256,7 +256,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     //MARK: Save information for Estudio
     func addFavorite() {
         CDMagazine.fetchRequest()
-        print("TOTAL DE PORTADAS \(magazineCD.count)")
+        //print("TOTAL DE PORTADAS \(magazineCD.count)")
         if magazineCD.count > 5 {
             
             let alert = SCLAlertView()
@@ -305,7 +305,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
                 
                 for i in 0 ..< arrayDetailPages.count {
                     let pages = arrayDetailPages[i]
-                    print("PAGES TO SAVE \(pages.idImagen)")
+                    //print("PAGES TO SAVE \(pages.idImagen)")
                     if CDGaleria.saveMagazinePage(pageMagazine: pages) {
                         let namePage = "\(i)"
                         ImageManager.saveImagePage(pages.image, nameImage:namePage, nameDirectory: "\(namePortada)")
@@ -314,18 +314,18 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
                 
                 self.alertExitoSavePortada()
             }else {
-                print("NO SE GUARDO LA PORTADA")
+                //print("NO SE GUARDO LA PORTADA")
             }
         }else {
             let alert = SCLAlertView()
             alert.showSuccess("", subTitle: "La revista ya esta en la sección de favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
         }
         
-        print("Agregar como idEstudio \(arrayPortadasTattoo[indexPortada].idEstudio)")
-        print("Agregar como magazine \(arrayPortadasTattoo[indexPortada].idMagazine)")
-        print("Agregar como nombre \(arrayPortadasTattoo[indexPortada].nombre)")
-        print("Agregar como mes \(arrayPortadasTattoo[indexPortada].mes)")
-        print("Agregar como anio \(arrayPortadasTattoo[indexPortada].anio)")
+//        print("Agregar como idEstudio \(arrayPortadasTattoo[indexPortada].idEstudio)")
+//        print("Agregar como magazine \(arrayPortadasTattoo[indexPortada].idMagazine)")
+//        print("Agregar como nombre \(arrayPortadasTattoo[indexPortada].nombre)")
+//        print("Agregar como mes \(arrayPortadasTattoo[indexPortada].mes)")
+//        print("Agregar como anio \(arrayPortadasTattoo[indexPortada].anio)")
     }
 
 }

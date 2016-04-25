@@ -26,7 +26,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="46" id="im4-Lu-3A5"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -35,7 +35,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="WDX-CH-c85"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -44,12 +44,12 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="50.5" id="G5Y-Pc-9PV"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zHF-de-Nah">
-                        <rect key="frame" x="8" y="149" width="304" height="2"/>
+                        <rect key="frame" x="0.0" y="149" width="320" height="2"/>
                         <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="fNf-Pc-4Hb"/>
@@ -65,10 +65,10 @@
                     <constraint firstItem="7AJ-WT-iPW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="MX9-1r-b0Z"/>
                     <constraint firstAttribute="trailing" secondItem="7AJ-WT-iPW" secondAttribute="trailing" constant="8" id="Q2B-Ce-z9Q"/>
                     <constraint firstItem="3Ug-gp-H33" firstAttribute="leading" secondItem="Tcl-Tk-MO8" secondAttribute="trailing" constant="5" id="SH1-35-Odj"/>
-                    <constraint firstItem="zHF-de-Nah" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Xhl-gO-1hF"/>
+                    <constraint firstItem="zHF-de-Nah" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Xhl-gO-1hF"/>
                     <constraint firstItem="7AJ-WT-iPW" firstAttribute="leading" secondItem="Tcl-Tk-MO8" secondAttribute="trailing" constant="5" id="YBK-oI-c4C"/>
                     <constraint firstAttribute="trailing" secondItem="FIm-aB-Thw" secondAttribute="trailing" constant="8" id="bob-pC-OMZ"/>
-                    <constraint firstAttribute="trailing" secondItem="zHF-de-Nah" secondAttribute="trailing" constant="8" id="i6D-ER-5uw"/>
+                    <constraint firstAttribute="trailing" secondItem="zHF-de-Nah" secondAttribute="trailing" id="i6D-ER-5uw"/>
                     <constraint firstItem="Tcl-Tk-MO8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="llO-Fe-281"/>
                     <constraint firstItem="FIm-aB-Thw" firstAttribute="top" secondItem="3Ug-gp-H33" secondAttribute="bottom" constant="8" id="mOD-o6-DTi"/>
                 </constraints>

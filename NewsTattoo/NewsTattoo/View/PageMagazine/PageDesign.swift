@@ -34,11 +34,11 @@ class PageDesign: UIView {
         let view = UIView(frame: CGRectMake(0, 0, width, height))
         view.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_PAGE)
         
-        print("Width \(width) HEIGHT \(height)")
+        //print("Width \(width) HEIGHT \(height)")
         
         //Dimensions of elements
         let widthImg:CGFloat = (view.bounds.size.width / 6) * 5
-        let heightImg:CGFloat = (view.bounds.size.height / 2)
+        let heightImg:CGFloat = (view.bounds.size.height / 6) * 4
         
         let heightLineSeparator:CGFloat = 2.0
         let heightTitle:CGFloat = 20.0
@@ -64,7 +64,7 @@ class PageDesign: UIView {
         txDown = UITextView(frame: CGRectMake(posX, posYImg + heightImg, view.bounds.size.width, view.bounds.size.height - (posYImg + heightImg + 5)))
         txDown.editable = false
         txDown.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_PAGE)
-        txDown.font = FONT_TEXT_3
+        txDown.font = FONT_TEXT_4
         
         txTop.text = "Autor: \(arrayDetailPages[index].nombreTatuador)"
         imgTattoo.image = arrayDetailPages[index].image //UIImage(named: "backTattoo")

@@ -35,7 +35,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
         } catch {
-            print("Unable to create Reachability")
+            //print("Unable to create Reachability")
             return
         }
         
@@ -43,7 +43,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         do{
             try reachability?.startNotifier()
         }catch{
-            print("could not start reachability notifier")
+           // print("could not start reachability notifier")
         }
     }
 
@@ -74,7 +74,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     func zoomToRegion() {
         let latitud = arrayEstudiosTattoo[indexEstudio].latitud
         let longitud = arrayEstudiosTattoo[indexEstudio].longitud
-        print("Latitud y longitud \(latitud) \(longitud)")
+        //print("Latitud y longitud \(latitud) \(longitud)")
         
         let location = CLLocationCoordinate2D(latitude: latitud, longitude: longitud)
         
@@ -134,11 +134,11 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         switch status {
         case .Denied:
-            print("GPS OFF**********************************")
+           // print("GPS OFF**********************************")
             self.alertGPS()
             break
         case .AuthorizedAlways:
-            print("GPS ON**********************************")
+            //print("GPS ON**********************************")
             
             break
         default:

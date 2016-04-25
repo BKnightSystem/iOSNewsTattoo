@@ -36,7 +36,7 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
         } catch {
-            print("Unable to create Reachability")
+            //print("Unable to create Reachability")
             return
         }
         
@@ -44,7 +44,7 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         do{
             try reachability?.startNotifier()
         }catch{
-            print("could not start reachability notifier")
+           // print("could not start reachability notifier")
         }
     }
     

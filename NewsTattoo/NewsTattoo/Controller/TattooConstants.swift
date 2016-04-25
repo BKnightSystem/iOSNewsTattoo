@@ -68,4 +68,10 @@ var galeriaCD = [NSManagedObject]()
 let FONT_TEXT_1 = UIFont(name: "Windsong", size: 30)
 let FONT_TEXT_2 = UIFont(name: "Sofia-Regular", size: 20)
 let FONT_TEXT_3 = UIFont(name: "Caviar_Dreams_Bold", size: 25)
-let FONT_TEXT_4 = UIFont(name: "cac_champagne", size: 18)
+let FONT_TEXT_4 = UIFont(name: "Times New Roman", size: 18)
+
+
+//MARK: Months
+let ARRAY_MONTHS = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"]
+
+

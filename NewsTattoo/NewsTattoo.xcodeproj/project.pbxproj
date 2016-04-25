@@ -43,12 +43,9 @@
 		57ED96391CAEFD3500CF7ACE /* PageDesign2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED96381CAEFD3500CF7ACE /* PageDesign2.swift */; };
 		57ED963B1CAEFF5F00CF7ACE /* PageDesign3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ED963A1CAEFF5F00CF7ACE /* PageDesign3.swift */; };
 		57ED96401CAF3FB300CF7ACE /* cac_champagne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED963C1CAF3FB300CF7ACE /* cac_champagne.ttf */; };
-		57ED96411CAF3FB300CF7ACE /* Plain_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED963D1CAF3FB300CF7ACE /* Plain_Black.ttf */; };
-		57ED96421CAF3FB300CF7ACE /* rothenbg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED963E1CAF3FB300CF7ACE /* rothenbg.ttf */; };
 		57ED96431CAF3FB300CF7ACE /* Windsong.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED963F1CAF3FB300CF7ACE /* Windsong.ttf */; };
 		57ED96461CAF43EA00CF7ACE /* Sofia-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED96451CAF43EA00CF7ACE /* Sofia-Regular.otf */; };
 		57ED96481CAF450B00CF7ACE /* DancingScript-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED96471CAF450B00CF7ACE /* DancingScript-Regular.otf */; };
-		57ED964A1CAF471C00CF7ACE /* Capture_it.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED96491CAF471C00CF7ACE /* Capture_it.ttf */; };
 		57ED964C1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ED964B1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf */; };
 		674BE3CF1CC67CDF00EA4EFF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BE3CE1CC67CDF00EA4EFF /* ImageManager.swift */; };
 		674BE3D21CC6870200EA4EFF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BE3D11CC6870200EA4EFF /* Reachability.swift */; };
@@ -101,12 +98,9 @@
 		57ED96381CAEFD3500CF7ACE /* PageDesign2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageDesign2.swift; path = View/PageMagazine/PageDesign2.swift; sourceTree = "<group>"; };
 		57ED963A1CAEFF5F00CF7ACE /* PageDesign3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageDesign3.swift; path = View/PageMagazine/PageDesign3.swift; sourceTree = "<group>"; };
 		57ED963C1CAF3FB300CF7ACE /* cac_champagne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cac_champagne.ttf; path = Fonts/cac_champagne.ttf; sourceTree = "<group>"; };
-		57ED963D1CAF3FB300CF7ACE /* Plain_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Plain_Black.ttf; path = Fonts/Plain_Black.ttf; sourceTree = "<group>"; };
-		57ED963E1CAF3FB300CF7ACE /* rothenbg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = rothenbg.ttf; path = Fonts/rothenbg.ttf; sourceTree = "<group>"; };
 		57ED963F1CAF3FB300CF7ACE /* Windsong.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Windsong.ttf; path = Fonts/Windsong.ttf; sourceTree = "<group>"; };
 		57ED96451CAF43EA00CF7ACE /* Sofia-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sofia-Regular.otf"; path = "Fonts/Sofia-Regular.otf"; sourceTree = "<group>"; };
 		57ED96471CAF450B00CF7ACE /* DancingScript-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DancingScript-Regular.otf"; path = "Fonts/DancingScript-Regular.otf"; sourceTree = "<group>"; };
-		57ED96491CAF471C00CF7ACE /* Capture_it.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Capture_it.ttf; path = Fonts/Capture_it.ttf; sourceTree = "<group>"; };
 		57ED964B1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Caviar_Dreams_Bold.ttf; path = Fonts/Caviar_Dreams_Bold.ttf; sourceTree = "<group>"; };
 		674BE3CE1CC67CDF00EA4EFF /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageManager.swift; path = Controller/managerImage/ImageManager.swift; sourceTree = "<group>"; };
 		674BE3D11CC6870200EA4EFF /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Controller/Reachability/Reachability.swift; sourceTree = "<group>"; };
@@ -336,12 +330,9 @@
 			isa = PBXGroup;
 			children = (
 				57ED964B1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf */,
-				57ED96491CAF471C00CF7ACE /* Capture_it.ttf */,
 				57ED96471CAF450B00CF7ACE /* DancingScript-Regular.otf */,
 				57ED96451CAF43EA00CF7ACE /* Sofia-Regular.otf */,
 				57ED963C1CAF3FB300CF7ACE /* cac_champagne.ttf */,
-				57ED963D1CAF3FB300CF7ACE /* Plain_Black.ttf */,
-				57ED963E1CAF3FB300CF7ACE /* rothenbg.ttf */,
 				57ED963F1CAF3FB300CF7ACE /* Windsong.ttf */,
 			);
 			name = Fonts;
@@ -415,6 +406,7 @@
 				TargetAttributes = {
 					1D5185501CAE37D80071B651 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = H5QPR4XXFV;
 					};
 				};
 			};
@@ -442,7 +434,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				57ED96401CAF3FB300CF7ACE /* cac_champagne.ttf in Resources */,
-				57ED96411CAF3FB300CF7ACE /* Plain_Black.ttf in Resources */,
 				674BE3EF1CC7D87A00EA4EFF /* FavoritosViewController.xib in Resources */,
 				1D51858D1CAE59620071B651 /* MapaViewController.xib in Resources */,
 				57ED964C1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf in Resources */,
@@ -455,10 +446,8 @@
 				674BE3F31CC7E73000EA4EFF /* FavoritoTableViewCell.xib in Resources */,
 				1D51855A1CAE37D90071B651 /* Main.storyboard in Resources */,
 				1D5185881CAE4C1F0071B651 /* ListMagazinesViewController.xib in Resources */,
-				57ED96421CAF3FB300CF7ACE /* rothenbg.ttf in Resources */,
 				1D51856F1CAE3F1E0071B651 /* BookTableViewCell.xib in Resources */,
 				57ED96311CAEE1AF00CF7ACE /* PageMagazineViewController.xib in Resources */,
-				57ED964A1CAF471C00CF7ACE /* Capture_it.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +592,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "570d9476-fe70-4ca4-947b-aed5e37402e6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -613,6 +603,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -622,8 +613,9 @@
 				INFOPLIST_FILE = NewsTattoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.BKSystem.NewsTattoo;
+				PRODUCT_BUNDLE_IDENTIFIER = BKSystem.NewsTattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 			};
 			name = Debug;
@@ -633,6 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,8 +635,9 @@
 				INFOPLIST_FILE = NewsTattoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.BKSystem.NewsTattoo;
+				PRODUCT_BUNDLE_IDENTIFIER = BKSystem.NewsTattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "570d9476-fe70-4ca4-947b-aed5e37402e6";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 			};
 			name = Release;

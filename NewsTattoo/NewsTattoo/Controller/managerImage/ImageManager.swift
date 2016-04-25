@@ -17,7 +17,7 @@ class ImageManager {
         do {
             try filemgr.removeItemAtPath(path)
         }catch {
-            print("Failed to delete directory:\(path)")
+           // print("Failed to delete directory:\(path)")
         }
         
     }
@@ -29,7 +29,7 @@ class ImageManager {
         do {
             try filemgr.removeItemAtPath(path)
         }catch {
-            print("Failed to delete directory:\(path)")
+            //print("Failed to delete directory:\(path)")
         }
     }
     
@@ -43,7 +43,7 @@ class ImageManager {
             do {
                 try (manager.createDirectoryAtPath(pathLogos, withIntermediateDirectories: false, attributes: nil))
             }catch {
-                print("Directory LogosEstudio not create")
+                //print("Directory LogosEstudio not create")
             }
         }
     }
@@ -53,7 +53,7 @@ class ImageManager {
             if let data = UIImagePNGRepresentation(image) {
                 let filename = Utilidades.getDocumentsDirectory().stringByAppendingPathComponent("/LogosEstudio/\(name).png")
                 
-                print("save in \(filename) name \(name)")
+                //print("save in \(filename) name \(name)")
                 data.writeToFile(filename as String, atomically: true)
             }
         }
@@ -83,7 +83,7 @@ class ImageManager {
             do {
                 try (manager.createDirectoryAtPath(pathLogos, withIntermediateDirectories: false, attributes: nil))
             }catch {
-                print("Directory PortadaMagazine not create")
+               // print("Directory PortadaMagazine not create")
             }
         }
     }
@@ -93,7 +93,7 @@ class ImageManager {
             if let data = UIImagePNGRepresentation(image) {
                 let filename = Utilidades.getDocumentsDirectory().stringByAppendingPathComponent("/PortadaMagazine/\(name).png")
                 
-                print("save in \(filename) name \(name)")
+                //print("save in \(filename) name \(name)")
                 data.writeToFile(filename as String, atomically: true)
             }
         }
@@ -123,7 +123,7 @@ class ImageManager {
             do {
                 try (manager.createDirectoryAtPath(pathLogos, withIntermediateDirectories: false, attributes: nil))
             }catch {
-                print("Directory PagesMagazine not create")
+                //print("Directory PagesMagazine not create")
             }
         }
     }
@@ -133,7 +133,7 @@ class ImageManager {
             if let data = UIImagePNGRepresentation(image) {
                 let filename = Utilidades.getDocumentsDirectory().stringByAppendingPathComponent("/PagesMagazine\(nameDirectory)/\(nameImage).png")
                 
-                print("save in \(filename) name \(nameImage)")
+                //print("save in \(filename) name \(nameImage)")
                 data.writeToFile(filename as String, atomically: true)
             }
         }

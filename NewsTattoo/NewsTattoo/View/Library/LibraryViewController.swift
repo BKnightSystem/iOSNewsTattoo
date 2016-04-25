@@ -16,7 +16,6 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var viewLineTop:UIView!
     @IBOutlet weak var viewLineDown:UIView!
     @IBOutlet weak var lbTop:UILabel!
-    @IBOutlet weak var lbDown:UILabel!
     @IBOutlet weak var btnShareFB:FBSDKShareButton!
     @IBOutlet weak var btnFavorito:UIButton!
     
@@ -49,7 +48,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
         } catch {
-            print("Unable to create Reachability")
+            //print("Unable to create Reachability")
             return
         }
         
@@ -57,7 +56,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         do{
             try reachability?.startNotifier()
         }catch{
-            print("could not start reachability notifier")
+            //print("could not start reachability notifier")
         }
     }
     
@@ -97,9 +96,9 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
 //        btnShareFB.setBackgroundImage(IMAGE_ICON_FB, forState: .Normal)
         
         let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
-        content.contentURL = NSURL(string: "https://www.facebook.com/profile.php?id=100011727544659")
+        content.contentURL = NSURL(string: "http://www.techotopia.com/index.php/Working_with_Directories_in_Swift_on_iOS_8")
         content.contentTitle = "News Tattoo"
-        content.contentDescription = "Revista para los amantes del tatuaje"
+        content.contentDescription = "Revista Digital para los amantes del tatuaje"
         content.imageURL = NSURL(string: "<INSERT STRING HERE>")
         
         btnShareFB.shareContent = content
@@ -147,7 +146,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
             let imageName = "\(i + 1)"
             let imgLogo = ImageManager.getLogoByID(imageName)
             if  imgLogo != nil {
-                print("SI EXISTE LA IMAGEN")
+               // print("SI EXISTE LA IMAGEN")
                 dataEstudio.logo = imgLogo!
             }
             
@@ -164,9 +163,9 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                 let image:UIImage = arrayEstudiosTattoo[i].logo
                 let nameImage = arrayEstudiosTattoo[i].idEstudio
                 ImageManager.saveImage(image, name: nameImage)
-                print("Se GUARDO EL ESTUDIO \(arrayEstudiosTattoo[i].nombreEstudio)")
+                //print("Se GUARDO EL ESTUDIO \(arrayEstudiosTattoo[i].nombreEstudio)")
             }else {
-                print("ERROR AL GUARDAR DATO")
+               // print("ERROR AL GUARDAR DATO")
             }
             
         }
@@ -174,7 +173,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func getEstudiosCD() {
         CDEstudios.fetchRequest()
-        print("CUANTOS ENCONTRO \(estudios.count)")
+       // print("CUANTOS ENCONTRO \(estudios.count)")
         self.showEstudiosWithoutInternet()
     }
     
@@ -224,7 +223,6 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
         
         self.lbTop.font = FONT_TEXT_3
-        self.lbDown.font = FONT_TEXT_3
     }
     
     /*

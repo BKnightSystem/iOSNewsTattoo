@@ -18,7 +18,7 @@ class WebService {
         let session = NSURLSession.sharedSession()
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-        if (data!.length > 0 && data != nil) && error == nil {
+        if (data!.length > 0 && data != nil) && error == nil && response != nil {
             
             arrayEstudiosTattoo.removeAll()
                 
@@ -63,7 +63,7 @@ class WebService {
         arrayDetailPages.removeAll()
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-            if (data!.length > 0 && data != nil) && error == nil {
+            if (data!.length > 0 && data != nil) && error == nil && response != nil {
                 
                 let json = JSON(data: data!)
                 print("JSON \(json)")
@@ -109,7 +109,7 @@ class WebService {
         arrayPortadasTattoo.removeAll()
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-            if (data!.length > 0 && data != nil)  && error == nil {
+            if (data!.length > 0 && data != nil)  && error == nil && response != nil{
                 
                 let json = JSON(data: data!)
                 print("JSON \(json)")

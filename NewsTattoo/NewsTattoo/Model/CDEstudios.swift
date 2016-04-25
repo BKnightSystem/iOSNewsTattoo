@@ -29,7 +29,7 @@ class CDEstudios {
             
             fetch = true
         } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+            //print("Could not fetch \(error), \(error.userInfo)")
             fetch = false
         }
         
@@ -64,7 +64,7 @@ class CDEstudios {
             estudios.append(estudio)
         } catch let error as NSError  {
             estudiotSave = false
-            print("Could not save \(error), \(error.userInfo)")
+            //print("Could not save \(error), \(error.userInfo)")
         }
         
         return estudiotSave
@@ -97,6 +97,33 @@ class CDEstudios {
         return isFavorite
     }
     
+    class func getTelephoneEstudio(idEstudio:String) -> String {
+        var telephone: String = ""
+        //1
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName: "Estudios")
+        //        let idEst = magazine.idEstudio
+        //        let idMag = magazine.idMagazine
+        fetchRequest.predicate = NSPredicate(format: "idEstudio == %@", idEstudio)
+        do {
+            let existPortada = try managedContext.executeFetchRequest(fetchRequest)
+            if existPortada.count > 0 {
+                telephone =  existPortada[0].valueForKey("telefono") as! String
+            }else {
+                telephone = ""
+            }
+            
+        }catch {
+            telephone = ""
+        }
+        
+        return telephone
+    }
+    
     class func updateContact(estudio estudio:NSManagedObject, newValues:Estudios) -> Bool{
         var estudioSave = false
         //1
@@ -125,7 +152,7 @@ class CDEstudios {
             estudios.append(estudio)
         } catch let error as NSError  {
             estudioSave = false
-            print("Could not save \(error), \(error.userInfo)")
+            //print("Could not save \(error), \(error.userInfo)")
         }
         
         return estudioSave
@@ -148,7 +175,7 @@ class CDEstudios {
             deleteContact = true
         } catch let error as NSError  {
             deleteContact = false
-            print("Could not save \(error), \(error.userInfo)")
+            //print("Could not save \(error), \(error.userInfo)")
         }
         
         return deleteContact
@@ -170,7 +197,7 @@ class CDEstudios {
                 
                 for result: AnyObject in incidents{
                     context.deleteObject(result as! NSManagedObject)
-                    print("NSManagedObject has been Deleted")
+                    //print("NSManagedObject has been Deleted")
                 }
                 try context.save()
             }

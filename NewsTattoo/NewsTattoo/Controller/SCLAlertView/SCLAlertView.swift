@@ -285,7 +285,7 @@ public class SCLAlertView: UIViewController {
             let ctrl = UIControl()
             ctrl.sendAction(btn.selector, to:btn.target, forEvent:nil)
         } else {
-            print("Unknow action type for button")
+            //print("Unknow action type for button")
         }
         hideView()
     }
