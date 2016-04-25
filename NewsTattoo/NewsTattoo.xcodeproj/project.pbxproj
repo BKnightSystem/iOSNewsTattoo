@@ -55,6 +55,9 @@
 		674BE3EF1CC7D87A00EA4EFF /* FavoritosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 674BE3ED1CC7D87A00EA4EFF /* FavoritosViewController.xib */; };
 		674BE3F21CC7E73000EA4EFF /* FavoritoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BE3F01CC7E73000EA4EFF /* FavoritoTableViewCell.swift */; };
 		674BE3F31CC7E73000EA4EFF /* FavoritoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 674BE3F11CC7E73000EA4EFF /* FavoritoTableViewCell.xib */; };
+		67734EDF1CCEBCF200CE9F7F /* PropagandaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */; };
+		67734EE01CCEBCF200CE9F7F /* PropagandaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */; };
+		67734EE31CCEC88700CE9F7F /* Promociones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67734EE21CCEC88700CE9F7F /* Promociones.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +113,9 @@
 		674BE3ED1CC7D87A00EA4EFF /* FavoritosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritosViewController.xib; path = View/Favoritos/FavoritosViewController.xib; sourceTree = "<group>"; };
 		674BE3F01CC7E73000EA4EFF /* FavoritoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritoTableViewCell.swift; path = View/Favoritos/Cell/FavoritoTableViewCell.swift; sourceTree = "<group>"; };
 		674BE3F11CC7E73000EA4EFF /* FavoritoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritoTableViewCell.xib; path = View/Favoritos/Cell/FavoritoTableViewCell.xib; sourceTree = "<group>"; };
+		67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropagandaViewController.swift; path = View/Propraganda/PropagandaViewController.swift; sourceTree = "<group>"; };
+		67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PropagandaViewController.xib; path = View/Propraganda/PropagandaViewController.xib; sourceTree = "<group>"; };
+		67734EE21CCEC88700CE9F7F /* Promociones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promociones.swift; path = Model/Promociones.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +174,7 @@
 				1D51858E1CAE59660071B651 /* Mapa */,
 				57ED96321CAEE1B700CF7ACE /* PageMagazine */,
 				674BE3EB1CC7D83B00EA4EFF /* Favoritos */,
+				67734EE11CCEBCF600CE9F7F /* Propaganda */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				1D51857D1CAE43500071B651 /* Estudios.swift */,
 				57ED96351CAEF01600CF7ACE /* Magazine.swift */,
 				1D40D0751CB2041B00F86583 /* MagazinePortada.swift */,
+				67734EE21CCEC88700CE9F7F /* Promociones.swift */,
 				1DFBC2211CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld */,
 				1DFBC2241CC2B2E60071D5CD /* CDEstudios.swift */,
 				1DFBC2261CC2B2FC0071D5CD /* CDMagazine.swift */,
@@ -374,6 +382,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		67734EE11CCEBCF600CE9F7F /* Propaganda */ = {
+			isa = PBXGroup;
+			children = (
+				67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */,
+				67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */,
+			);
+			name = Propaganda;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -442,6 +459,7 @@
 				1D51855C1CAE37D90071B651 /* Assets.xcassets in Resources */,
 				57ED96481CAF450B00CF7ACE /* DancingScript-Regular.otf in Resources */,
 				57ED96431CAF3FB300CF7ACE /* Windsong.ttf in Resources */,
+				67734EE01CCEBCF200CE9F7F /* PropagandaViewController.xib in Resources */,
 				1D5185691CAE391E0071B651 /* LibraryViewController.xib in Resources */,
 				674BE3F31CC7E73000EA4EFF /* FavoritoTableViewCell.xib in Resources */,
 				1D51855A1CAE37D90071B651 /* Main.storyboard in Resources */,
@@ -464,6 +482,7 @@
 				57ED96301CAEE1AF00CF7ACE /* PageMagazineViewController.swift in Sources */,
 				1D51858C1CAE59620071B651 /* MapaViewController.swift in Sources */,
 				1DFBC2291CC2B3100071D5CD /* CDGaleria.swift in Sources */,
+				67734EE31CCEC88700CE9F7F /* Promociones.swift in Sources */,
 				57ED96341CAEE66E00CF7ACE /* PageDesign.swift in Sources */,
 				674BE3F21CC7E73000EA4EFF /* FavoritoTableViewCell.swift in Sources */,
 				674BE3D21CC6870200EA4EFF /* Reachability.swift in Sources */,
@@ -479,6 +498,7 @@
 				1DFBC2271CC2B2FC0071D5CD /* CDMagazine.swift in Sources */,
 				1D5185731CAE428C0071B651 /* WebService.swift in Sources */,
 				1DFBC21D1CC2A3380071D5CD /* SCLAlertView.swift in Sources */,
+				67734EDF1CCEBCF200CE9F7F /* PropagandaViewController.swift in Sources */,
 				1D40D0761CB2041B00F86583 /* MagazinePortada.swift in Sources */,
 				1D5185791CAE42EF0071B651 /* SwiftyJSON.swift in Sources */,
 				1D5185921CAE59FC0071B651 /* ArtWork.swift in Sources */,

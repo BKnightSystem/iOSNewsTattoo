@@ -9,27 +9,16 @@
 import UIKit
 import CoreData
 
-//let IMAGE_ICON_MENU   = UIImage(named: "icon-menu")
-//let IMAGE_ICON_FLORES = UIImage(named: "grupo-de-rosas")
-//let IMAGE_ICON_DIOSES = UIImage(named: "bastet")
-//let IMAGE_ICON_LETRAS = UIImage(named: "juguete-de-bloque-de-letras")
-//let IMAGE_ICON_ANIMAL = UIImage(named: "huella-de-pata-de-animal")
-//let IMAGE_ICON_GRECAS = UIImage(named: "tatuaje-de-caballo-en-variante-mirando-hacia-la-izquierda")
-//let IMAGE_ICON_STUDIO = UIImage(named: "brujula")
-//let IMAGE_ICON_CLOSE  = UIImage(named: "boton-de-eliminar")
-//let IMAGE_ICON_SIMULADOR  = UIImage(named: "tatuaje-de-corazon")
-//let IMAGE_ICON_CRANEO  = UIImage(named: "craneo-humano")
-//let IMAGE_ICON_SAVE  = UIImage(named: "save")
 let IMAGE_ICON_BACK  = UIImage(named: "back")
 let IMAGE_ICON_FAVORITO = UIImage(named: "circulo")
 let IMAGE_ICON_FB   = UIImage(named: "social")
 
-let IMAGE_ICON_FLORES_WHITE = UIImage(named: "naturaleza")
-let IMAGE_ICON_DIOSES_WHITE = UIImage(named: "formas")
-let IMAGE_ICON_LETRAS_WHITE = UIImage(named: "bloques")
-let IMAGE_ICON_ANIMAL_WHITE = UIImage(named: "perro")
-let IMAGE_ICON_GRECAS_WHITE = UIImage(named: "animales")
-let IMAGE_ICON_CRANEO_WHITE  = UIImage(named: "personas")
+//let IMAGE_ICON_FLORES_WHITE = UIImage(named: "naturaleza")
+//let IMAGE_ICON_DIOSES_WHITE = UIImage(named: "formas")
+//let IMAGE_ICON_LETRAS_WHITE = UIImage(named: "bloques")
+//let IMAGE_ICON_ANIMAL_WHITE = UIImage(named: "perro")
+//let IMAGE_ICON_GRECAS_WHITE = UIImage(named: "animales")
+//let IMAGE_ICON_CRANEO_WHITE  = UIImage(named: "personas")
 
 //Color
 let COLOR_BACKGROUND_VIEW = 0x537893
@@ -40,6 +29,8 @@ let COLOR_BLANCO = 0xFFFFFF
 let COLOR_ICONOS = 0xDE5240
 let COLOR_BACKGROUND_PAGE = 0xF4F4EC
 let COLOR_TITLE_PAGE = 0x61605C
+
+var IMG_DEFAULT_PROMO = UIImage(named: "headerTattoo")
 
 //Array Images
 var imagesForSection0: [UIImage] = []
@@ -57,7 +48,11 @@ var arrayPagesMagazine: [UIView] = []
 var arrayEstudiosTattoo = [Estudios]()
 var arrayPortadasTattoo = [MagazinePortada]()
 
+//Array Favoritos
 var arrayFavoritos = [MagazinePortada]()
+
+//Array Promociones
+var arrayPromociones = [Promociones]()
 
 //Array of Estudios CD
 var estudios = [NSManagedObject]()

@@ -9,13 +9,12 @@
 import UIKit
 import CoreData
 
-class LibraryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class LibraryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, iCarouselDelegate, iCarouselDataSource {
 
     @IBOutlet weak var tbMagazines:UITableView!
-    @IBOutlet weak var imgHeader:UIImageView!
+    @IBOutlet weak var carouselHeader:iCarousel!
     @IBOutlet weak var viewLineTop:UIView!
     @IBOutlet weak var viewLineDown:UIView!
-    @IBOutlet weak var lbTop:UILabel!
     @IBOutlet weak var btnShareFB:FBSDKShareButton!
     @IBOutlet weak var btnFavorito:UIButton!
     
@@ -43,6 +42,12 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    func openWeb(){
+        print("Show Web")
+        let propaganda = PropagandaViewController(nibName: "PropagandaViewController", bundle: nil)
+        self.navigationController?.pushViewController(propaganda, animated: true)
+    }
+    
     //MARK: Connection Internet
     func connectionInternet(){
         do {
@@ -67,10 +72,11 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         if reachability.isReachable() {
             if reachability.isReachableViaWiFi() {
 //                print("Reachable via WiFi")
+                self.wsGetPromociones()
                 self.wsGetStudios()
-                
             } else {
 //                print("Reachable via Cellular")
+                self.wsGetPromociones()
                 self.wsGetStudios()
                 
             }
@@ -106,10 +112,6 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: WS
     func wsGetStudios(){
-        dispatch_async(dispatch_get_main_queue()) {
-            SwiftSpinner.show("Obteniendo Estudios de tatuajes")
-        }
-        
         let parameters:[String:AnyObject] = ["":""]
         WebService.estudios(parameters, callback:{(isOK) -> Void in
             if isOK {
@@ -119,6 +121,26 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                     //Guardar todos los estudios en la base de datos
                     self.saveEstudios()
                     self.tbMagazines.reloadData()
+                })
+                
+                SwiftSpinner.hide()
+            }
+            else {
+                SwiftSpinner.hide()
+            }
+        })
+    }
+    
+    func wsGetPromociones(){
+        dispatch_async(dispatch_get_main_queue()) {
+            SwiftSpinner.show("Buscando promociones")
+        }
+        
+        let parameters:[String:AnyObject] = ["":""]
+        WebService.promociones(parameters, callback:{(isOK) -> Void in
+            if isOK {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.initCarousel()
                 })
                 
                 SwiftSpinner.hide()
@@ -182,6 +204,67 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
             CDEstudios.deleteEstudio(i)
         }
     }
+    
+    //MARK: Carousel Delegate
+    func initCarousel(){
+        carouselHeader.bounces = false
+        carouselHeader.pagingEnabled = true
+        carouselHeader.delegate = self
+        carouselHeader.dataSource = self
+        carouselHeader.type = .Linear
+    }
+    
+    func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
+        var newView = view
+        var imageView:UIImageView!
+        
+        if arrayPromociones.count > 0 {
+            imageView = UIImageView(image: arrayPromociones[index].bannerViewPromocion)
+        }else {
+            imageView = UIImageView(image: IMG_DEFAULT_PROMO)
+        }
+        
+        imageView.borderRadius(12)
+        imageView.backgroundColor = UIColor(netHex: COLOR_NEGRO);
+        imageView.frame = CGRect(x: 0, y: 0, width:carouselHeader.frame.width, height:carouselHeader.frame.height)
+        imageView.contentMode = .ScaleAspectFit
+        newView = imageView
+        
+        return newView
+    }
+    
+    func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
+        var elements = 0
+        if arrayPromociones.count > 0 {
+            elements = arrayPromociones.count
+        }else {
+            elements = 1
+        }
+        return elements
+    }
+    
+    func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
+        //pageControl.currentPage = carousel.currentItemIndex
+    }
+    
+    func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        switch option {
+        case .Spacing:
+            return value * 1.1
+        case .Wrap:
+            return value + CGFloat(1.0)
+        default:
+            return value
+        }
+    }
+    
+    func carousel(carousel: iCarousel!, didSelectItemAtIndex index: Int) {
+        if arrayPromociones.count > 0 {
+            let propaganda = PropagandaViewController(nibName:"PropagandaViewController", bundle: nil)
+            propaganda.indexEstudio = index
+            self.navigationController?.pushViewController(propaganda, animated: true)
+        }
+    }
 
     //MARK: TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -218,21 +301,9 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Configuration
     func configuration(){
-        self.imgHeader.borderRadius(12)
+        //self.imgHeader.borderRadius(12)
         self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
         self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
-        
-        self.lbTop.font = FONT_TEXT_3
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

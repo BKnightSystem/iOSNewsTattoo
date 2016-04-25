@@ -141,4 +141,49 @@ class WebService {
             }
         }).resume()
     }
+    
+    class func promociones(datos:[String:AnyObject], callback: ((isOk:Bool /*NSMutableDictionary*/)-> Void)?)
+    {
+        let url = NSURL(string: "http://www.canastadedulces.com.mx/obtener_promociones.php")
+        let theRequest = NSURLRequest(URL: url!)
+        
+        let session = NSURLSession.sharedSession()
+        
+        session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
+            if (data!.length > 0 && data != nil) && error == nil && response != nil {
+                
+                arrayPromociones.removeAll()
+                
+                let json = JSON(data: data!)
+                print("JSON \(json)")
+                
+                let estado = json["estado"].stringValue
+                
+                if estado != "2" {
+                    
+                    let promocion = json["Promociones"].array
+                    for promo in promocion! {
+                        let datosPromocion = Promociones()
+                        datosPromocion.idEstudio = promo["idEstudio"].stringValue
+                        datosPromocion.idPromocion = promo["idPromocion"].stringValue
+                        datosPromocion.imgPromocion = promo["imagen"].stringValue
+                        datosPromocion.bannerPromocion = promo["bannerPromocion"].stringValue
+                        
+                        if datosPromocion.imgPromocion != "" {
+                            datosPromocion.imgViewPromocion = Utilidades.base64ToImage(datosPromocion.imgPromocion)
+                        }
+                        if datosPromocion.bannerPromocion != "" {
+                            datosPromocion.bannerViewPromocion = Utilidades.base64ToImage(datosPromocion.bannerPromocion)
+                        }
+                        
+                        arrayPromociones.append(datosPromocion)
+                    }
+                }
+                
+                callback!(isOk:true)
+            }else {
+                callback!(isOk:false)
+            }
+        }).resume()
+    }
 }
