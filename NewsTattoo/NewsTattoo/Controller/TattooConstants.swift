@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+var TIMEOUT_REQUEST = 10.0
+var TIMEOUT_RESOURCE = 20.0
+
 let IMAGE_ICON_BACK  = UIImage(named: "back")
 let IMAGE_ICON_FAVORITO = UIImage(named: "circulo")
 let IMAGE_ICON_FB   = UIImage(named: "social")
@@ -26,6 +29,7 @@ let COLOR_BACKGROUND_APP  = 0xE6EAE9
 let COLOR_LINE_VIEW = 0xBDBCBC
 let COLOR_NEGRO = 0x000000
 let COLOR_BLANCO = 0xFFFFFF
+let COLOR_ROJO  = 0xFF0000
 let COLOR_ICONOS = 0xDE5240
 let COLOR_BACKGROUND_PAGE = 0xF4F4EC
 let COLOR_TITLE_PAGE = 0x61605C

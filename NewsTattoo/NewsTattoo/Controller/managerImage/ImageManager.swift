@@ -117,6 +117,8 @@ class ImageManager {
     class func createDirectoryImagePage(nameDirectory:String) {
         let nameDirectory = "/PagesMagazine\(nameDirectory)"
         let pathLogos = Utilidades.getDocumentsDirectory().stringByAppendingPathComponent(nameDirectory)
+        print("Directory \(pathLogos)")
+        
         let manager = NSFileManager.defaultManager()
         
         if !(manager.fileExistsAtPath(pathLogos)) {

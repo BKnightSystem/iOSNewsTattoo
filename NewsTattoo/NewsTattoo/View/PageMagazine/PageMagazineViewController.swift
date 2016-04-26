@@ -41,8 +41,13 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        
+    override func viewWillDisappear(animated: Bool) {
+        if !isFavorito {
+            reachability!.stopNotifier()
+            NSNotificationCenter.defaultCenter().removeObserver(self,
+                                                                name: ReachabilityChangedNotification,
+                                                                object: reachability)
+        }
     }
 
     func connectionInternet() {
@@ -53,7 +58,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PageMagazineViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
         do{
             try reachability?.startNotifier()
         }catch{
@@ -82,10 +87,10 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         
         if reachability.isReachable() {
             if reachability.isReachableViaWiFi() {
-                //                print("Reachable via WiFi")
+                //via WiFi
                 self.wsGetPages()
             } else {
-                //                print("Reachable via Cellular")
+                //via Cellular
                 self.wsGetPages()
             }
         } else {
@@ -97,7 +102,6 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     func initPageFavourite() {
         //Load information
-        //print("CUANTOS ELEMENTOS ESTAN EN LA BASE \(galeriaCD.count)")
         arrayDetailPages.removeAll()
         for i in 0 ..< galeriaCD.count {
             let dataPage = galeriaCD[i]
@@ -112,7 +116,6 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             
             let imgLogo = ImageManager.getPageByID("\(i)", nameDirectory: nameDirectory)
             if  imgLogo != nil {
-                //print("SI EXISTE LA IMAGEN")
                 detailPage.image = imgLogo!
             }
             
@@ -129,6 +132,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         self.carouselPages.reloadData()
         SwiftSpinner.hide()
     }
+    
     func createPagesMagazine(){
         arrayPagesMagazine.removeAll()
         
@@ -211,7 +215,6 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     //MARK: Configuration
     func configuration(){
-        //self.view.backgroundColor = UIColor(netHex:COLOR_BACKGROUND_PAGE)
         carouselPages.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_PAGE)
         viewTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
         viewDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
@@ -256,36 +259,18 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     //MARK: Save information for Estudio
     func addFavorite() {
         CDMagazine.fetchRequest()
-        //print("TOTAL DE PORTADAS \(magazineCD.count)")
         if magazineCD.count > 5 {
-            
-            let alert = SCLAlertView()
-            alert.showCloseButton = false
-            alert.addButton("Aceptar", action: {
-                //self.saveInformationEstudio()
-            })
-            
-            alert.showInfo("No se puede agregar a favoritos", subTitle: "Solo se permite un máximo de 5 revistas", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+            self.alertNoGuardarMagazine()
         }else {
-            let nameRevista = arrayPortadasTattoo[indexPortada].nombre
-            
-            let alert = SCLAlertView()
-            alert.showCloseButton = false
-            alert.addButton("Aceptar", action: {
-                self.saveInformationEstudio()
-            })
-            alert.addButton("Cancelar", action: {
-                
-            })
-            
-            alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la revista: \(nameRevista)", closeButtonTitle: "", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+            if arrayDetailPages.count > 0 {
+                self.alertSaveMagazine()
+            }else {
+                self.alertError()
+            }
         }
     }
     
-    func alertExitoSavePortada(){
-        let alert = SCLAlertView()
-        alert.showSuccess("Se agrego a favoritos", subTitle: "Para ver la revista dirijase a favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
-    }
+    
     
     func saveInformationEstudio() {
         //Validate if magazine is or not favourite
@@ -305,7 +290,6 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
                 
                 for i in 0 ..< arrayDetailPages.count {
                     let pages = arrayDetailPages[i]
-                    //print("PAGES TO SAVE \(pages.idImagen)")
                     if CDGaleria.saveMagazinePage(pageMagazine: pages) {
                         let namePage = "\(i)"
                         ImageManager.saveImagePage(pages.image, nameImage:namePage, nameDirectory: "\(namePortada)")
@@ -320,12 +304,41 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             let alert = SCLAlertView()
             alert.showSuccess("", subTitle: "La revista ya esta en la sección de favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
         }
-        
-//        print("Agregar como idEstudio \(arrayPortadasTattoo[indexPortada].idEstudio)")
-//        print("Agregar como magazine \(arrayPortadasTattoo[indexPortada].idMagazine)")
-//        print("Agregar como nombre \(arrayPortadasTattoo[indexPortada].nombre)")
-//        print("Agregar como mes \(arrayPortadasTattoo[indexPortada].mes)")
-//        print("Agregar como anio \(arrayPortadasTattoo[indexPortada].anio)")
     }
-
+    
+    //MARK: Alerts
+    func alertExitoSavePortada(){
+        let alert = SCLAlertView()
+        alert.showSuccess("Se agrego a favoritos", subTitle: "Para ver la revista dirijase a favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
+    func alertNoGuardarMagazine(){
+        let alert = SCLAlertView()
+        alert.showCloseButton = false
+        alert.addButton("Aceptar", action: {
+            //self.saveInformationEstudio()
+        })
+        
+        alert.showInfo("No se puede agregar a favoritos", subTitle: "Solo se permite un máximo de 5 revistas", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
+    func alertSaveMagazine(){
+        let nameRevista = arrayPortadasTattoo[indexPortada].nombre
+        
+        let alert = SCLAlertView()
+        alert.showCloseButton = false
+        alert.addButton("Aceptar", action: {
+            self.saveInformationEstudio()
+        })
+        alert.addButton("Cancelar", action: {
+            
+        })
+        
+        alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la revista: \(nameRevista)", closeButtonTitle: "", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
+    func alertError() {
+        let alert = SCLAlertView()
+        alert.showError("Error", subTitle: "No se puede guardar en favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ROJO), colorTextButton: UInt(COLOR_BLANCO))
+    }
 }

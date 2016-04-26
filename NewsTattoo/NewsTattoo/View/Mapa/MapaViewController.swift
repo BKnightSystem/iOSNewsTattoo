@@ -31,6 +31,13 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
 //        self.showSucLocation()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        reachability!.stopNotifier()
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+                                                            name: ReachabilityChangedNotification,
+                                                            object: reachability)
+    }
+    
     func connectionInternet() {
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
@@ -39,7 +46,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MapaViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
         do{
             try reachability?.startNotifier()
         }catch{
@@ -58,10 +65,10 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         
         if reachability.isReachable() {
             if reachability.isReachableViaWiFi() {
-                //                print("Reachable via WiFi")
+                //Reachable via WiFi
                 self.showSucLocation()
             } else {
-                //                print("Reachable via Cellular")
+                //Reachable via Cellular
                 self.showSucLocation()
             }
         } else {
@@ -74,7 +81,6 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     func zoomToRegion() {
         let latitud = arrayEstudiosTattoo[indexEstudio].latitud
         let longitud = arrayEstudiosTattoo[indexEstudio].longitud
-        //print("Latitud y longitud \(latitud) \(longitud)")
         
         let location = CLLocationCoordinate2D(latitude: latitud, longitude: longitud)
         
@@ -135,7 +141,6 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         switch status {
         case .Denied:
            // print("GPS OFF**********************************")
-            self.alertGPS()
             break
         case .AuthorizedAlways:
             //print("GPS ON**********************************")
@@ -154,44 +159,15 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
     
-    //    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-    //        if let annotation = annotation as? ArtWork {
-    //            let identifier = "pin"
-    //            var view: MKPinAnnotationView
-    //            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-    //                as? MKPinAnnotationView { // 2
-    //                    dequeuedView.annotation = annotation
-    //                    view = dequeuedView
-    //            } else {
-    //                // 3
-    //                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-    //                view.canShowCallout = true
-    //                view.calloutOffset = CGPoint(x: -5, y: 5)
-    //                view.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure) as UIView
-    //            }
-    //            return view
-    //        }
-    //        return nil
-    //    }
-    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let location = view.annotation as! ArtWork
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMapsWithLaunchOptions(launchOptions)
     }
     
-    //MARK: Alerts
-    func alertGPS(){
-        //let alert = UIAlertView()
-        
-    }
-    
     //MARK: NavigationBar
     func createNavigationBar(){
         self.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
-        
-        //self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        //self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         //Icono Izquierdo
         let button = UIButton(type: UIButtonType.Custom) as UIButton

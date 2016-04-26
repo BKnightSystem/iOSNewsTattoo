@@ -32,19 +32,26 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         self.connectionInternet()
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        reachability!.stopNotifier()
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+                                                            name: ReachabilityChangedNotification,
+                                                            object: reachability)
+    }
+    
     func connectionInternet(){
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
         } catch {
-            //print("Unable to create Reachability")
+            //Unable to create Reachability
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ListMagazinesViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
         do{
             try reachability?.startNotifier()
         }catch{
-           // print("could not start reachability notifier")
+           //could not start reachability notifier
         }
     }
     
@@ -83,10 +90,10 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         
         if reachability.isReachable() {
             if reachability.isReachableViaWiFi() {
-                //                print("Reachable via WiFi")
+                //Reachable via WiFi
                 self.wsGetPortadas()
             } else {
-                //                print("Reachable via Cellular")
+                //Reachable via Cellular
                 self.wsGetPortadas()
             }
         } else {
@@ -214,9 +221,6 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
     */
     func createNavigationBar(){
         self.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
-        
-        //self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        //self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         //Icono Izquierdo
         let button = UIButton(type: UIButtonType.Custom) as UIButton

@@ -47,18 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setNavigation() {
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().clipsToBounds = true
-        //self.navigationController?.navigationBar.clipsToBounds = true
-        //UINavigationBar.appearance().barTintColor = UIColor(netHex: COLOR_BACKGROUND_PAGE)
-        //UINavigationBar.appearance().tintColor = UIColor(netHex: NAVIGATION_BAR_TINT_COLOR)
-        //var attributes = [String : AnyObject]()
-        //attributes[NSForegroundColorAttributeName] = UIColor(netHex: NAVIGATION_BAR_TINT_COLOR)
-        //attributes[NSFontAttributeName] = UIFont(name: "Avenir", size: 17)
-        //UINavigationBar.appearance().titleTextAttributes = attributes
-        
-//        let attr = NSDictionary(object: UIFont(name: "Avenir", size: 8.0)!, forKey: NSFontAttributeName)
-//        UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
-//        UISegmentedControl.appearance().tintColor = UIColor(netHex: BUTTON_BACKGROUND_COLOR)
-        
     }
 
     func inicio() {
@@ -66,10 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let library = LibraryViewController(nibName:"LibraryViewController", bundle:nil) as LibraryViewController
         let navigation = UINavigationController(rootViewController: library)
-        //let menu = MenuViewController(nibName:"MenuViewController", bundle:nil) as MenuViewController
-        //menu.delegate = galeria
-        //let sideMenu = SlideMenuController(mainViewController: navigation, leftMenuViewController: menu)
-        //UIApplication.sharedApplication().keyWindow!.rootViewController = sideMenu
         
         if let window = window {
             window.backgroundColor = UIColor.whiteColor()

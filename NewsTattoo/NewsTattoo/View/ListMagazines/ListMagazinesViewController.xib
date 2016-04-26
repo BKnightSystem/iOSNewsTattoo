@@ -63,7 +63,7 @@
                         <action selector="btnLLamar:" destination="-1" eventType="touchUpInside" id="ZdQ-Cj-1sL"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8V-nL-7CO">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S / N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8V-nL-7CO">
                     <rect key="frame" x="8" y="571" width="584" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="bwB-8P-pIE"/>

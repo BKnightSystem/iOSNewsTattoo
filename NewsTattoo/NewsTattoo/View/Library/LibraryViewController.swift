@@ -29,6 +29,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tbMagazines.dataSource = self
         
         self.connectionInternet()
+        self.initCarousel()
         
         ImageManager.createDirectoryImage()
     }
@@ -39,13 +40,13 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func openWeb(){
-        print("Show Web")
-        let propaganda = PropagandaViewController(nibName: "PropagandaViewController", bundle: nil)
-        self.navigationController?.pushViewController(propaganda, animated: true)
+    override func viewWillDisappear(animated: Bool) {
+        reachability!.stopNotifier()
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+                                                            name: ReachabilityChangedNotification,
+                                                            object: reachability)
     }
     
     //MARK: Connection Internet
@@ -53,29 +54,29 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
         } catch {
-            //print("Unable to create Reachability")
+            //Unable to create Reachability
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LibraryViewController.reachabilityChangedPE(_:)),name: ReachabilityChangedNotification,object: reachability)
         do{
             try reachability?.startNotifier()
         }catch{
-            //print("could not start reachability notifier")
+            //could not start reachability notifier
         }
     }
     
-    func reachabilityChanged(note: NSNotification) {
+    func reachabilityChangedPE(note: NSNotification) {
         
         let reachability = note.object as! Reachability
         
         if reachability.isReachable() {
             if reachability.isReachableViaWiFi() {
-//                print("Reachable via WiFi")
+//                Reachable via WiFi
                 self.wsGetPromociones()
                 self.wsGetStudios()
             } else {
-//                print("Reachable via Cellular")
+//                Reachable via Cellular
                 self.wsGetPromociones()
                 self.wsGetStudios()
                 
@@ -84,6 +85,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
             dispatch_async(dispatch_get_main_queue()) {
                 Utilidades.alertSinConexion()
                 self.getEstudiosCD()
+                self.carouselHeader.reloadData()
             }
         }
     }
@@ -99,7 +101,6 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     func btnShareFBConfig() {
         btnShareFB.setTitle("", forState: .Normal)
         btnShareFB.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_APP)
-//        btnShareFB.setBackgroundImage(IMAGE_ICON_FB, forState: .Normal)
         
         let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
         content.contentURL = NSURL(string: "http://www.techotopia.com/index.php/Working_with_Directories_in_Swift_on_iOS_8")
@@ -123,24 +124,25 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.tbMagazines.reloadData()
                 })
                 
-                SwiftSpinner.hide()
+                //SwiftSpinner.hide()
             }
             else {
-                SwiftSpinner.hide()
+                //SwiftSpinner.hide()
             }
         })
     }
     
     func wsGetPromociones(){
         dispatch_async(dispatch_get_main_queue()) {
-            SwiftSpinner.show("Buscando promociones")
+            SwiftSpinner.show("Consultando información")
         }
         
         let parameters:[String:AnyObject] = ["":""]
         WebService.promociones(parameters, callback:{(isOK) -> Void in
             if isOK {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.initCarousel()
+                    //self.initCarousel()
+                    self.carouselHeader.reloadData()
                 })
                 
                 SwiftSpinner.hide()
@@ -168,7 +170,6 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
             let imageName = "\(i + 1)"
             let imgLogo = ImageManager.getLogoByID(imageName)
             if  imgLogo != nil {
-               // print("SI EXISTE LA IMAGEN")
                 dataEstudio.logo = imgLogo!
             }
             
@@ -185,9 +186,8 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                 let image:UIImage = arrayEstudiosTattoo[i].logo
                 let nameImage = arrayEstudiosTattoo[i].idEstudio
                 ImageManager.saveImage(image, name: nameImage)
-                //print("Se GUARDO EL ESTUDIO \(arrayEstudiosTattoo[i].nombreEstudio)")
             }else {
-               // print("ERROR AL GUARDAR DATO")
+               // ERROR AL GUARDAR DATO
             }
             
         }
@@ -195,7 +195,6 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func getEstudiosCD() {
         CDEstudios.fetchRequest()
-       // print("CUANTOS ENCONTRO \(estudios.count)")
         self.showEstudiosWithoutInternet()
     }
     
@@ -301,7 +300,6 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Configuration
     func configuration(){
-        //self.imgHeader.borderRadius(12)
         self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
         self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
     }

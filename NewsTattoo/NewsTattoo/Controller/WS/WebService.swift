@@ -10,15 +10,21 @@ import Foundation
 import UIKit
 
 class WebService {
+    //MARK: get studios
     class func estudios(datos:[String:AnyObject], callback: ((isOk:Bool /*NSMutableDictionary*/)-> Void)?)
     {
         let url = NSURL(string: "http://canastadedulces.com.mx/obtener_estudios.php")
         let theRequest = NSURLRequest(URL: url!)
         
-        let session = NSURLSession.sharedSession()
+        let urlConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        urlConfig.timeoutIntervalForRequest = TIMEOUT_REQUEST
+        urlConfig.timeoutIntervalForResource = TIMEOUT_RESOURCE
+        
+        //let session = NSURLSession.sharedSession()
+        let session = NSURLSession(configuration: urlConfig)
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-        if (data!.length > 0 && data != nil) && error == nil && response != nil {
+        if data != nil && error == nil && response != nil {
             
             arrayEstudiosTattoo.removeAll()
                 
@@ -49,21 +55,29 @@ class WebService {
         }).resume()
     }
     
+    //MARK: get images by studios
     class func galeriaEstudiosById(datos:[String:Int], callback: ((isOk:Bool /*NSMutableDictionary*/)-> Void)?)
     {
         let idEstudio = datos["idEstudio"]
         let idMagazine = datos["idMagazine"]
-        print(datos["idEstudio"])
+        print("ID ESTUDIO \(datos["idEstudio"])")
         let url = NSURL(string: "http://canastadedulces.com.mx/obtener_galeria.php?idEstudio=\(idEstudio!)&idMagazine=\(idMagazine!)")
         
         let theRequest = NSURLRequest(URL: url!)
         
-        let session = NSURLSession.sharedSession()
+        let urlConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        urlConfig.timeoutIntervalForRequest = TIMEOUT_REQUEST
+        urlConfig.timeoutIntervalForResource = TIMEOUT_RESOURCE
+        
+        //let session = NSURLSession.sharedSession()
+        let session = NSURLSession(configuration: urlConfig)
+        
+        
         //Clear Images
         arrayDetailPages.removeAll()
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-            if (data!.length > 0 && data != nil) && error == nil && response != nil {
+            if data != nil && error == nil && response != nil {
                 
                 let json = JSON(data: data!)
                 print("JSON \(json)")
@@ -96,6 +110,7 @@ class WebService {
         }).resume()
     }
     
+    //MARK: get the principal image for magazine
     class func portadaMagazineById(datos:[String:Int], callback: ((isOk:Bool /*NSMutableDictionary*/)-> Void)?)
     {
         let idEstudio = datos["idEstudio"]
@@ -104,12 +119,18 @@ class WebService {
         
         let theRequest = NSURLRequest(URL: url!)
         
-        let session = NSURLSession.sharedSession()
+        let urlConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        urlConfig.timeoutIntervalForRequest = TIMEOUT_REQUEST
+        urlConfig.timeoutIntervalForResource = TIMEOUT_RESOURCE
+        
+        //let session = NSURLSession.sharedSession()
+        let session = NSURLSession(configuration: urlConfig)
+        
         //Clear Images
         arrayPortadasTattoo.removeAll()
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-            if (data!.length > 0 && data != nil)  && error == nil && response != nil{
+            if data != nil  && error == nil && response != nil{
                 
                 let json = JSON(data: data!)
                 print("JSON \(json)")
@@ -142,15 +163,21 @@ class WebService {
         }).resume()
     }
     
+    //MARK: get promotions by studio
     class func promociones(datos:[String:AnyObject], callback: ((isOk:Bool /*NSMutableDictionary*/)-> Void)?)
     {
         let url = NSURL(string: "http://www.canastadedulces.com.mx/obtener_promociones.php")
         let theRequest = NSURLRequest(URL: url!)
         
-        let session = NSURLSession.sharedSession()
+        let urlConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        urlConfig.timeoutIntervalForRequest = TIMEOUT_REQUEST
+        urlConfig.timeoutIntervalForResource = TIMEOUT_RESOURCE
+        
+        //let session = NSURLSession.sharedSession()
+        let session = NSURLSession(configuration: urlConfig)
         
         session.dataTaskWithRequest(theRequest, completionHandler: {(data, response, error) in
-            if (data!.length > 0 && data != nil) && error == nil && response != nil {
+            if data != nil && error == nil && response != nil {
                 
                 arrayPromociones.removeAll()
                 

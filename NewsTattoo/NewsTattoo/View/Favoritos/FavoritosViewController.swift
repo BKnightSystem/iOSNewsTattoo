@@ -54,7 +54,6 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
                 let imageName = "\(portada.idEstudio)\(portada.idMagazine)"
                 let imgLogo = ImageManager.getPortadaByID(imageName)
                 if  imgLogo != nil {
-                    //print("SI EXISTE LA IMAGEN")
                     portada.imgPortada = imgLogo!
                 }
                 
@@ -163,9 +162,6 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
         //Delete image pages
         ImageManager.deleteDirectory(nameDirectory)
         ImageManager.deletePortada(namePortada)
-        
-        //let tmpCount = galeriaCD.count
-        //print("CUANTOS ELEMENTOS QUEDARON \(tmpCount)")
         
         self.loadInformation()
         self.tbFavoritos.reloadData()
