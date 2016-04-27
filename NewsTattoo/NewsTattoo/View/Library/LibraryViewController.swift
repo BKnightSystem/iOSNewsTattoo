@@ -19,14 +19,20 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var btnFavorito:UIButton!
     
     var reachability: Reachability?
+    var refresh:UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Create refreshControl
+        refresh = UIRefreshControl()
+        
         self.configuration()
         
         self.tbMagazines.delegate = self
         self.tbMagazines.dataSource = self
+        
+        self.tbMagazines.addSubview(refresh)
         
         self.connectionInternet()
         self.initCarousel()
@@ -111,6 +117,12 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         btnShareFB.shareContent = content
     }
     
+    //MARK: Alert
+    func alertSinEstudios(){
+        let alert = SCLAlertView()
+        alert.showSuccess("Aviso", subTitle: "No fue posible obtener nueva información", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
     //MARK: WS
     func wsGetStudios(){
         let parameters:[String:AnyObject] = ["":""]
@@ -133,21 +145,31 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func wsGetPromociones(){
-        dispatch_async(dispatch_get_main_queue()) {
-            SwiftSpinner.show("Consultando información")
+        if !refresh.refreshing {
+            dispatch_async(dispatch_get_main_queue()) {
+                SwiftSpinner.show("Consultando información")
+            }
         }
         
         let parameters:[String:AnyObject] = ["":""]
         WebService.promociones(parameters, callback:{(isOK) -> Void in
             if isOK {
                 dispatch_async(dispatch_get_main_queue(), {
-                    //self.initCarousel()
+                    if self.refresh.refreshing {
+                        self.endRefresh()
+                    }
                     self.carouselHeader.reloadData()
                 })
                 
                 SwiftSpinner.hide()
             }
             else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    if self.refresh.refreshing {
+                        self.endRefresh()
+                    }
+                    self.alertSinEstudios()
+                })
                 SwiftSpinner.hide()
             }
         })
@@ -264,6 +286,18 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
             self.navigationController?.pushViewController(propaganda, animated: true)
         }
     }
+    
+    //MARK: Scroll View
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        if refresh.refreshing {
+            self.wsGetPromociones()
+            self.wsGetStudios()
+        }
+    }
+    
+    func endRefresh(){
+        refresh.endRefreshing()
+    }
 
     //MARK: TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -302,6 +336,9 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     func configuration(){
         self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
         self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
+        
+        refresh.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_APP)
+        refresh.tintColor = UIColor(netHex: COLOR_BLANCO)
     }
 
 }

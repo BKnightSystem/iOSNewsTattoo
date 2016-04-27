@@ -139,8 +139,6 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
     }
     
     //MARK: UITableViewRowAction

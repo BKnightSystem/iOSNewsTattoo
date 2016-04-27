@@ -45,7 +45,7 @@ var imagesEstudioGalery: [UIImage] = []
 var arrayDetailPages:[Magazine] = []
 
 //Array options
-var arrayBanner:[UIImage] = []
+//var arrayBanner:[UIImage] = []
 var arrayPagesMagazine: [UIView] = []
 
 //Array Estudios

@@ -61,13 +61,13 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
     }
     
     func initCarousel(){
-        arrayBanner.removeAll()
-        arrayBanner.append(IMAGE_ICON_BACK!)
-        arrayBanner.append(IMAGE_ICON_BACK!)
-        arrayBanner.append(IMAGE_ICON_BACK!)
-        arrayBanner.append(IMAGE_ICON_BACK!)
-        arrayBanner.append(IMAGE_ICON_BACK!)
-        arrayBanner.append(IMAGE_ICON_BACK!)
+//        arrayBanner.removeAll()
+//        arrayBanner.append(IMAGE_ICON_BACK!)
+//        arrayBanner.append(IMAGE_ICON_BACK!)
+//        arrayBanner.append(IMAGE_ICON_BACK!)
+//        arrayBanner.append(IMAGE_ICON_BACK!)
+//        arrayBanner.append(IMAGE_ICON_BACK!)
+//        arrayBanner.append(IMAGE_ICON_BACK!)
         
 //        carouselYear.tag = 0
 //        carouselYear.bounces = false
@@ -106,7 +106,7 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
     //MARK: WS
     func wsGetPortadas(){
         dispatch_async(dispatch_get_main_queue()) {
-            SwiftSpinner.show("Obteniendo revistas")
+            SwiftSpinner.show("Obteniendo información")
         }
         
         let parameters:[String:Int] = ["idEstudio":indexEstudio + 1]
@@ -123,9 +123,18 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
                 SwiftSpinner.hide()
             }
             else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.alertSinInformacion()
+                })
                 SwiftSpinner.hide()
             }
         })
+    }
+    
+    //MARK: Alert
+    func alertSinInformacion(){
+        let alert = SCLAlertView()
+        alert.showSuccess("Sin información", subTitle: "No fue posible obtener información del estudio", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
     }
     
     //MARK: Action Buttos
