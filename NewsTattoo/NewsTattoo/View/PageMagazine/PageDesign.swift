@@ -37,8 +37,8 @@ class PageDesign: UIView {
         //print("Width \(width) HEIGHT \(height)")
         
         //Dimensions of elements
-        let widthImg:CGFloat = (view.bounds.size.width / 6) * 5
-        let heightImg:CGFloat = (view.bounds.size.height / 6) * 4
+        let widthImg:CGFloat = (view.bounds.size.width / 6) * 5.5
+        let heightImg:CGFloat = (view.bounds.size.height / 6) * 5
         
         let heightLineSeparator:CGFloat = 2.0
         let heightTitle:CGFloat = 20.0
@@ -60,6 +60,8 @@ class PageDesign: UIView {
         
         imgTattoo = UIImageView(frame: CGRectMake(posXImg, posYImg + 5, widthImg, heightImg))
         imgTattoo.borderRadius(12)
+        imgTattoo.clipsToBounds = true
+        imgTattoo.contentMode = .ScaleAspectFit
         
         txDown = UITextView(frame: CGRectMake(posX, posYImg + heightImg, view.bounds.size.width, view.bounds.size.height - (posYImg + heightImg + 5)))
         txDown.editable = false
@@ -73,7 +75,7 @@ class PageDesign: UIView {
         view.addSubview(txTop)
         view.addSubview(lineSeparator)
         view.addSubview(imgTattoo)
-        view.addSubview(txDown)
+        //view.addSubview(txDown)
         
         return view
     }
