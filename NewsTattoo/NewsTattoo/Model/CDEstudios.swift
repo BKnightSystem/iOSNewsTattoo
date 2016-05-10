@@ -29,7 +29,7 @@ class CDEstudios {
             
             fetch = true
         } catch let error as NSError {
-            //print("Could not fetch \(error), \(error.userInfo)")
+            print("Could not fetch \(error), \(error.userInfo)")
             fetch = false
         }
         
@@ -64,7 +64,7 @@ class CDEstudios {
             estudios.append(estudio)
         } catch let error as NSError  {
             estudiotSave = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return estudiotSave
@@ -152,7 +152,7 @@ class CDEstudios {
             estudios.append(estudio)
         } catch let error as NSError  {
             estudioSave = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return estudioSave
@@ -175,7 +175,7 @@ class CDEstudios {
             deleteContact = true
         } catch let error as NSError  {
             deleteContact = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return deleteContact

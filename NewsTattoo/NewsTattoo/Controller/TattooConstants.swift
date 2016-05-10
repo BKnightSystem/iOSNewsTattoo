@@ -9,14 +9,14 @@
 import UIKit
 import CoreData
 
-var TIMEOUT_REQUEST = 10.0
+var TIMEOUT_REQUEST = 20.0
 var TIMEOUT_RESOURCE = 20.0
 
 let IMAGE_ICON_BACK  = UIImage(named: "back")
 let IMAGE_ICON_FAVORITO = UIImage(named: "circulo")
 let IMAGE_ICON_FB   = UIImage(named: "social")
 
-//let IMAGE_ICON_FLORES_WHITE = UIImage(named: "naturaleza")
+let IMAGE_LAUNCH_SCREEN = UIImage(named: "backgroundApp.png")
 //let IMAGE_ICON_DIOSES_WHITE = UIImage(named: "formas")
 //let IMAGE_ICON_LETRAS_WHITE = UIImage(named: "bloques")
 //let IMAGE_ICON_ANIMAL_WHITE = UIImage(named: "perro")

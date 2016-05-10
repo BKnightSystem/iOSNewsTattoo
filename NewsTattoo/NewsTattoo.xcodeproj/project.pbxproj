@@ -31,6 +31,7 @@
 		1D5185921CAE59FC0071B651 /* ArtWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185901CAE59FC0071B651 /* ArtWork.swift */; };
 		1D5185931CAE59FC0071B651 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185911CAE59FC0071B651 /* VCMapView.swift */; };
 		1D5185971CAE5E300071B651 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5185961CAE5E300071B651 /* iCarousel.m */; };
+		1DF6C4FA1CDD485A00F53D57 /* backgroundApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DF6C4F91CDD485A00F53D57 /* backgroundApp.png */; };
 		1DFBC21D1CC2A3380071D5CD /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC21C1CC2A3380071D5CD /* SCLAlertView.swift */; };
 		1DFBC2231CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC2211CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld */; };
 		1DFBC2251CC2B2E60071D5CD /* CDEstudios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBC2241CC2B2E60071D5CD /* CDEstudios.swift */; };
@@ -89,6 +90,7 @@
 		1D5185951CAE5E300071B651 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		1D5185961CAE5E300071B651 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		1D5185981CAE5E8E0071B651 /* NewsTattoo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NewsTattoo-Bridging-Header.h"; sourceTree = "<group>"; };
+		1DF6C4F91CDD485A00F53D57 /* backgroundApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundApp.png; sourceTree = "<group>"; };
 		1DFBC21C1CC2A3380071D5CD /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		1DFBC2221CC2A7990071D5CD /* NewsTattooDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsTattooDB.xcdatamodel; sourceTree = "<group>"; };
 		1DFBC2241CC2B2E60071D5CD /* CDEstudios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDEstudios.swift; path = Model/CDEstudios.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		1D5185531CAE37D90071B651 /* NewsTattoo */ = {
 			isa = PBXGroup;
 			children = (
+				1DF6C4F81CDD485A00F53D57 /* Resource */,
 				674BE3E11CC6B16100EA4EFF /* Frameworks */,
 				57ED96441CAF3FB900CF7ACE /* Fonts */,
 				1D51857F1CAE43550071B651 /* Model */,
@@ -305,6 +308,14 @@
 			path = Controller/iCarousel;
 			sourceTree = "<group>";
 		};
+		1DF6C4F81CDD485A00F53D57 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				1DF6C4F91CDD485A00F53D57 /* backgroundApp.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		1DFBC21B1CC2A3380071D5CD /* SCLAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,7 +434,7 @@
 				TargetAttributes = {
 					1D5185501CAE37D80071B651 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = H5QPR4XXFV;
+						DevelopmentTeam = EMEYC2ZY27;
 					};
 				};
 			};
@@ -466,6 +477,7 @@
 				1D5185881CAE4C1F0071B651 /* ListMagazinesViewController.xib in Resources */,
 				1D51856F1CAE3F1E0071B651 /* BookTableViewCell.xib in Resources */,
 				57ED96311CAEE1AF00CF7ACE /* PageMagazineViewController.xib in Resources */,
+				1DF6C4FA1CDD485A00F53D57 /* backgroundApp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +563,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -574,6 +587,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -596,7 +610,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -612,7 +627,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "570d9476-fe70-4ca4-947b-aed5e37402e6";
+				PROVISIONING_PROFILE = "0a6b075b-cc03-4dc8-a29b-712ca0044011";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -633,7 +648,7 @@
 				INFOPLIST_FILE = NewsTattoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = BKSystem.NewsTattoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaco.newstattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
@@ -655,9 +670,9 @@
 				INFOPLIST_FILE = NewsTattoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = BKSystem.NewsTattoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaco.newstattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "570d9476-fe70-4ca4-947b-aed5e37402e6";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 			};
 			name = Release;

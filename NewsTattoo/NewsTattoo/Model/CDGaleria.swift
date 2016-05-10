@@ -29,7 +29,7 @@ class CDGaleria {
             
             fetch = true
         } catch let error as NSError {
-            //print("Could not fetch \(error), \(error.userInfo)")
+            print("Could not fetch \(error), \(error.userInfo)")
             fetch = false
         }
         
@@ -89,7 +89,7 @@ class CDGaleria {
             galeriaCD.append(magazinePage)
         } catch let error as NSError  {
             portadaSave = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return portadaSave
@@ -121,7 +121,7 @@ class CDGaleria {
             magazineCD.append(magazine)
         } catch let error as NSError  {
             contactSave = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return contactSave
@@ -144,7 +144,7 @@ class CDGaleria {
             deleteContact = true
         } catch let error as NSError  {
             deleteContact = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return deleteContact

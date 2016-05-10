@@ -90,7 +90,7 @@ class CDMagazine {
             magazineCD.append(magazinePor)
         } catch let error as NSError  {
             portadaSave = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return portadaSave
@@ -122,7 +122,7 @@ class CDMagazine {
             magazineCD.append(magazine)
         } catch let error as NSError  {
             contactSave = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return contactSave
@@ -145,7 +145,7 @@ class CDMagazine {
             deleteContact = true
         } catch let error as NSError  {
             deleteContact = false
-            //print("Could not save \(error), \(error.userInfo)")
+            print("Could not save \(error), \(error.userInfo)")
         }
         
         return deleteContact

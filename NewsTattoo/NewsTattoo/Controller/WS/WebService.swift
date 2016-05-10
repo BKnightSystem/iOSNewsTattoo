@@ -62,15 +62,16 @@ class WebService {
         let idMagazine = datos["idMagazine"]
         print("ID ESTUDIO \(datos["idEstudio"])")
         let url = NSURL(string: "http://canastadedulces.com.mx/obtener_galeria.php?idEstudio=\(idEstudio!)&idMagazine=\(idMagazine!)")
+        print("URL DE GALERIA \(url)")
         
         let theRequest = NSURLRequest(URL: url!)
         
-        let urlConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
-        urlConfig.timeoutIntervalForRequest = TIMEOUT_REQUEST
-        urlConfig.timeoutIntervalForResource = TIMEOUT_RESOURCE
+//        let urlConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+//        urlConfig.timeoutIntervalForRequest = TIMEOUT_REQUEST
+//        urlConfig.timeoutIntervalForResource = TIMEOUT_RESOURCE
         
-        //let session = NSURLSession.sharedSession()
-        let session = NSURLSession(configuration: urlConfig)
+        let session = NSURLSession.sharedSession()
+        //let session = NSURLSession(configuration: urlConfig)
         
         
         //Clear Images

@@ -13,9 +13,10 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var tbMagazines:UITableView!
     @IBOutlet weak var carouselHeader:iCarousel!
+    @IBOutlet weak var viewContent:UIView!
     @IBOutlet weak var viewLineTop:UIView!
     @IBOutlet weak var viewLineDown:UIView!
-    @IBOutlet weak var btnShareFB:FBSDKShareButton!
+    @IBOutlet weak var btnShareFB:UIButton!//FBSDKShareButton!
     @IBOutlet weak var btnFavorito:UIButton!
     
     var reachability: Reachability?
@@ -102,19 +103,28 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.navigationController?.pushViewController(favoritos, animated: true)
     }
     
+    @IBAction func btnShareFB(sender: AnyObject) {
+        let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
+        content.contentURL = NSURL(string: "https://itunes.apple.com/us/app/news-tattoo/id1111055905?l=es&ls=1&mt=8")
+        content.contentTitle = "News Tattoo"
+        content.contentDescription = "Galería con diseños increibles de tatuajes para todos los gustos"
+        content.imageURL = NSURL(string: "http://canastadedulces.com.mx/images/iconApp1024.png")
+        
+        let dialog : FBSDKShareDialog = FBSDKShareDialog()
+        dialog.fromViewController = self
+        dialog.shareContent = content
+        let facebookURL = NSURL(string: "fbauth2://app")
+        if(UIApplication.sharedApplication().canOpenURL(facebookURL!)){
+            dialog.mode = FBSDKShareDialogMode.Native
+        }else{
+            dialog.mode = FBSDKShareDialogMode.FeedWeb
+        }
+        dialog.show()
+    }
     //MARK: Facebook Share
     
     func btnShareFBConfig() {
         btnShareFB.setTitle("", forState: .Normal)
-        btnShareFB.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_APP)
-        
-        let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
-        content.contentURL = NSURL(string: "http://www.techotopia.com/index.php/Working_with_Directories_in_Swift_on_iOS_8")
-        content.contentTitle = "News Tattoo"
-        content.contentDescription = "Revista Digital para los amantes del tatuaje"
-        content.imageURL = NSURL(string: "<INSERT STRING HERE>")
-        
-        btnShareFB.shareContent = content
     }
     
     //MARK: Alert
@@ -136,10 +146,10 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.tbMagazines.reloadData()
                 })
                 
-                //SwiftSpinner.hide()
+                SwiftSpinner.hide()
             }
             else {
-                //SwiftSpinner.hide()
+                SwiftSpinner.hide()
             }
         })
     }
@@ -161,7 +171,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.carouselHeader.reloadData()
                 })
                 
-                SwiftSpinner.hide()
+                //SwiftSpinner.hide()
             }
             else {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -170,7 +180,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                     }
                     self.alertSinEstudios()
                 })
-                SwiftSpinner.hide()
+                //SwiftSpinner.hide()
             }
         })
     }
@@ -233,6 +243,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         carouselHeader.delegate = self
         carouselHeader.dataSource = self
         carouselHeader.type = .Linear
+        
     }
     
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
@@ -258,6 +269,9 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         var elements = 0
         if arrayPromociones.count > 0 {
             elements = arrayPromociones.count
+            if elements > 1 {
+                carousel.autoscroll = 0.2
+            }
         }else {
             elements = 1
         }
@@ -304,6 +318,10 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         return 1
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Estudios de Tatuaje"
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayEstudiosTattoo.count
     }
@@ -334,6 +352,8 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Configuration
     func configuration(){
+        self.title = "News Tattoo"
+        
         self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
         self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
         
