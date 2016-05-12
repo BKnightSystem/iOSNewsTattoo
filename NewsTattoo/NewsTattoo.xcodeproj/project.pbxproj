@@ -59,6 +59,18 @@
 		67734EDF1CCEBCF200CE9F7F /* PropagandaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */; };
 		67734EE01CCEBCF200CE9F7F /* PropagandaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */; };
 		67734EE31CCEC88700CE9F7F /* Promociones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67734EE21CCEC88700CE9F7F /* Promociones.swift */; };
+		67FBFAAE1CE502F500747EEC /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA11CE502F500747EEC /* UIImage+Rotation.swift */; };
+		67FBFAAF1CE502F500747EEC /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA21CE502F500747EEC /* UIView+Radius.swift */; };
+		67FBFAB01CE502F500747EEC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67FBFAA31CE502F500747EEC /* Info.plist */; };
+		67FBFAB11CE502F500747EEC /* SKCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA41CE502F500747EEC /* SKCaptionView.swift */; };
+		67FBFAB21CE502F500747EEC /* SKDetectingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA51CE502F500747EEC /* SKDetectingImageView.swift */; };
+		67FBFAB31CE502F500747EEC /* SKDetectingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA61CE502F500747EEC /* SKDetectingView.swift */; };
+		67FBFAB41CE502F500747EEC /* SKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA71CE502F500747EEC /* SKIndicatorView.swift */; };
+		67FBFAB51CE502F500747EEC /* SKLocalPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA81CE502F500747EEC /* SKLocalPhoto.swift */; };
+		67FBFAB61CE502F500747EEC /* SKPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA91CE502F500747EEC /* SKPhoto.swift */; };
+		67FBFAB71CE502F500747EEC /* SKPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67FBFAAA1CE502F500747EEC /* SKPhotoBrowser.bundle */; };
+		67FBFAB81CE502F500747EEC /* SKPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAAC1CE502F500747EEC /* SKPhotoBrowser.swift */; };
+		67FBFAB91CE502F500747EEC /* SKZoomingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAAD1CE502F500747EEC /* SKZoomingScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +130,19 @@
 		67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropagandaViewController.swift; path = View/Propraganda/PropagandaViewController.swift; sourceTree = "<group>"; };
 		67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PropagandaViewController.xib; path = View/Propraganda/PropagandaViewController.xib; sourceTree = "<group>"; };
 		67734EE21CCEC88700CE9F7F /* Promociones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promociones.swift; path = Model/Promociones.swift; sourceTree = "<group>"; };
+		67FBFAA11CE502F500747EEC /* UIImage+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
+		67FBFAA21CE502F500747EEC /* UIView+Radius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Radius.swift"; sourceTree = "<group>"; };
+		67FBFAA31CE502F500747EEC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67FBFAA41CE502F500747EEC /* SKCaptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCaptionView.swift; sourceTree = "<group>"; };
+		67FBFAA51CE502F500747EEC /* SKDetectingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKDetectingImageView.swift; sourceTree = "<group>"; };
+		67FBFAA61CE502F500747EEC /* SKDetectingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKDetectingView.swift; sourceTree = "<group>"; };
+		67FBFAA71CE502F500747EEC /* SKIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKIndicatorView.swift; sourceTree = "<group>"; };
+		67FBFAA81CE502F500747EEC /* SKLocalPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLocalPhoto.swift; sourceTree = "<group>"; };
+		67FBFAA91CE502F500747EEC /* SKPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhoto.swift; sourceTree = "<group>"; };
+		67FBFAAA1CE502F500747EEC /* SKPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SKPhotoBrowser.bundle; sourceTree = "<group>"; };
+		67FBFAAB1CE502F500747EEC /* SKPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPhotoBrowser.h; sourceTree = "<group>"; };
+		67FBFAAC1CE502F500747EEC /* SKPhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowser.swift; sourceTree = "<group>"; };
+		67FBFAAD1CE502F500747EEC /* SKZoomingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKZoomingScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +238,7 @@
 		1D5185741CAE42910071B651 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				67FBFA9F1CE502F500747EEC /* SKPhotoBrowser */,
 				1DFBC21B1CC2A3380071D5CD /* SCLAlertView */,
 				1D5185941CAE5E300071B651 /* iCarousel */,
 				1D51858F1CAE59FC0071B651 /* AnnotationMap */,
@@ -402,6 +428,35 @@
 			name = Propaganda;
 			sourceTree = "<group>";
 		};
+		67FBFA9F1CE502F500747EEC /* SKPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				67FBFAA01CE502F500747EEC /* extensions */,
+				67FBFAA31CE502F500747EEC /* Info.plist */,
+				67FBFAA41CE502F500747EEC /* SKCaptionView.swift */,
+				67FBFAA51CE502F500747EEC /* SKDetectingImageView.swift */,
+				67FBFAA61CE502F500747EEC /* SKDetectingView.swift */,
+				67FBFAA71CE502F500747EEC /* SKIndicatorView.swift */,
+				67FBFAA81CE502F500747EEC /* SKLocalPhoto.swift */,
+				67FBFAA91CE502F500747EEC /* SKPhoto.swift */,
+				67FBFAAA1CE502F500747EEC /* SKPhotoBrowser.bundle */,
+				67FBFAAB1CE502F500747EEC /* SKPhotoBrowser.h */,
+				67FBFAAC1CE502F500747EEC /* SKPhotoBrowser.swift */,
+				67FBFAAD1CE502F500747EEC /* SKZoomingScrollView.swift */,
+			);
+			name = SKPhotoBrowser;
+			path = Controller/SKPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		67FBFAA01CE502F500747EEC /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				67FBFAA11CE502F500747EEC /* UIImage+Rotation.swift */,
+				67FBFAA21CE502F500747EEC /* UIView+Radius.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -463,7 +518,9 @@
 			files = (
 				57ED96401CAF3FB300CF7ACE /* cac_champagne.ttf in Resources */,
 				674BE3EF1CC7D87A00EA4EFF /* FavoritosViewController.xib in Resources */,
+				67FBFAB01CE502F500747EEC /* Info.plist in Resources */,
 				1D51858D1CAE59620071B651 /* MapaViewController.xib in Resources */,
+				67FBFAB71CE502F500747EEC /* SKPhotoBrowser.bundle in Resources */,
 				57ED964C1CAF480200CF7ACE /* Caviar_Dreams_Bold.ttf in Resources */,
 				1D51855F1CAE37D90071B651 /* LaunchScreen.storyboard in Resources */,
 				57ED96461CAF43EA00CF7ACE /* Sofia-Regular.otf in Resources */,
@@ -492,13 +549,18 @@
 				1D51856E1CAE3F1E0071B651 /* BookTableViewCell.swift in Sources */,
 				57ED963B1CAEFF5F00CF7ACE /* PageDesign3.swift in Sources */,
 				57ED96301CAEE1AF00CF7ACE /* PageMagazineViewController.swift in Sources */,
+				67FBFAAF1CE502F500747EEC /* UIView+Radius.swift in Sources */,
+				67FBFAB81CE502F500747EEC /* SKPhotoBrowser.swift in Sources */,
 				1D51858C1CAE59620071B651 /* MapaViewController.swift in Sources */,
+				67FBFAB61CE502F500747EEC /* SKPhoto.swift in Sources */,
+				67FBFAB41CE502F500747EEC /* SKIndicatorView.swift in Sources */,
 				1DFBC2291CC2B3100071D5CD /* CDGaleria.swift in Sources */,
 				67734EE31CCEC88700CE9F7F /* Promociones.swift in Sources */,
 				57ED96341CAEE66E00CF7ACE /* PageDesign.swift in Sources */,
 				674BE3F21CC7E73000EA4EFF /* FavoritoTableViewCell.swift in Sources */,
 				674BE3D21CC6870200EA4EFF /* Reachability.swift in Sources */,
 				57ED96391CAEFD3500CF7ACE /* PageDesign2.swift in Sources */,
+				67FBFAAE1CE502F500747EEC /* UIImage+Rotation.swift in Sources */,
 				1DFBC2231CC2A7990071D5CD /* NewsTattooDB.xcdatamodeld in Sources */,
 				1D51857E1CAE43500071B651 /* Estudios.swift in Sources */,
 				1D5185571CAE37D90071B651 /* ViewController.swift in Sources */,
@@ -507,15 +569,20 @@
 				674BE3EE1CC7D87A00EA4EFF /* FavoritosViewController.swift in Sources */,
 				1D5185681CAE391E0071B651 /* LibraryViewController.swift in Sources */,
 				1DFBC2251CC2B2E60071D5CD /* CDEstudios.swift in Sources */,
+				67FBFAB11CE502F500747EEC /* SKCaptionView.swift in Sources */,
 				1DFBC2271CC2B2FC0071D5CD /* CDMagazine.swift in Sources */,
 				1D5185731CAE428C0071B651 /* WebService.swift in Sources */,
 				1DFBC21D1CC2A3380071D5CD /* SCLAlertView.swift in Sources */,
 				67734EDF1CCEBCF200CE9F7F /* PropagandaViewController.swift in Sources */,
 				1D40D0761CB2041B00F86583 /* MagazinePortada.swift in Sources */,
+				67FBFAB21CE502F500747EEC /* SKDetectingImageView.swift in Sources */,
 				1D5185791CAE42EF0071B651 /* SwiftyJSON.swift in Sources */,
+				67FBFAB91CE502F500747EEC /* SKZoomingScrollView.swift in Sources */,
 				1D5185921CAE59FC0071B651 /* ArtWork.swift in Sources */,
 				1D5185841CAE46400071B651 /* Extensions.swift in Sources */,
+				67FBFAB51CE502F500747EEC /* SKLocalPhoto.swift in Sources */,
 				1D5185931CAE59FC0071B651 /* VCMapView.swift in Sources */,
+				67FBFAB31CE502F500747EEC /* SKDetectingView.swift in Sources */,
 				674BE3CF1CC67CDF00EA4EFF /* ImageManager.swift in Sources */,
 				57ED96361CAEF01600CF7ACE /* Magazine.swift in Sources */,
 				1D5185971CAE5E300071B651 /* iCarousel.m in Sources */,
