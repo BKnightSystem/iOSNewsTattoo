@@ -17,6 +17,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     var reachability: Reachability?
     
+    var imagesBrowser = [SKPhoto]()
     var isFavorito = false
     
     var indexEstudio = 0
@@ -106,6 +107,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         for i in 0 ..< galeriaCD.count {
             let dataPage = galeriaCD[i]
             let detailPage = Magazine()
+            var imgBrowser = SKPhoto()
             
             detailPage.idEstudio = dataPage.valueForKey("idEstudio") as! String
             detailPage.idMagazine = dataPage.valueForKey("idMagazine") as! String
@@ -117,9 +119,13 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             let imgLogo = ImageManager.getPageByID("\(i)", nameDirectory: nameDirectory)
             if  imgLogo != nil {
                 detailPage.image = imgLogo!
+                imgBrowser = SKPhoto.photoWithImage(imgLogo!)
+                imgBrowser.caption = "Autor: \(detailPage.nombreTatuador)"
             }
             
             arrayDetailPages.append(detailPage)
+            imagesBrowser.append(imgBrowser)
+            
         }
         
         SwiftSpinner.show("Cargando páginas")
@@ -138,9 +144,14 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         
         if arrayDetailPages.count > 0 {
             for i in 0  ..< arrayDetailPages.count  {
+                var imgBrowser = SKPhoto()
                 let pageView  = PageDesign()
 //                let pageView2 = PageDesign2()
 //                let pageView3 = PageDesign3()
+                
+                imgBrowser = SKPhoto.photoWithImage(arrayDetailPages[i].image)
+                imgBrowser.caption = "Autor: \(arrayDetailPages[i].nombreTatuador)"
+                imagesBrowser.append(imgBrowser)
                 
                 //Dinamic page
                 let stylepage = i % 3
@@ -211,6 +222,19 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
         self.pageControl.currentPage = carousel.currentItemIndex
+    }
+    
+    func carousel(carousel: iCarousel!, didSelectItemAtIndex index: Int) {
+        self.showPhotoBrowser(index)
+    }
+    
+    //MARK: Photo Browser
+    func showPhotoBrowser(indexImg:Int) {
+        print("Index Browser \(indexImg)")
+        let browser = SKPhotoBrowser(photos: imagesBrowser)
+        browser.initializePageIndex(indexImg)
+//        browser.delegate = self
+        presentViewController(browser, animated: true, completion: {})
     }
     
     //MARK: Configuration
