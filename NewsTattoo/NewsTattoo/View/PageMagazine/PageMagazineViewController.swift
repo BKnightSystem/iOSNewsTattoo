@@ -232,8 +232,8 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     func showPhotoBrowser(indexImg:Int) {
         print("Index Browser \(indexImg)")
         let browser = SKPhotoBrowser(photos: imagesBrowser)
+        browser.displayAction = false
         browser.initializePageIndex(indexImg)
-//        browser.delegate = self
         presentViewController(browser, animated: true, completion: {})
     }
     
