@@ -59,6 +59,10 @@
 		67734EDF1CCEBCF200CE9F7F /* PropagandaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */; };
 		67734EE01CCEBCF200CE9F7F /* PropagandaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */; };
 		67734EE31CCEC88700CE9F7F /* Promociones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67734EE21CCEC88700CE9F7F /* Promociones.swift */; };
+		67ED8D151D0637A5005B4548 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED8D131D0637A5005B4548 /* LoginViewController.swift */; };
+		67ED8D161D0637A5005B4548 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67ED8D141D0637A5005B4548 /* LoginViewController.xib */; };
+		67ED8D1A1D063CB1005B4548 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED8D181D063CB1005B4548 /* RegisterViewController.swift */; };
+		67ED8D1B1D063CB1005B4548 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67ED8D191D063CB1005B4548 /* RegisterViewController.xib */; };
 		67FBFAAE1CE502F500747EEC /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA11CE502F500747EEC /* UIImage+Rotation.swift */; };
 		67FBFAAF1CE502F500747EEC /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FBFAA21CE502F500747EEC /* UIView+Radius.swift */; };
 		67FBFAB01CE502F500747EEC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67FBFAA31CE502F500747EEC /* Info.plist */; };
@@ -130,6 +134,10 @@
 		67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropagandaViewController.swift; path = View/Propraganda/PropagandaViewController.swift; sourceTree = "<group>"; };
 		67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PropagandaViewController.xib; path = View/Propraganda/PropagandaViewController.xib; sourceTree = "<group>"; };
 		67734EE21CCEC88700CE9F7F /* Promociones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promociones.swift; path = Model/Promociones.swift; sourceTree = "<group>"; };
+		67ED8D131D0637A5005B4548 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = View/Login/LoginViewController.swift; sourceTree = "<group>"; };
+		67ED8D141D0637A5005B4548 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = View/Login/LoginViewController.xib; sourceTree = "<group>"; };
+		67ED8D181D063CB1005B4548 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = View/Register/RegisterViewController.swift; sourceTree = "<group>"; };
+		67ED8D191D063CB1005B4548 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterViewController.xib; path = View/Register/RegisterViewController.xib; sourceTree = "<group>"; };
 		67FBFAA11CE502F500747EEC /* UIImage+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
 		67FBFAA21CE502F500747EEC /* UIView+Radius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Radius.swift"; sourceTree = "<group>"; };
 		67FBFAA31CE502F500747EEC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,6 +211,8 @@
 				57ED96321CAEE1B700CF7ACE /* PageMagazine */,
 				674BE3EB1CC7D83B00EA4EFF /* Favoritos */,
 				67734EE11CCEBCF600CE9F7F /* Propaganda */,
+				67ED8D171D0637AA005B4548 /* Login */,
+				67ED8D1C1D063CB5005B4548 /* Register */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -428,6 +438,24 @@
 			name = Propaganda;
 			sourceTree = "<group>";
 		};
+		67ED8D171D0637AA005B4548 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				67ED8D131D0637A5005B4548 /* LoginViewController.swift */,
+				67ED8D141D0637A5005B4548 /* LoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		67ED8D1C1D063CB5005B4548 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				67ED8D181D063CB1005B4548 /* RegisterViewController.swift */,
+				67ED8D191D063CB1005B4548 /* RegisterViewController.xib */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		67FBFA9F1CE502F500747EEC /* SKPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,7 +544,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67ED8D161D0637A5005B4548 /* LoginViewController.xib in Resources */,
 				57ED96401CAF3FB300CF7ACE /* cac_champagne.ttf in Resources */,
+				67ED8D1B1D063CB1005B4548 /* RegisterViewController.xib in Resources */,
 				674BE3EF1CC7D87A00EA4EFF /* FavoritosViewController.xib in Resources */,
 				67FBFAB01CE502F500747EEC /* Info.plist in Resources */,
 				1D51858D1CAE59620071B651 /* MapaViewController.xib in Resources */,
@@ -577,9 +607,11 @@
 				1D40D0761CB2041B00F86583 /* MagazinePortada.swift in Sources */,
 				67FBFAB21CE502F500747EEC /* SKDetectingImageView.swift in Sources */,
 				1D5185791CAE42EF0071B651 /* SwiftyJSON.swift in Sources */,
+				67ED8D151D0637A5005B4548 /* LoginViewController.swift in Sources */,
 				67FBFAB91CE502F500747EEC /* SKZoomingScrollView.swift in Sources */,
 				1D5185921CAE59FC0071B651 /* ArtWork.swift in Sources */,
 				1D5185841CAE46400071B651 /* Extensions.swift in Sources */,
+				67ED8D1A1D063CB1005B4548 /* RegisterViewController.swift in Sources */,
 				67FBFAB51CE502F500747EEC /* SKLocalPhoto.swift in Sources */,
 				1D5185931CAE59FC0071B651 /* VCMapView.swift in Sources */,
 				67FBFAB31CE502F500747EEC /* SKDetectingView.swift in Sources */,
