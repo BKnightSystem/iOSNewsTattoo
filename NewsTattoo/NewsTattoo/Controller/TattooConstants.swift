@@ -17,11 +17,6 @@ let IMAGE_ICON_FAVORITO = UIImage(named: "circulo")
 let IMAGE_ICON_FB   = UIImage(named: "social")
 
 let IMAGE_LAUNCH_SCREEN = UIImage(named: "backgroundApp.png")
-//let IMAGE_ICON_DIOSES_WHITE = UIImage(named: "formas")
-//let IMAGE_ICON_LETRAS_WHITE = UIImage(named: "bloques")
-//let IMAGE_ICON_ANIMAL_WHITE = UIImage(named: "perro")
-//let IMAGE_ICON_GRECAS_WHITE = UIImage(named: "animales")
-//let IMAGE_ICON_CRANEO_WHITE  = UIImage(named: "personas")
 
 //Color
 let COLOR_BACKGROUND_VIEW = 0x537893
@@ -73,4 +68,12 @@ let FONT_TEXT_4 = UIFont(name: "Times New Roman", size: 18)
 //MARK: Months
 let ARRAY_MONTHS = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"]
 
+//MARK: URL Services
+struct URLSERVICE {
+    //Production
+    //let url:String = "http://canastadedulces.com.mx"
+    //Test
+    let url = "http://localhost:8888/NewsTattoo"
+}
 
+let HOST = URLSERVICE()

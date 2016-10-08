@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
+class ListMagazinesViewController: UIViewController {
 
     //@IBOutlet weak var carouselYear:iCarousel!
     @IBOutlet weak var carouselMonthMagazine:iCarousel!
@@ -109,7 +109,7 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
             SwiftSpinner.show("Obteniendo información")
         }
         
-        let parameters:[String:Int] = ["idEstudio":indexEstudio + 1]
+        let parameters:[String:Int] = ["S_Id":indexEstudio + 1]
         
         WebService.portadaMagazineById(parameters, callback:{(isOK) -> Void in
             if isOK {
@@ -134,7 +134,7 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
     //MARK: Alert
     func alertSinInformacion(){
         let alert = SCLAlertView()
-        alert.showSuccess("Sin información", subTitle: "No fue posible obtener información del estudio", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showError("Sin información", subTitle: "No fue posible obtener información del estudio", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
     }
     
     //MARK: Action Buttos
@@ -155,17 +155,54 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         Utilidades.callPhone(arrayEstudiosTattoo[indexEstudio].telefono)
     }
     
+    //MARK: Configuration
+    func configuration(){
+        //self.carouselYear.backgroundColor = UIColor.whiteColor()
+        self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
+        self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
+    }
+    
+    func updateLabel(){
+        self.lbMagazine.text = arrayPortadasTattoo[indexPortada].nombre
+    }
+
+    //MARK: NavigationBar
+    
+    /**
+    Configurate navigationBar
+    */
+    func createNavigationBar(){
+        self.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
+        
+        //Icono Izquierdo
+        let button = UIButton(type: UIButtonType.Custom) as UIButton
+        button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
+        button.addTarget(self, action:#selector(ListMagazinesViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
+        button.frame=CGRectMake(0, 0, 40, 40)
+        let barButton = UIBarButtonItem(customView: button)
+        //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
+        self.navigationItem.leftBarButtonItem = barButton
+    }
+    
+    func back(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
+}
+
+//MARK: Carousel
+extension ListMagazinesViewController: iCarouselDataSource, iCarouselDelegate {
     //MARK: Carousel Delegate
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
         var newView = view
         //if newView == nil {
         if carousel.tag == 0 { //Year
-//            let imageView = UIImageView(image: arrayBanner[index])
-//            imageView.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
-//            imageView.borderRadius(12)
-//            imageView.frame = CGRect(x: 0, y: 0, width: (carouselYear.frame.width * 0.3), height: (carouselYear.frame.height))
-//            imageView.contentMode = .ScaleAspectFit
-//            newView = imageView
+            //            let imageView = UIImageView(image: arrayBanner[index])
+            //            imageView.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
+            //            imageView.borderRadius(12)
+            //            imageView.frame = CGRect(x: 0, y: 0, width: (carouselYear.frame.width * 0.3), height: (carouselYear.frame.height))
+            //            imageView.contentMode = .ScaleAspectFit
+            //            newView = imageView
         }else if carousel.tag == 1 {//Magazine
             let imageView = UIImageView(image: arrayPortadasTattoo[index].imgPortada)
             //imageView.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
@@ -211,38 +248,4 @@ class ListMagazinesViewController: UIViewController, iCarouselDataSource, iCarou
         pages.isFavorito = false
         self.navigationController?.pushViewController(pages, animated: true)
     }
-    
-    //MARK: Configuration
-    func configuration(){
-        //self.carouselYear.backgroundColor = UIColor.whiteColor()
-        self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
-        self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
-    }
-    
-    func updateLabel(){
-        self.lbMagazine.text = arrayPortadasTattoo[indexPortada].nombre
-    }
-
-    //MARK: NavigationBar
-    
-    /**
-    Configurate navigationBar
-    */
-    func createNavigationBar(){
-        self.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
-        
-        //Icono Izquierdo
-        let button = UIButton(type: UIButtonType.Custom) as UIButton
-        button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
-        button.addTarget(self, action:#selector(ListMagazinesViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame=CGRectMake(0, 0, 40, 40)
-        let barButton = UIBarButtonItem(customView: button)
-        //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
-        self.navigationItem.leftBarButtonItem = barButton
-    }
-    
-    func back(){
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-
 }

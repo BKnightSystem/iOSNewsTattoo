@@ -13,7 +13,7 @@ class WebService {
     //MARK: get studios
     class func estudios(datos:[String:AnyObject], callback: ((isOk:Bool /*NSMutableDictionary*/)-> Void)?)
     {
-        let url = NSURL(string: "http://canastadedulces.com.mx/obtener_estudios.php")
+        let url = NSURL(string: "\(HOST.url)/GetData_Studio.php")
         let theRequest = NSURLRequest(URL: url!)
         
         let urlConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -33,13 +33,13 @@ class WebService {
             let estudio = json["Estudios"].array
             for est in estudio! {
                 let datosEstudio = Estudios()
-                datosEstudio.idEstudio = est["idEstudio"].stringValue
-                datosEstudio.nombreEstudio = est["nombre"].stringValue
-                datosEstudio.direccion = est["direccion"].stringValue
-                datosEstudio.telefono = est["telefono"].stringValue
-                datosEstudio.imgLogo = est["logo"].stringValue
-                datosEstudio.latitud = est["latitud"].doubleValue
-                datosEstudio.longitud = est["longitud"].doubleValue
+                datosEstudio.idEstudio = est["S_Id"].stringValue
+                datosEstudio.nombreEstudio = est["NameStudio"].stringValue
+                datosEstudio.direccion = est["Adress"].stringValue
+                datosEstudio.telefono = est["PhoneNumber"].stringValue
+                datosEstudio.imgLogo = est["Logo"].stringValue
+                datosEstudio.latitud = est["Latitude"].doubleValue
+                datosEstudio.longitud = est["Longitude"].doubleValue
                 
                 if datosEstudio.imgLogo != "" {
                     datosEstudio.logo = Utilidades.base64ToImage(datosEstudio.imgLogo)
@@ -65,7 +65,7 @@ class WebService {
         let idEstudio = datos["idEstudio"]
         let idMagazine = datos["idMagazine"]
         print("ID ESTUDIO \(datos["idEstudio"])")
-        let url = NSURL(string: "http://canastadedulces.com.mx/obtener_galeria.php?idEstudio=\(idEstudio!)&idMagazine=\(idMagazine!)")
+        let url = NSURL(string: "\(HOST.url)/GetData_Galery.php?S_Id=\(idEstudio!)&PM_Id=\(idMagazine!)")
         print("URL DE GALERIA \(url)")
         
         let theRequest = NSURLRequest(URL: url!)
@@ -91,16 +91,16 @@ class WebService {
                 arrayDetailPages.removeAll()
                 
                 if estado != "2" {
-                    let imagen = json["imagenes"].array
+                    let imagen = json["Galery"].array
                     for est in imagen! {
                         let page = Magazine()
-                        page.idEstudio = est["idEstudio"].stringValue
-                        page.idMagazine = est["idMagazine"].stringValue
-                        page.idImagen = est["idImagen"].stringValue
-                        page.imageB64 = est["imagen"].stringValue
+                        page.idEstudio = est["S_Id"].stringValue
+                        page.idMagazine = est["PM_Id"].stringValue
+                        page.idImagen = est["GM_Id"].stringValue
+                        page.imageB64 = est["Image"].stringValue
                         page.image = Utilidades.base64ToImage(page.imageB64)
-                        page.nombreTatuador = est["nombre"].stringValue
-                        page.descripcion = est["texto"].stringValue
+                        page.nombreTatuador = est["NameTatuador"].stringValue
+                        page.descripcion = est["Description"].stringValue
                         arrayDetailPages.append(page)
                     }
                     
@@ -118,9 +118,9 @@ class WebService {
     //MARK: get the principal image for magazine
     class func portadaMagazineById(datos:[String:Int], callback: ((isOk:Bool /*NSMutableDictionary*/)-> Void)?)
     {
-        let idEstudio = datos["idEstudio"]
-        print(datos["idEstudio"])
-        let url = NSURL(string: "http://canastadedulces.com.mx/obtener_portadas.php?idEstudio=\(idEstudio!)")
+        let idEstudio = datos["S_Id"]
+        print(datos["S_Id"])
+        let url = NSURL(string: "\(HOST.url)/GetData_Portada.php?S_Id=\(idEstudio!)")
         
         let theRequest = NSURLRequest(URL: url!)
         
@@ -144,15 +144,15 @@ class WebService {
                 arrayPortadasTattoo.removeAll()
                 
                 if estado != "2" {
-                    let imagen = json["portadas"].array
+                    let imagen = json["Portadas"].array
                     for est in imagen! {
                         let portada = MagazinePortada()
-                        portada.idEstudio = est["idEstudio"].stringValue
-                        portada.idMagazine = est["idMagazine"].stringValue
-                        portada.nombre = est["nombre"].stringValue
-                        portada.mes = est["mes"].stringValue
-                        portada.anio = est["anio"].stringValue
-                        let revista = est["portada"].stringValue
+                        portada.idEstudio = est["S_Id"].stringValue
+                        portada.idMagazine = est["PM_Id"].stringValue
+                        portada.nombre = est["NameMagazine"].stringValue
+                        portada.mes = est["MonthMagazine"].stringValue
+                        portada.anio = est["YearMagazine"].stringValue
+                        let revista = est["Portada"].stringValue
                         portada.imgPortada = Utilidades.base64ToImage(revista)
                         arrayPortadasTattoo.append(portada)
                     }
@@ -171,7 +171,7 @@ class WebService {
     //MARK: get promotions by studio
     class func promociones(datos:[String:AnyObject], callback: ((isOk:Bool /*NSMutableDictionary*/)-> Void)?)
     {
-        let url = NSURL(string: "http://www.canastadedulces.com.mx/obtener_promociones.php")
+        let url = NSURL(string: "\(HOST.url)/GetData_Promotion.php")
         let theRequest = NSURLRequest(URL: url!)
         
         let urlConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -193,13 +193,13 @@ class WebService {
                 
                 if estado != "2" {
                     
-                    let promocion = json["Promociones"].array
+                    let promocion = json["Promotions"].array
                     for promo in promocion! {
                         let datosPromocion = Promociones()
-                        datosPromocion.idEstudio = promo["idEstudio"].stringValue
-                        datosPromocion.idPromocion = promo["idPromocion"].stringValue
-                        datosPromocion.imgPromocion = promo["imagen"].stringValue
-                        datosPromocion.bannerPromocion = promo["bannerPromocion"].stringValue
+                        datosPromocion.idEstudio = promo["S_Id"].stringValue
+                        datosPromocion.idPromocion = promo["Promo_Id"].stringValue
+                        datosPromocion.imgPromocion = promo["Imagen"].stringValue
+                        datosPromocion.bannerPromocion = promo["BannerPromotion"].stringValue
                         
                         if datosPromocion.imgPromocion != "" {
                             datosPromocion.imgViewPromocion = Utilidades.base64ToImage(datosPromocion.imgPromocion)

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class LibraryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, iCarouselDelegate, iCarouselDataSource {
+class LibraryViewController: UIViewController, iCarouselDelegate, iCarouselDataSource {
 
     @IBOutlet weak var tbMagazines:UITableView!
     @IBOutlet weak var carouselHeader:iCarousel!
@@ -313,7 +313,22 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     func endRefresh(){
         refresh.endRefreshing()
     }
+    
+    //MARK: Configuration
+    func configuration(){
+        self.title = "News Tattoo"
+        
+        self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
+        self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
+        
+        refresh.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_APP)
+        refresh.tintColor = UIColor(netHex: COLOR_BLANCO)
+    }
 
+}
+
+//MARK: UITable View Delegate
+extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     //MARK: TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -339,7 +354,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.selectionStyle = .None
         cell.lbNameMagazine.text = arrayEstudiosTattoo[indexPath.row].nombreEstudio
         //if arrayEstudiosTattoo[indexPath.row].imgLogo != "" {
-            cell.imgMagazine.image = arrayEstudiosTattoo[indexPath.row].logo
+        cell.imgMagazine.image = arrayEstudiosTattoo[indexPath.row].logo
         //}
         
         return cell
@@ -350,16 +365,4 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         listMagazine.indexEstudio = indexPath.row
         self.navigationController?.pushViewController(listMagazine, animated: true)
     }
-    
-    //MARK: Configuration
-    func configuration(){
-        self.title = "News Tattoo"
-        
-        self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
-        self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
-        
-        refresh.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_APP)
-        refresh.tintColor = UIColor(netHex: COLOR_BLANCO)
-    }
-
 }
