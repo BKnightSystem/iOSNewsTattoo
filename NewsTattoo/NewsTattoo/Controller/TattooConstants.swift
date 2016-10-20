@@ -71,9 +71,9 @@ let ARRAY_MONTHS = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AG
 //MARK: URL Services
 struct URLSERVICE {
     //Production
-    //let url:String = "http://canastadedulces.com.mx"
+    let url:String = "http://canastadedulces.com.mx"
     //Test
-    let url = "http://localhost:8888/NewsTattoo"
+    //let url = "http://localhost:8888/NewsTattoo"
 }
 
 let HOST = URLSERVICE()

@@ -234,7 +234,7 @@ extension ListMagazinesViewController: iCarouselDataSource, iCarouselDelegate {
         case .Spacing:
             return value * 1.1
         case .Wrap:
-            return value + CGFloat(1.0)
+            return 1.0//value + CGFloat(1.0)
         default:
             return value
         }

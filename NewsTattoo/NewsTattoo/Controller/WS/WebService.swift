@@ -45,10 +45,10 @@ class WebService {
                     datosEstudio.logo = Utilidades.base64ToImage(datosEstudio.imgLogo)
                 }
                 
-                let estatus = est["estatus"].intValue
-                if estatus == 1 {
+                //let estatus = est["estatus"].intValue
+                //if estatus == 1 {
                     arrayEstudiosTattoo.append(datosEstudio)
-                }
+                //}
                 
             }
             
