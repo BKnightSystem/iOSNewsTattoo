@@ -326,14 +326,14 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             }
         }else {
             let alert = SCLAlertView()
-            alert.showSuccess("", subTitle: "La revista ya esta en la sección de favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+            alert.showWarning("", subTitle: "La revista ya esta en la sección de favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
         }
     }
     
     //MARK: Alerts
     func alertExitoSavePortada(){
         let alert = SCLAlertView()
-        alert.showSuccess("Se agrego a favoritos", subTitle: "Para ver la revista dirijase a favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showSuccess("Se agrego a favoritos", subTitle: "Para ver la revista dirijase a favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
     }
     
     func alertNoGuardarMagazine(){
@@ -358,11 +358,11 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             
         })
         
-        alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la revista: \(nameRevista)", closeButtonTitle: "", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la revista: \(nameRevista)", closeButtonTitle: "", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
     }
     
     func alertError() {
         let alert = SCLAlertView()
-        alert.showError("Error", subTitle: "No se puede guardar en favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ROJO), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showError("Error", subTitle: "No se puede guardar en favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
     }
 }
