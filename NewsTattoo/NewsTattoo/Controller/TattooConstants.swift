@@ -12,9 +12,9 @@ import CoreData
 var TIMEOUT_REQUEST = 20.0
 var TIMEOUT_RESOURCE = 20.0
 
-let IMAGE_ICON_BACK  = UIImage(named: "back")
-let IMAGE_ICON_FAVORITO = UIImage(named: "circulo")
-let IMAGE_ICON_FB   = UIImage(named: "social")
+let IMAGE_ICON_BACK  = UIImage(named: "back-icon")
+let IMAGE_ICON_FAVORITO = UIImage(named: "favorite")
+let IMAGE_ICON_FB   = UIImage(named: "facebook-logo")
 
 let IMAGE_LAUNCH_SCREEN = UIImage(named: "backgroundApp.png")
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FavoritosViewController: UIViewController {
 
     @IBOutlet weak var tbFavoritos:UITableView!
     var arrayNamesEstudio = [String]()
@@ -77,10 +77,64 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
             self.navigationController?.popViewControllerAnimated(true)
         })
         
-        alert.showInfo("No hay revistas", subTitle: "No hay revistas marcadas como favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showInfo("No hay revistas", subTitle: "No hay revistas marcadas como favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
     }
     
-    //MARK: Table Delegate and Datasource
+    //MARK: UITableViewRowAction
+    func deleteDataInformation(index:Int){
+        // Delete information about this studio by index Core Data
+        CDMagazine.deleteMagazinePortada(index)
+        let idEst = arrayFavoritos[index].idEstudio as String
+        let idMag = arrayFavoritos[index].idMagazine as String
+        CDGaleria.initPageMagazine(idEst, idMagazine: Int(idMag)!)
+        
+        for i in 0 ..< galeriaCD.count {
+            print("Borrando elemento num \(i)")
+            CDGaleria.deleteMagazinePages()
+        }
+        
+        let identify = "\(idEst)\(idMag)"
+        let nameDirectory = "/PagesMagazine\(identify)"
+        let namePortada = "PortadaMagazine/\(identify).png"
+        //Delete image pages
+        ImageManager.deleteDirectory(nameDirectory)
+        ImageManager.deletePortada(namePortada)
+        
+        self.loadInformation()
+        self.tbFavoritos.reloadData()
+    }
+    
+    func callStudio(telephone:String){
+        if telephone != "" {
+            Utilidades.callPhone(telephone)
+        }
+    }
+    
+    //MARK: NavigationBar
+    
+    /**
+     Configurate navigationBar
+     */
+    func createNavigationBar(){
+        self.title = "Favoritos"
+        
+        //Icono Izquierdo
+        let button = UIButton(type: UIButtonType.Custom) as UIButton
+        button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
+        button.addTarget(self, action:#selector(ListMagazinesViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
+        button.frame=CGRectMake(0, 0, 30, 30)
+        let barButton = UIBarButtonItem(customView: button)
+        //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
+        self.navigationItem.leftBarButtonItem = barButton
+    }
+    
+    func back(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
+}
+
+extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayFavoritos.count
     }
@@ -140,57 +194,4 @@ class FavoritosViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
-    
-    //MARK: UITableViewRowAction
-    func deleteDataInformation(index:Int){
-        // Delete information about this studio by index Core Data
-        CDMagazine.deleteMagazinePortada(index)
-        let idEst = arrayFavoritos[index].idEstudio as String
-        let idMag = arrayFavoritos[index].idMagazine as String
-        CDGaleria.initPageMagazine(idEst, idMagazine: Int(idMag)!)
-        
-        for i in 0 ..< galeriaCD.count {
-            print("Borrando elemento num \(i)")
-            CDGaleria.deleteMagazinePages()
-        }
-        
-        let identify = "\(idEst)\(idMag)"
-        let nameDirectory = "/PagesMagazine\(identify)"
-        let namePortada = "PortadaMagazine/\(identify).png"
-        //Delete image pages
-        ImageManager.deleteDirectory(nameDirectory)
-        ImageManager.deletePortada(namePortada)
-        
-        self.loadInformation()
-        self.tbFavoritos.reloadData()
-    }
-    
-    func callStudio(telephone:String){
-        if telephone != "" {
-            Utilidades.callPhone(telephone)
-        }
-    }
-    
-    //MARK: NavigationBar
-    
-    /**
-     Configurate navigationBar
-     */
-    func createNavigationBar(){
-        self.title = "Favoritos"
-        
-        //Icono Izquierdo
-        let button = UIButton(type: UIButtonType.Custom) as UIButton
-        button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
-        button.addTarget(self, action:#selector(ListMagazinesViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame=CGRectMake(0, 0, 40, 40)
-        let barButton = UIBarButtonItem(customView: button)
-        //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
-        self.navigationItem.leftBarButtonItem = barButton
-    }
-    
-    func back(){
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-
 }

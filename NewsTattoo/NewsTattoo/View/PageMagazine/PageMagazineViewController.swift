@@ -258,7 +258,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         let button = UIButton(type: UIButtonType.Custom) as UIButton
         button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
         button.addTarget(self, action:#selector(PageMagazineViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame=CGRectMake(0, 0, 40, 40)
+        button.frame=CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem(customView: button)
         //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
         self.navigationItem.leftBarButtonItem = barButton
