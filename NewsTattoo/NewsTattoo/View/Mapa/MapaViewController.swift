@@ -121,6 +121,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         
         mapa.addAnnotations(artworks)
         
+        self.showRouteOnMap()
         
         self.mapa.delegate = self
     }
@@ -159,10 +160,50 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
     
+    //MARK: MAP
+    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let location = view.annotation as! ArtWork
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+    }
+    
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.redColor()
+        renderer.lineWidth = 4.0
+        
+        return renderer
+    }
+    
+    func showRouteOnMap(){
+        //Coordinate Studio
+        let latitud = arrayEstudiosTattoo[indexEstudio].latitud
+        let longitud = arrayEstudiosTattoo[indexEstudio].longitud
+        let sucLocation = CLLocationCoordinate2DMake(latitud, longitud)
+        
+        //Coordinate User
+        let locationUser = locationManager.location?.coordinate
+        
+        let request = MKDirectionsRequest()
+        
+        let source = MKPlacemark(coordinate: sucLocation, addressDictionary: nil)
+        let destination = MKPlacemark(coordinate: locationUser!, addressDictionary: nil)
+        
+        request.source = MKMapItem(placemark: source)
+        request.destination = MKMapItem(placemark: destination)
+        request.requestsAlternateRoutes = false
+        request.transportType = .Automobile
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculateDirectionsWithCompletionHandler { [unowned self] response, error in
+        guard let unwrappedResponse = response else { return }
+            if unwrappedResponse.routes.count > 0 {
+                self.mapa.addOverlay(unwrappedResponse.routes[0].polyline)
+                self.mapa.setVisibleMapRect(unwrappedResponse.routes[0].polyline.boundingMapRect, animated: true)
+            }
+        }
     }
     
     //MARK: NavigationBar

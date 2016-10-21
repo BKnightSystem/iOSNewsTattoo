@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="NewsTattoo" customModuleProvider="target">
@@ -12,14 +13,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gsV-2z-Afb">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gsV-2z-Afb"/>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo electronico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WbX-de-CFW">
-                    <rect key="frame" x="20" y="150" width="560" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="3Li-J9-7e9"/>
                     </constraints>
@@ -27,7 +25,6 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVI-Iv-fU7">
-                    <rect key="frame" x="20" y="214" width="560" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="1f3-5x-VPN"/>
                     </constraints>
@@ -35,32 +32,39 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpH-6U-BUY">
-                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="YbN-AV-5MT"/>
                     </constraints>
                     <state key="normal" title="Finalizar"/>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmar contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TeY-9a-hTq">
-                    <rect key="frame" x="20" y="278" width="560" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="XYT-vA-vUn"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bx-AX-xSG">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="ves-DA-bcP"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="WbX-de-CFW" secondAttribute="trailing" constant="20" id="8RD-hx-vD8"/>
+                <constraint firstItem="4Bx-AX-xSG" firstAttribute="top" secondItem="TeY-9a-hTq" secondAttribute="bottom" constant="81" id="9tp-zR-3eB"/>
                 <constraint firstItem="WbX-de-CFW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="150" id="Bz9-iZ-nMb"/>
                 <constraint firstAttribute="trailing" secondItem="hVI-Iv-fU7" secondAttribute="trailing" constant="20" id="ChN-gx-du0"/>
                 <constraint firstItem="gsV-2z-Afb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JZP-vY-fD4"/>
                 <constraint firstItem="gsV-2z-Afb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jtv-YI-D2E"/>
                 <constraint firstItem="TeY-9a-hTq" firstAttribute="top" secondItem="hVI-Iv-fU7" secondAttribute="bottom" constant="20" id="MNs-CN-p3K"/>
                 <constraint firstAttribute="trailing" secondItem="TeY-9a-hTq" secondAttribute="trailing" constant="20" id="RXd-h0-gXf"/>
+                <constraint firstItem="4Bx-AX-xSG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="S9n-8d-yV5"/>
                 <constraint firstAttribute="trailing" secondItem="gsV-2z-Afb" secondAttribute="trailing" id="Ue7-Vk-xaA"/>
                 <constraint firstItem="hVI-Iv-fU7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="cW7-u1-Y3X"/>
+                <constraint firstAttribute="trailing" secondItem="4Bx-AX-xSG" secondAttribute="trailing" constant="20" id="dyF-Ze-dFM"/>
                 <constraint firstAttribute="bottom" secondItem="gsV-2z-Afb" secondAttribute="bottom" id="gyd-1m-SWX"/>
                 <constraint firstItem="hVI-Iv-fU7" firstAttribute="top" secondItem="WbX-de-CFW" secondAttribute="bottom" constant="20" id="hfO-9B-8Rn"/>
                 <constraint firstAttribute="trailing" secondItem="jpH-6U-BUY" secondAttribute="trailing" id="ngg-hH-lu2"/>
@@ -69,6 +73,7 @@
                 <constraint firstItem="WbX-de-CFW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="uYk-bl-Rlp"/>
                 <constraint firstAttribute="bottom" secondItem="jpH-6U-BUY" secondAttribute="bottom" id="xE1-7q-aRm"/>
             </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
 </document>
