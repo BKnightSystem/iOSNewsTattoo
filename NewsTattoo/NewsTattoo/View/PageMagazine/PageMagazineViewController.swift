@@ -232,7 +232,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     func showPhotoBrowser(indexImg:Int) {
         print("Index Browser \(indexImg)")
         let browser = SKPhotoBrowser(photos: imagesBrowser)
-        browser.displayAction = false
+        browser.displayAction = true
         browser.initializePageIndex(indexImg)
         presentViewController(browser, animated: true, completion: {})
     }
@@ -364,5 +364,10 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     func alertError() {
         let alert = SCLAlertView()
         alert.showError("Error", subTitle: "No se puede guardar en favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
+    func alertNotImage() {
+        let alert = SCLAlertView()
+        alert.showError("Error", subTitle: "No se encontraron imágenes para mostrar", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
     }
 }

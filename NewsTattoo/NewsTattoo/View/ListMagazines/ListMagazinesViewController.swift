@@ -229,7 +229,7 @@ extension ListMagazinesViewController: iCarouselDataSource, iCarouselDelegate {
         }
     }
     
-    func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+    /*func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         switch option {
         case .Spacing:
             return value * 1.1
@@ -238,7 +238,7 @@ extension ListMagazinesViewController: iCarouselDataSource, iCarouselDelegate {
         default:
             return value
         }
-    }
+    }*/
     
     func carousel(carousel: iCarousel!, didSelectItemAtIndex index: Int) {
         let pages = PageMagazineViewController(nibName:"PageMagazineViewController", bundle: nil)

@@ -59,6 +59,7 @@
 		67734EDF1CCEBCF200CE9F7F /* PropagandaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */; };
 		67734EE01CCEBCF200CE9F7F /* PropagandaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */; };
 		67734EE31CCEC88700CE9F7F /* Promociones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67734EE21CCEC88700CE9F7F /* Promociones.swift */; };
+		67AA99451DBE573500FF7568 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA99441DBE573500FF7568 /* SlideMenuController.swift */; };
 		67ED8D151D0637A5005B4548 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED8D131D0637A5005B4548 /* LoginViewController.swift */; };
 		67ED8D161D0637A5005B4548 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67ED8D141D0637A5005B4548 /* LoginViewController.xib */; };
 		67ED8D1A1D063CB1005B4548 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ED8D181D063CB1005B4548 /* RegisterViewController.swift */; };
@@ -134,6 +135,7 @@
 		67734EDD1CCEBCF200CE9F7F /* PropagandaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropagandaViewController.swift; path = View/Propraganda/PropagandaViewController.swift; sourceTree = "<group>"; };
 		67734EDE1CCEBCF200CE9F7F /* PropagandaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PropagandaViewController.xib; path = View/Propraganda/PropagandaViewController.xib; sourceTree = "<group>"; };
 		67734EE21CCEC88700CE9F7F /* Promociones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promociones.swift; path = Model/Promociones.swift; sourceTree = "<group>"; };
+		67AA99441DBE573500FF7568 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		67ED8D131D0637A5005B4548 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = View/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		67ED8D141D0637A5005B4548 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = View/Login/LoginViewController.xib; sourceTree = "<group>"; };
 		67ED8D181D063CB1005B4548 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = View/Register/RegisterViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		1D5185741CAE42910071B651 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				67AA99431DBE573500FF7568 /* SideMenu */,
 				67FBFA9F1CE502F500747EEC /* SKPhotoBrowser */,
 				1DFBC21B1CC2A3380071D5CD /* SCLAlertView */,
 				1D5185941CAE5E300071B651 /* iCarousel */,
@@ -438,6 +441,15 @@
 			name = Propaganda;
 			sourceTree = "<group>";
 		};
+		67AA99431DBE573500FF7568 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				67AA99441DBE573500FF7568 /* SlideMenuController.swift */,
+			);
+			name = SideMenu;
+			path = Controller/SideMenu;
+			sourceTree = "<group>";
+		};
 		67ED8D171D0637AA005B4548 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +592,7 @@
 				1D51856E1CAE3F1E0071B651 /* BookTableViewCell.swift in Sources */,
 				57ED963B1CAEFF5F00CF7ACE /* PageDesign3.swift in Sources */,
 				57ED96301CAEE1AF00CF7ACE /* PageMagazineViewController.swift in Sources */,
+				67AA99451DBE573500FF7568 /* SlideMenuController.swift in Sources */,
 				67FBFAAF1CE502F500747EEC /* UIView+Radius.swift in Sources */,
 				67FBFAB81CE502F500747EEC /* SKPhotoBrowser.swift in Sources */,
 				1D51858C1CAE59620071B651 /* MapaViewController.swift in Sources */,
@@ -769,7 +782,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EMEYC2ZY27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -781,8 +794,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaco.newstattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0a6b075b-cc03-4dc8-a29b-712ca0044011";
-				PROVISIONING_PROFILE_SPECIFIER = jacoNewsTattoo;
+				PROVISIONING_PROFILE = "383732bc-b645-45d5-93ec-1fc8906e0c12";
+				PROVISIONING_PROFILE_SPECIFIER = DevelopNewsTattoo;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
