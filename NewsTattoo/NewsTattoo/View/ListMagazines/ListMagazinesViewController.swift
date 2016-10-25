@@ -165,7 +165,7 @@ class ListMagazinesViewController: UIViewController {
     func updateLabel(){
         self.lbMagazine.text = arrayPortadasTattoo[indexPortada].nombre
     }
-
+    
     //MARK: NavigationBar
     
     /**

@@ -28,7 +28,6 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         mapa.delegate = self
         
         self.connectionInternet()
-//        self.showSucLocation()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -78,7 +77,7 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
-    func zoomToRegion() {
+    /*func zoomToRegion() {
         let latitud = arrayEstudiosTattoo[indexEstudio].latitud
         let longitud = arrayEstudiosTattoo[indexEstudio].longitud
         
@@ -87,24 +86,36 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegionMakeWithDistance(location, 5000.0, 7000.0)
         
         mapa.setRegion(region, animated: true)
-    }
+    }*/
     
     func showSucLocation(){
         let latitud = arrayEstudiosTattoo[indexEstudio].latitud
         let longitud = arrayEstudiosTattoo[indexEstudio].longitud
-        let sucLocation = CLLocationCoordinate2DMake(latitud, longitud)
         
-        // Drop a pin
-        let dropPin = MKPointAnnotation()
-        dropPin.coordinate = sucLocation
-        dropPin.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
-        
-        mapa.addAnnotation(dropPin)
-        let region = MKCoordinateRegionMakeWithDistance(sucLocation, 5000.0, 7000.0)
-        
-        mapa.setRegion(region, animated: true)
-        
-        self.loadPinSucursal()
+        if latitud != 0 && longitud != 0 {
+            let sucLocation = CLLocationCoordinate2DMake(latitud, longitud)
+            
+            // Drop a pin
+            let dropPin = MKPointAnnotation()
+            dropPin.coordinate = sucLocation
+            dropPin.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
+            
+            mapa.addAnnotation(dropPin)
+            let region = MKCoordinateRegionMakeWithDistance(sucLocation, 5000.0, 7000.0)
+            
+            mapa.setRegion(region, animated: true)
+            
+            self.loadPinSucursal()
+        } else {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.alertNotUbication()
+            }
+        }
+    }
+    
+    func alertNotUbication(){
+        let alert = SCLAlertView()
+        alert.showWarning("Aviso", subTitle: "No fue posible obtener la ubicación de estudio", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
     }
     
     var artworks = [ArtWork]()
@@ -160,12 +171,45 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
     
+    func navigateToStudioOptions (location: ArtWork) {
+        let alertController = UIAlertController(title: "Elija una opción", message: "", preferredStyle: .ActionSheet)
+        
+        let mapButton = UIAlertAction(title: "Mapa", style: .Default, handler: { (action) -> Void in
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+        })
+        
+        let  wazeButton = UIAlertAction(title: "Waze", style: .Destructive, handler: { (action) -> Void in
+            let latitud = arrayEstudiosTattoo[self.indexEstudio].latitud
+            let longitud = arrayEstudiosTattoo[self.indexEstudio].longitud
+            
+            let waze = "waze://?ll=\(latitud),\(longitud)&navigate=yes"
+            
+            UIApplication.sharedApplication().openURL(NSURL(string: waze)!)
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancelar", style: .Cancel, handler: { (action) -> Void in
+            print("Cancel")
+        })
+        
+        alertController.addAction(mapButton)
+        alertController.addAction(wazeButton)
+        alertController.addAction(cancelButton)
+        
+        self.navigationController!.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     //MARK: MAP
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let location = view.annotation as! ArtWork
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+        
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "waze://")!)) {
+            navigateToStudioOptions(location)
+        }else {
+            location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+        }
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
