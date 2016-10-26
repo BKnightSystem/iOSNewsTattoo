@@ -101,9 +101,9 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
             dropPin.title = arrayEstudiosTattoo[indexEstudio].nombreEstudio
             
             mapa.addAnnotation(dropPin)
-            let region = MKCoordinateRegionMakeWithDistance(sucLocation, 5000.0, 7000.0)
+            //let region = MKCoordinateRegionMakeWithDistance(sucLocation, 5000.0, 7000.0)
             
-            mapa.setRegion(region, animated: true)
+            //mapa.setRegion(region, animated: true)
             
             self.loadPinSucursal()
         } else {
