@@ -21,20 +21,26 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
 
         self.createNavigationBar()
-        self.location()
         
-        self.mapa.showsUserLocation = true
-        self.mapa.removeAnnotations(self.mapa.annotations)
-        mapa.delegate = self
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
         
-        self.connectionInternet()
+        //self.location()
+        
+//        self.mapa.showsUserLocation = true
+//        self.mapa.removeAnnotations(self.mapa.annotations)
+//        mapa.delegate = self
+//        
+//        self.connectionInternet()
     }
     
     override func viewWillDisappear(animated: Bool) {
-        reachability!.stopNotifier()
-        NSNotificationCenter.defaultCenter().removeObserver(self,
-                                                            name: ReachabilityChangedNotification,
-                                                            object: reachability)
+        if reachability != nil {
+            reachability!.stopNotifier()
+            NSNotificationCenter.defaultCenter().removeObserver(self,
+                                                                name: ReachabilityChangedNotification,
+                                                                object: reachability)
+        }
     }
     
     func connectionInternet() {
@@ -91,6 +97,8 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
     func showSucLocation(){
         let latitud = arrayEstudiosTattoo[indexEstudio].latitud
         let longitud = arrayEstudiosTattoo[indexEstudio].longitud
+        
+        mapa.showsUserLocation = true
         
         if latitud != 0 && longitud != 0 {
             let sucLocation = CLLocationCoordinate2DMake(latitud, longitud)
@@ -153,22 +161,46 @@ class MapaViewController: UIViewController, CLLocationManagerDelegate {
         switch status {
         case .Denied:
            // print("GPS OFF**********************************")
+            showSettings()
+            break
+        case .AuthorizedWhenInUse:
+            manager.startUpdatingLocation()
+            connectionInternet()
             break
         case .AuthorizedAlways:
             //print("GPS ON**********************************")
-            
+            manager.startUpdatingLocation()
+            connectionInternet()
             break
+        case .NotDetermined:
+            manager.requestWhenInUseAuthorization()
+            break;
         default:
             break
         }
     }
     //Location
     func location(){
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
+    }
+    
+    func showSettings() {
+        let alertController = UIAlertController (title: "Sin permisos", message: "Desea permitir que News Tattoo acceda a su ubicación?", preferredStyle: .Alert)
+        
+        let settingsAction = UIAlertAction(title: "Configurar", style: .Default) { (_) -> Void in
+            let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
+            if let url = settingsUrl {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+        alertController.addAction(settingsAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     func navigateToStudioOptions (location: ArtWork) {

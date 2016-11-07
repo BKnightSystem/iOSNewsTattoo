@@ -531,6 +531,7 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = EMEYC2ZY27;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -766,11 +767,11 @@
 				);
 				INFOPLIST_FILE = NewsTattoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SCROOT)";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaco.newstattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3db68f97-914f-48e2-a789-fdc81389e45a";
-				PROVISIONING_PROFILE_SPECIFIER = DevelopNewsTattoo;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
@@ -794,8 +795,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaco.newstattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "383732bc-b645-45d5-93ec-1fc8906e0c12";
-				PROVISIONING_PROFILE_SPECIFIER = DevelopNewsTattoo;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};

@@ -53,7 +53,7 @@ class PageDesign: UIView {
         txTop.textAlignment = .Center
         txTop.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_PAGE)
         txTop.textColor = UIColor(netHex: COLOR_TITLE_PAGE)
-        txTop.font = FONT_TEXT_2
+        txTop.font = FONT_TEXT_3
         
         lineSeparator = UIView(frame: CGRectMake(0, posY + heightTitle + 2, view.bounds.size.width,heightLineSeparator))
         lineSeparator.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
