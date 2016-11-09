@@ -531,7 +531,7 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = EMEYC2ZY27;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -770,8 +770,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaco.newstattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "383732bc-b645-45d5-93ec-1fc8906e0c12";
+				PROVISIONING_PROFILE_SPECIFIER = DevelopNewsTattoo;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
@@ -783,7 +783,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = EMEYC2ZY27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -795,8 +795,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(SCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaco.newstattoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e1fc3b9b-a206-45aa-886a-956ce9277768";
+				PROVISIONING_PROFILE_SPECIFIER = jacoNewsTattoo;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NewsTattoo-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
