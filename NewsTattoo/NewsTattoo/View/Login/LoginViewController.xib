@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="NewsTattoo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bly-97-zz9"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mP-TH-gAC">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="2Z8-lD-WzT"/>
+                    </constraints>
+                    <state key="normal" title="Iniciar sesión"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpt-8i-jg2">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="cX7-N6-5jj"/>
+                    </constraints>
+                    <state key="normal" title="Registro"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sad-Yh-4Dg">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="H1O-OX-FAC"/>
+                        <constraint firstAttribute="width" constant="240" id="uhe-2b-VtG"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgD-b7-Nys">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="VOr-hX-NIH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo Electronico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3R2-va-zdc">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="JvA-Qm-w9G"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cgD-b7-Nys" firstAttribute="top" secondItem="3R2-va-zdc" secondAttribute="bottom" constant="10" id="2yU-vS-kWx"/>
+                <constraint firstItem="6mP-TH-gAC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="56R-ei-Gwg"/>
+                <constraint firstAttribute="trailing" secondItem="3R2-va-zdc" secondAttribute="trailing" constant="8" id="Bsu-pM-JBC"/>
+                <constraint firstAttribute="trailing" secondItem="rpt-8i-jg2" secondAttribute="trailing" id="EKh-wP-kz7"/>
+                <constraint firstItem="6mP-TH-gAC" firstAttribute="top" secondItem="cgD-b7-Nys" secondAttribute="bottom" constant="20" id="H5e-Hg-b31"/>
+                <constraint firstItem="bly-97-zz9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OoO-lk-GWy"/>
+                <constraint firstItem="Sad-Yh-4Dg" firstAttribute="centerX" secondItem="6mP-TH-gAC" secondAttribute="centerX" id="Qav-jN-HWy"/>
+                <constraint firstItem="rpt-8i-jg2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TAv-c9-f9Q"/>
+                <constraint firstAttribute="bottom" secondItem="bly-97-zz9" secondAttribute="bottom" id="X4L-21-aZ0"/>
+                <constraint firstItem="bly-97-zz9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZA6-Xr-gD1"/>
+                <constraint firstAttribute="bottom" secondItem="rpt-8i-jg2" secondAttribute="bottom" id="atk-bS-vNL"/>
+                <constraint firstItem="cgD-b7-Nys" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="fl3-f4-jO3"/>
+                <constraint firstAttribute="trailing" secondItem="bly-97-zz9" secondAttribute="trailing" id="hb0-mj-58t"/>
+                <constraint firstAttribute="trailing" secondItem="6mP-TH-gAC" secondAttribute="trailing" id="ifl-1M-gN9"/>
+                <constraint firstItem="rpt-8i-jg2" firstAttribute="top" secondItem="6mP-TH-gAC" secondAttribute="bottom" constant="8" id="unE-95-Xas"/>
+                <constraint firstItem="3R2-va-zdc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="vbZ-mP-i6r"/>
+                <constraint firstAttribute="trailing" secondItem="cgD-b7-Nys" secondAttribute="trailing" constant="8" id="yai-rg-YPX"/>
+                <constraint firstItem="Sad-Yh-4Dg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="ybB-cq-1ZJ"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

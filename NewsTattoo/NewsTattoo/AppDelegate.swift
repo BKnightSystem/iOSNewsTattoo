@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigation = UINavigationController(rootViewController: library)
         
         if let window = window {
-            window.backgroundColor = UIColor.whiteColor()
+            //window.backgroundColor = UIColor.whiteColor()
             self.window?.rootViewController = navigation
             window.makeKeyAndVisible()
         }

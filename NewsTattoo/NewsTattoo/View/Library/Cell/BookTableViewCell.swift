@@ -28,7 +28,7 @@ class BookTableViewCell: UITableViewCell {
     func configuration(){
         self.imgMagazine.borderRadius(12)
         self.lbNameMagazine.textColor = UIColor(netHex: COLOR_NEGRO)
-        self.lbNameMagazine.font = FONT_TEXT_2
+        self.lbNameMagazine.font = FONT_TEXT_3
     }
     
 }

@@ -11,6 +11,11 @@ import MapKit
 
 extension MapaViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if (annotation.isKindOfClass(MKUserLocation) ) {
+            return nil
+        }
+        
         if let annotation = annotation as? ArtWork {
             let identifier = "pin"
             var view: MKPinAnnotationView
@@ -23,6 +28,9 @@ extension MapaViewController: MKMapViewDelegate {
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
+                let iconImage = UIImageView(frame: CGRect(x: 2, y: 2, width: 30, height: 30))
+                iconImage.image = arrayEstudiosTattoo[indexEstudio].logo
+                view.leftCalloutAccessoryView = iconImage
                 view.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure) as UIView
             }
             return view

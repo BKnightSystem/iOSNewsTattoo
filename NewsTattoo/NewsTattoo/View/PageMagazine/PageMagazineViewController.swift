@@ -17,6 +17,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
     
     var reachability: Reachability?
     
+    var imagesBrowser = [SKPhoto]()
     var isFavorito = false
     
     var indexEstudio = 0
@@ -106,6 +107,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         for i in 0 ..< galeriaCD.count {
             let dataPage = galeriaCD[i]
             let detailPage = Magazine()
+            var imgBrowser = SKPhoto()
             
             detailPage.idEstudio = dataPage.valueForKey("idEstudio") as! String
             detailPage.idMagazine = dataPage.valueForKey("idMagazine") as! String
@@ -117,9 +119,13 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             let imgLogo = ImageManager.getPageByID("\(i)", nameDirectory: nameDirectory)
             if  imgLogo != nil {
                 detailPage.image = imgLogo!
+                imgBrowser = SKPhoto.photoWithImage(imgLogo!)
+                imgBrowser.caption = "Autor: \(detailPage.nombreTatuador)"
             }
             
             arrayDetailPages.append(detailPage)
+            imagesBrowser.append(imgBrowser)
+            
         }
         
         SwiftSpinner.show("Cargando páginas")
@@ -138,9 +144,14 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         
         if arrayDetailPages.count > 0 {
             for i in 0  ..< arrayDetailPages.count  {
+                var imgBrowser = SKPhoto()
                 let pageView  = PageDesign()
 //                let pageView2 = PageDesign2()
 //                let pageView3 = PageDesign3()
+                
+                imgBrowser = SKPhoto.photoWithImage(arrayDetailPages[i].image)
+                imgBrowser.caption = "Autor: \(arrayDetailPages[i].nombreTatuador)"
+                imagesBrowser.append(imgBrowser)
                 
                 //Dinamic page
                 let stylepage = i % 3
@@ -213,6 +224,19 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         self.pageControl.currentPage = carousel.currentItemIndex
     }
     
+    func carousel(carousel: iCarousel!, didSelectItemAtIndex index: Int) {
+        self.showPhotoBrowser(index)
+    }
+    
+    //MARK: Photo Browser
+    func showPhotoBrowser(indexImg:Int) {
+        print("Index Browser \(indexImg)")
+        let browser = SKPhotoBrowser(photos: imagesBrowser)
+        browser.displayAction = true
+        browser.initializePageIndex(indexImg)
+        presentViewController(browser, animated: true, completion: {})
+    }
+    
     //MARK: Configuration
     func configuration(){
         carouselPages.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_PAGE)
@@ -234,7 +258,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
         let button = UIButton(type: UIButtonType.Custom) as UIButton
         button.setImage(IMAGE_ICON_BACK, forState: UIControlState.Normal)
         button.addTarget(self, action:#selector(PageMagazineViewController.back), forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame=CGRectMake(0, 0, 40, 40)
+        button.frame=CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem(customView: button)
         //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
         self.navigationItem.leftBarButtonItem = barButton
@@ -244,7 +268,7 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             let buttonDer = UIButton(type: UIButtonType.Custom) as UIButton
             buttonDer.setImage(IMAGE_ICON_FAVORITO, forState: UIControlState.Normal)
             buttonDer.addTarget(self, action:#selector(PageMagazineViewController.addFavorite), forControlEvents: UIControlEvents.TouchUpInside)
-            buttonDer.frame=CGRectMake(0, 0, 40, 40)
+            buttonDer.frame=CGRectMake(0, 0, 30, 30)
             let barButtonDer = UIBarButtonItem(customView: buttonDer)
             //let login = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "login2")
             self.navigationItem.rightBarButtonItem = barButtonDer
@@ -302,14 +326,14 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             }
         }else {
             let alert = SCLAlertView()
-            alert.showSuccess("", subTitle: "La revista ya esta en la sección de favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+            alert.showWarning("", subTitle: "La revista ya esta en la sección de favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
         }
     }
     
     //MARK: Alerts
     func alertExitoSavePortada(){
         let alert = SCLAlertView()
-        alert.showSuccess("Se agrego a favoritos", subTitle: "Para ver la revista dirijase a favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showSuccess("Se agrego a favoritos", subTitle: "Para ver la revista dirijase a favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
     }
     
     func alertNoGuardarMagazine(){
@@ -334,11 +358,16 @@ class PageMagazineViewController: UIViewController, iCarouselDataSource, iCarous
             
         })
         
-        alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la revista: \(nameRevista)", closeButtonTitle: "", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showInfo("Agregar a favoritos?", subTitle: "Desea agregar a favoritos la revista: \(nameRevista)", closeButtonTitle: "", duration: 0, colorStyle: UInt(COLOR_NEGRO), colorTextButton: UInt(COLOR_BLANCO))
     }
     
     func alertError() {
         let alert = SCLAlertView()
-        alert.showError("Error", subTitle: "No se puede guardar en favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ROJO), colorTextButton: UInt(COLOR_BLANCO))
+        alert.showError("Error", subTitle: "No se puede guardar en favoritos", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
+    }
+    
+    func alertNotImage() {
+        let alert = SCLAlertView()
+        alert.showError("Error", subTitle: "No se encontraron imágenes para mostrar", closeButtonTitle: "Aceptar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
     }
 }

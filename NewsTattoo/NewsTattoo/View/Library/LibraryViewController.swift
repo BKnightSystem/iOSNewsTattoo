@@ -9,15 +9,15 @@
 import UIKit
 import CoreData
 
-class LibraryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, iCarouselDelegate, iCarouselDataSource {
+class LibraryViewController: UIViewController, iCarouselDelegate, iCarouselDataSource {
 
     @IBOutlet weak var tbMagazines:UITableView!
     @IBOutlet weak var carouselHeader:iCarousel!
     @IBOutlet weak var viewContent:UIView!
     @IBOutlet weak var viewLineTop:UIView!
     @IBOutlet weak var viewLineDown:UIView!
-    @IBOutlet weak var btnShareFB:UIButton!//FBSDKShareButton!
-    @IBOutlet weak var btnFavorito:UIButton!
+    //@IBOutlet weak var btnShareFB:UIButton!//FBSDKShareButton!
+    //@IBOutlet weak var btnFavorito:UIButton!
     
     var reachability: Reachability?
     var refresh:UIRefreshControl!
@@ -25,6 +25,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         //Create refreshControl
         refresh = UIRefreshControl()
         
@@ -42,7 +43,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.btnShareFBConfig()
+        //self.btnShareFBConfig()
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,11 +100,19 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: Action Button
     @IBAction func btnFavorito(sender:UIButton) {
+        self.showFavorite()
+    }
+    
+    @IBAction func btnShareFB(sender: AnyObject) {
+        self.shareAppInFacebook()
+    }
+    
+    func showFavorite() {
         let favoritos = FavoritosViewController(nibName: "FavoritosViewController", bundle: nil)
         self.navigationController?.pushViewController(favoritos, animated: true)
     }
     
-    @IBAction func btnShareFB(sender: AnyObject) {
+    func shareAppInFacebook () {
         let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
         content.contentURL = NSURL(string: "https://itunes.apple.com/us/app/news-tattoo/id1111055905?l=es&ls=1&mt=8")
         content.contentTitle = "News Tattoo"
@@ -123,9 +132,9 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     //MARK: Facebook Share
     
-    func btnShareFBConfig() {
-        btnShareFB.setTitle("", forState: .Normal)
-    }
+//    func btnShareFBConfig() {
+//        btnShareFB.setTitle("", forState: .Normal)
+//    }
     
     //MARK: Alert
     func alertSinEstudios(){
@@ -256,7 +265,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
             imageView = UIImageView(image: IMG_DEFAULT_PROMO)
         }
         
-        imageView.borderRadius(12)
+        //imageView.borderRadius(12)
         imageView.backgroundColor = UIColor(netHex: COLOR_NEGRO);
         imageView.frame = CGRect(x: 0, y: 0, width:carouselHeader.frame.width, height:carouselHeader.frame.height)
         imageView.contentMode = .ScaleAspectFit
@@ -312,7 +321,47 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     func endRefresh(){
         refresh.endRefreshing()
     }
+    
+    //MARK: Configuration
+    func configuration(){
+        self.title = "News Tattoo"
+        
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+        navigationController?.navigationBar.barTintColor = UIColor.init(netHex: COLOR_NEGRO)
+        navigationController?.navigationBar.tintColor = UIColor.init(netHex: COLOR_NEGRO)
+        navigationController?.navigationBar.barStyle = .Black
+        
+        //Favorite section
+        let btnFavorite = UIButton()
+        btnFavorite.setImage(UIImage(named: "favorite"), forState: .Normal)
+        btnFavorite.frame = CGRectMake(0, 0, 30, 30)
+        btnFavorite.addTarget(self, action: #selector(LibraryViewController.showFavorite), forControlEvents: .TouchUpInside)
+        let itemFavorite = UIBarButtonItem()
+        itemFavorite.customView = btnFavorite
+        
+        self.navigationItem.rightBarButtonItem = itemFavorite
+        
+        //Social section
+        let btnFb = UIButton()
+        btnFb.setImage(UIImage(named: "facebook-logo"), forState: .Normal)
+        btnFb.frame = CGRectMake(0, 0, 30, 30)
+        btnFb.addTarget(self, action: #selector(LibraryViewController.shareAppInFacebook), forControlEvents: .TouchUpInside)
+        let itemFb = UIBarButtonItem()
+        itemFb.customView = btnFb
+        
+        self.navigationItem.leftBarButtonItem = itemFb
+        
+        self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
+        self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
+        
+        refresh.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_APP)
+        refresh.tintColor = UIColor(netHex: COLOR_BLANCO)
+    }
 
+}
+
+//MARK: UITable View Delegate
+extension LibraryViewController: UITableViewDataSource, UITableViewDelegate {
     //MARK: TableView
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -338,7 +387,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.selectionStyle = .None
         cell.lbNameMagazine.text = arrayEstudiosTattoo[indexPath.row].nombreEstudio
         //if arrayEstudiosTattoo[indexPath.row].imgLogo != "" {
-            cell.imgMagazine.image = arrayEstudiosTattoo[indexPath.row].logo
+        cell.imgMagazine.image = arrayEstudiosTattoo[indexPath.row].logo
         //}
         
         return cell
@@ -349,16 +398,4 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         listMagazine.indexEstudio = indexPath.row
         self.navigationController?.pushViewController(listMagazine, animated: true)
     }
-    
-    //MARK: Configuration
-    func configuration(){
-        self.title = "News Tattoo"
-        
-        self.viewLineTop.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
-        self.viewLineDown.backgroundColor = UIColor(netHex: COLOR_LINE_VIEW)
-        
-        refresh.backgroundColor = UIColor(netHex: COLOR_BACKGROUND_APP)
-        refresh.tintColor = UIColor(netHex: COLOR_BLANCO)
-    }
-
 }
