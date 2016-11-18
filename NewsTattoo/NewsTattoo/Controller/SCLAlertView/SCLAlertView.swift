@@ -220,7 +220,7 @@ public class SCLAlertView: UIViewController {
     }
     
     override public func touchesEnded(touches:Set<UITouch>, withEvent event:UIEvent?) {
-        if event?.touchesForView(view)?.count > 0 {
+        if (event?.touchesForView(view)?.count)! > 0 {
             view.endEditing(true)
         }
     }
@@ -442,7 +442,7 @@ public class SCLAlertView: UIViewController {
         }
         
         // Adding duration
-        if duration > 0 {
+        if duration! > 0 {
             durationTimer?.invalidate()
             durationTimer = NSTimer.scheduledTimerWithTimeInterval(duration!, target: self, selector: #selector(SCLAlertView.hideView), userInfo: nil, repeats: false)
         }

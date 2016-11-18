@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="NewsTattoo" customModuleProvider="target">
             <connections>
+                <outlet property="btnInitSesion" destination="fDW-ja-GFa" id="fvj-ZR-Dp0"/>
+                <outlet property="lblCreateAccount" destination="Xe4-Wa-326" id="ST0-J4-IMn"/>
+                <outlet property="txfEmail" destination="PgB-mJ-8M7" id="S4C-Xr-jWi"/>
+                <outlet property="txfPassword" destination="p7x-Oz-QVq" id="zpX-oi-Voh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -77,6 +81,9 @@
                         <constraint firstAttribute="height" constant="44" id="dpx-Wp-qKg"/>
                     </constraints>
                     <state key="normal" title="Iniciar sesión"/>
+                    <connections>
+                        <action selector="btnInitSession:" destination="-1" eventType="touchUpInside" id="kRV-Mx-L6C"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crear una cuenta" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe4-Wa-326">
                     <rect key="frame" x="16" y="629" width="343" height="18"/>

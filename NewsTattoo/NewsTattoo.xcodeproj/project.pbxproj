@@ -530,7 +530,7 @@
 					1D5185501CAE37D80071B651 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = EMEYC2ZY27;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Manual;
 					};
 				};

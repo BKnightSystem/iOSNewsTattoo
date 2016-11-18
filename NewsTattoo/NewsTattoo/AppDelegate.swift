@@ -59,8 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func inicio() {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        let library = LibraryViewController(nibName:"LibraryViewController", bundle:nil) as LibraryViewController
-        let navigation = UINavigationController(rootViewController: library)
+        //let library = LibraryViewController(nibName:"LibraryViewController", bundle:nil) as LibraryViewController
+        let loginView = LoginViewController(nibName: "LoginViewController", bundle: nil) as LoginViewController
+        
+        let navigation = UINavigationController(rootViewController: loginView)
         
         if let window = window {
             //window.backgroundColor = UIColor.whiteColor()

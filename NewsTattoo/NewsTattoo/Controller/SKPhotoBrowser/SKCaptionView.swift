@@ -67,7 +67,7 @@ public class SKCaptionView: UIView {
         guard let text = photoLabel.text else {
             return CGSize.zero
         }
-        guard photoLabel.text?.characters.count > 0 else {
+        guard (photoLabel.text?.characters.count)! > 0 else {
             return CGSize.zero
         }
         

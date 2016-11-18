@@ -321,7 +321,7 @@ public func ==(lhs: JSONIndex, rhs: JSONIndex) -> Bool {
 public func <(lhs: JSONIndex, rhs: JSONIndex) -> Bool {
     switch (lhs.type, rhs.type) {
     case (.Array, .Array):
-        return lhs.arrayIndex < rhs.arrayIndex
+        return lhs.arrayIndex! < rhs.arrayIndex!
     case (.Dictionary, .Dictionary):
         return lhs.dictionaryIndex < rhs.dictionaryIndex
     default:
@@ -354,7 +354,7 @@ public func >=(lhs: JSONIndex, rhs: JSONIndex) -> Bool {
 public func >(lhs: JSONIndex, rhs: JSONIndex) -> Bool {
     switch (lhs.type, rhs.type) {
     case (.Array, .Array):
-        return lhs.arrayIndex > rhs.arrayIndex
+        return lhs.arrayIndex! > rhs.arrayIndex!
     case (.Dictionary, .Dictionary):
         return lhs.dictionaryIndex > rhs.dictionaryIndex
     default:

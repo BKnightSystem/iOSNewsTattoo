@@ -41,4 +41,12 @@ class Utilidades {
         
         alert.showInfo("Sin Conexión", subTitle: "No cuenta con conexión a Internet", closeButtonTitle: "Cancelar", duration: 0, colorStyle: UInt(COLOR_ICONOS), colorTextButton: UInt(COLOR_BLANCO))
     }
+    
+    //MARK: Validate email
+    class func isValidEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let range = email.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
+        let result = range != nil ? true : false
+        return result
+    }
 }
