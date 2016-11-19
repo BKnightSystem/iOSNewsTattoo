@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        self.setNavigation()
+        //self.setNavigation()
         self.inicio()
         
         //return true
@@ -62,11 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let library = LibraryViewController(nibName:"LibraryViewController", bundle:nil) as LibraryViewController
         let loginView = LoginViewController(nibName: "LoginViewController", bundle: nil) as LoginViewController
         
-        let navigation = UINavigationController(rootViewController: loginView)
+        //let navigation = UINavigationController(rootViewController: loginView)
         
         if let window = window {
             //window.backgroundColor = UIColor.whiteColor()
-            self.window?.rootViewController = navigation
+            self.window?.rootViewController = loginView
             window.makeKeyAndVisible()
         }
         
